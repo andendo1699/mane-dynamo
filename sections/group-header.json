@@ -1,0 +1,365 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header_countdown_jRziwB": {
+      "type": "header-countdown",
+      "blocks": {
+        "text_CfJKxB": {
+          "type": "text",
+          "settings": {
+            "text_caps": false,
+            "text_size": 100,
+            "letter_spacing": 0,
+            "text": "<p>💙 Winter Special Offer ends in</p>",
+            "button_text": "Shop Now",
+            "button_url": "",
+            "button_color": "white",
+            "button_style": "text",
+            "button_size": "small",
+            "button_block": true
+          }
+        },
+        "timer_4bCzaD": {
+          "type": "timer",
+          "settings": {
+            "end_date": "2026-03-31",
+            "end_time": "11:59",
+            "period": "pm",
+            "end_message": "",
+            "text_caps": false,
+            "show_separator": false,
+            "show_short_text": true,
+            "digits_size": 100,
+            "units_size": 90,
+            "layout_style": "inline"
+          }
+        }
+      },
+      "block_order": [
+        "text_CfJKxB",
+        "timer_4bCzaD"
+      ],
+      "name": "Countdown Timer",
+      "settings": {
+        "width": "wrapper--full",
+        "layout": "centered",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "padding": 5,
+        "type_style": "subheading-text",
+        "color_scheme": "scheme-8",
+        "color": "",
+        "border_color": ""
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "text_HANRG6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>✦</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "announcement-0": {
+          "type": "text",
+          "settings": {
+            "text": "<p>FREE SHIPPING ON ALL USA ORDERS</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#ffffff",
+            "highlight_text_color": "#ffffff",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "57c1f82d-c885-41ba-942f-93f6dd12df44": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "message": "Spend ||amount|| more for FREE shipping.",
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "text_HANRG6",
+        "announcement-0",
+        "57c1f82d-c885-41ba-942f-93f6dd12df44"
+      ],
+      "settings": {
+        "width": "wrapper--full",
+        "layout": "marquee",
+        "show_top_border": false,
+        "show_bottom_border": true,
+        "padding": 10,
+        "slider_speed": 7,
+        "show_arrows": false,
+        "marquee_speed": 50,
+        "direction": "ticker-rtl",
+        "text_caps": false,
+        "type_font": "space_mono_n4",
+        "text_size": 100,
+        "letter_spacing": 0,
+        "message_spacing": 20,
+        "color_scheme": "scheme-2",
+        "color": "#ffffff",
+        "border_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "fda277c0-c8fe-4ce2-8c68-9b146fa102a4": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image_second_menu": false,
+            "aspect_ratio": 1.2,
+            "wide_image": false,
+            "overlay_type": "disabled",
+            "title": "Best Sellers",
+            "heading_size": 90,
+            "link_text": "These bags redefine everyday carry",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "image_VhmLNT": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image_second_menu": false,
+            "aspect_ratio": 1.2,
+            "wide_image": false,
+            "overlay_type": "disabled",
+            "title": "Accessories",
+            "heading_size": 100,
+            "link_text": "Tech accessories for travel",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "image_G3FgdL": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image_second_menu": false,
+            "aspect_ratio": 1.2,
+            "wide_image": false,
+            "overlay_type": "disabled",
+            "title": "Sale",
+            "heading_size": 90,
+            "link_text": "Exclusive deals on right now",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "image_hAVtCX": {
+          "type": "image",
+          "settings": {
+            "position": "2",
+            "image_second_menu": false,
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "overlay_type": "disabled",
+            "title": "Metro Backpack",
+            "heading_size": 90,
+            "link_text": "Where sleek design meets smart functionality",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "image_YPF8J8": {
+          "type": "image",
+          "settings": {
+            "position": "2",
+            "image_second_menu": false,
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "overlay_type": "disabled",
+            "title": "Journey Backpack V2",
+            "heading_size": 90,
+            "link_text": "Strategically organized with a sleek silhouette",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        },
+        "image_k7iRGd": {
+          "type": "image",
+          "settings": {
+            "position": "2",
+            "image_second_menu": false,
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "overlay_type": "disabled",
+            "title": "Everyday Sling",
+            "heading_size": 90,
+            "link_text": "The ideal solution for on-the-go essentials",
+            "link": "",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "fda277c0-c8fe-4ce2-8c68-9b146fa102a4",
+        "image_VhmLNT",
+        "image_G3FgdL",
+        "image_hAVtCX",
+        "image_YPF8J8",
+        "image_k7iRGd"
+      ],
+      "settings": {
+        "sticky_header": true,
+        "link_hover_effect": "line",
+        "highlight_color": "#f4f4f4",
+        "header_border": true,
+        "header_border_color": "#0000004d",
+        "border_opacity": 25,
+        "logo_not_home": "shopify://shop_images/mane_checkout_logo.png",
+        "logo_max_width": 150,
+        "main-menu": "main-menu",
+        "main_menu_secondary": "",
+        "show_images": false,
+        "image_aspect_ratio": 1,
+        "menu_alignment": "center",
+        "header_icons_as_text": false,
+        "show_locale_selector": false,
+        "show_locale_code": true,
+        "show_country_selector": false,
+        "show_country_name": false,
+        "show_country_flag": false,
+        "highlight_item": "On Sale Now",
+        "enable_custom_badge": true,
+        "custom_badge_text": "30% off",
+        "highlight_item_color": "#d43737",
+        "highlight_item_text_color": "#ffffff",
+        "header_transparent": true,
+        "logo": "shopify://shop_images/Mane_Square_Logo.svg",
+        "header_gradient": true
+      }
+    },
+    "mobile_menu_f8bMWK": {
+      "type": "mobile-menu",
+      "blocks": {
+        "menu_Mzjfdq": {
+          "type": "menu",
+          "settings": {
+            "mobile_menu_linklist": "main-menu",
+            "text_size": 100,
+            "show_images": true,
+            "image_aspect_ratio": 0.5,
+            "highlight_item": "On Sale Now",
+            "enable_custom_badge": false,
+            "custom_badge_text": "10% OFF",
+            "highlight_item_color": "#d02e2e",
+            "highlight_item_text_color": "#ffffff",
+            "padding": true,
+            "padding_bottom": 10
+          }
+        },
+        "button_WEQUFY": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Shop All",
+            "button_link": "shopify://collections/all",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--medium",
+            "pin_to_bottom": false,
+            "padding_bottom": 10
+          }
+        },
+        "divider_6KqqHr": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "pin_to_bottom": true,
+            "padding_bottom": 10
+          }
+        },
+        "search_EbGVfg": {
+          "type": "search",
+          "settings": {
+            "text_size": 100,
+            "pin_to_bottom": true,
+            "padding_bottom": 10
+          }
+        },
+        "login_hpkxXj": {
+          "type": "login",
+          "settings": {
+            "text_size": 100,
+            "pin_to_bottom": true,
+            "padding_bottom": 10
+          }
+        },
+        "localization_CCeyNK": {
+          "type": "localization",
+          "settings": {
+            "show_locale_selector": true,
+            "show_locale_code": true,
+            "show_country_selector": true,
+            "show_country_name": false,
+            "show_country_flag": false,
+            "pin_to_bottom": true,
+            "padding_bottom": 10
+          }
+        }
+      },
+      "block_order": [
+        "menu_Mzjfdq",
+        "button_WEQUFY",
+        "divider_6KqqHr",
+        "search_EbGVfg",
+        "login_hpkxXj",
+        "localization_CCeyNK"
+      ],
+      "settings": {
+        "logo_max_width": 250
+      }
+    }
+  },
+  "order": [
+    "header_countdown_jRziwB",
+    "announcement-bar",
+    "header",
+    "mobile_menu_f8bMWK"
+  ]
+}

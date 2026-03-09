@@ -1,0 +1,203 @@
+{%- comment -%}
+  Renders product form with buy buttons
+
+  Accepts:
+  - product: {Object} product (required)
+  - product_form_id: {String} unique form ID (required)
+  - unique: {String} unique identifier (required)
+  - is_quick_view: {Boolean} whether rendering in quick view (optional, default: false)
+  - current_variant_title: {String} title of the current variant for error messages (optional)
+  - gift_card_recipient_feature_active: {Boolean} whether gift card recipient is enabled (optional, default: false)
+  - max_inventory_reached: {Boolean} whether max inventory is reached (optional, default: false)
+  - error_message_position: {String} where to show error - 'cart' or 'form' (optional, default: 'cart')
+
+  Usage:
+  {% render 'buy-buttons',
+    product: product,
+    product_form_id: product_form_id,
+    unique: unique,
+    is_quick_view: is_quick_view,
+    current_variant_title: current_variant_title,
+    gift_card_recipient_feature_active: gift_card_recipient_feature_active,
+    max_inventory_reached: max_inventory_reached,
+    error_message_position: error_message_position
+  %}
+{%- endcomment -%}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign show_newsletter = settings.show_newsletter
+  assign atc_button_color = settings.atc_button_color
+  assign atc_button_style = settings.atc_button_style
+  assign atc_button_size = settings.atc_button_size
+  assign buynow_btn_color = settings.buynow_btn_color
+  assign buynow_btn_style = settings.buynow_btn_style
+  assign buynow_button_size = settings.buynow_button_size
+
+  assign sold_out_text = 'products.product.sold_out' | t
+
+  comment
+    Only show newsletter text if show_newsletter is enabled AND not in quick view
+  endcomment
+  if show_newsletter and is_quick_view == false
+    assign newsletter_text = 'general.newsletter_form.newsletter_product_availability' | t
+    assign sold_out_text = sold_out_text | append: ' - ' | append: newsletter_text
+  endif
+
+  comment
+    Set defaults for optional parameters if not provided
+  endcomment
+  assign gift_card_recipient_feature_active = gift_card_recipient_feature_active | default: false
+  assign max_inventory_reached = max_inventory_reached | default: false
+  assign error_message_position = error_message_position | default: 'cart'
+
+  assign show_payment_button = show_payment_button | default: settings.show_payment_button
+  if settings.enable_accept_terms == true or gift_card_recipient_feature_active == true
+    assign show_payment_button = false
+  endif
+-%}
+
+{%- form 'product',
+  product,
+  data-product-form: '',
+  id: product_form_id,
+  data-recipient-errors: gift_card_recipient_feature_active,
+  data-max-inventory-reached: max_inventory_reached,
+  data-error-message-position: error_message_position,
+  data-variant-title: current_variant_title
+-%}
+  {% comment %} The input with name="id" submits to cart {% endcomment %}
+  <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-select>
+
+  <div id="PreorderProperty-{{ unique }}">
+    {%- liquid
+      if current_variant.available and product.tags contains '_preorder' or current_variant.metafields.theme.preorder.type == 'boolean' and current_variant.metafields.theme.preorder.value == true
+        assign sale_type_label = 'products.product.sale_type' | t
+        assign preorder_value = 'products.product.preorder' | t
+
+        echo '<input type="hidden" name="properties[' | append: sale_type_label | append: ']" value="' | append: preorder_value | append: '">'
+      endif
+    -%}
+  </div>
+
+  {%- unless show_quantity -%}
+    <input type="hidden" name="quantity" value="1">
+  {%- endunless -%}
+  {% comment %} Shop pay split payment terms {% endcomment %}
+  <div
+    class="shop-pay-terms"
+    {% if animations_enabled %}
+      data-aos="hero"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-order="{{ animation_order }}"
+      {%- assign animation_order = animation_order | plus: 1 -%}
+    {% endif %}
+  >
+    {{ form | payment_terms }}
+  </div>
+
+  <div class="product__submit__holder{% if show_payment_button %} product__submit__holder--spb{% endif %}{% if show_newsletter %} product__submit__holder--notification{% endif %}">
+    <div class="product__submit__buttons">
+      <div
+        class="product__submit__item"
+        {% if animations_enabled %}
+          data-aos="hero"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-order="{{ animation_order }}"
+          {%- assign animation_order = animation_order | plus: 1 -%}
+        {% endif %}
+      >
+        <button
+          type="submit"
+          name="add"
+          id="AddToCart--{{ unique }}"
+          class="btn {{ atc_button_color }} {{ atc_button_style }} {{ atc_button_size }} btn--advanced btn--submit product__submit__add"
+          data-add-to-cart
+          {% if show_newsletter %}
+            data-notification-popup
+          {% endif %}
+        >
+          <hover-button></hover-button>
+          <span
+            id="AddToCartText-{{ unique }}"
+            data-add-to-cart-text
+            {% if settings.atc_show_product_price %}
+              data-price-wrapper data-atc-button
+            {% endif %}
+          >
+            {%- liquid
+              assign is_preorder = false
+
+              if current_variant.available and product.tags contains '_preorder' or current_variant.metafields.theme.preorder.type == 'boolean' and current_variant.metafields.theme.preorder.value == true
+                assign is_preorder = true
+              endif
+
+              if is_preorder
+                echo 'products.product.preorder' | t
+              elsif current_variant.available
+                echo 'products.product.add_to_cart' | t
+              else
+                echo sold_out_text
+              endif
+            -%}
+
+            {%- if settings.atc_show_product_price and current_variant.available -%}
+              <span data-product-price class="product__price--regular">
+                {%- liquid
+                  if current_variant.price == 0
+                    echo 'products.product.free' | t
+                  elsif currency_code_enable
+                    echo current_variant.price | money_with_currency
+                  else
+                    echo current_variant.price | money
+                  endif
+                -%}
+              </span>
+
+              {% comment %}Always render compare price element for subscription price updater{% endcomment %}
+              <s
+                data-compare-price
+                class="product__price--compare{% unless current_variant.compare_at_price > current_variant.price %} hidden{% endunless %}"
+              >
+                {%- liquid
+                  if current_variant.compare_at_price > current_variant.price
+                    if currency_code_enable
+                      echo current_variant.compare_at_price | money_with_currency
+                    else
+                      echo current_variant.compare_at_price | money
+                    endif
+                  else
+                    if currency_code_enable
+                      echo current_variant.price | money_with_currency
+                    else
+                      echo current_variant.price | money
+                    endif
+                  endif
+                -%}
+              </s>
+            {%- endif -%}
+          </span>
+
+          <em class="loader loader--line"><em class="loader-indeterminate"></em></em>
+        </button>
+      </div>
+
+      {%- if show_payment_button -%}
+        <div
+          class="product__submit__item{% if sold_out %} hidden{% endif %} {{ buynow_btn_color }} {{ buynow_btn_style }} {{ buynow_button_size }} btn--advanced"
+          data-buy-it-now
+          {% if animations_enabled %}
+            data-aos="hero"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-order="{{ animation_order }}"
+            {%- assign animation_order = animation_order | plus: 1 -%}
+          {% endif %}
+        >
+          {{ form | payment_button }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div data-cart-errors-container role="alert" class="product__form__errors"></div>
+  </div>
+{%- endform -%}

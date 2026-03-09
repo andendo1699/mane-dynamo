@@ -1,0 +1,807 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "4288ca80-71df-4bba-9ad1-168d97db9530": {
+      "type": "section-text",
+      "blocks": {
+        "template--16815886860566__4288ca80-71df-4bba-9ad1-168d97db9530-1667494538e253ba62-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Introducing </p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--16815886860566__4288ca80-71df-4bba-9ad1-168d97db9530-1667494538e253ba62-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p><em>Palo Alto</em></p>",
+            "size": 150,
+            "heading_highlight_type": "highlight",
+            "highlight_color": "#393939",
+            "highlight_text_color": "#ffffff"
+          }
+        },
+        "1645afb9-5278-4dc2-8ef0-e045a9ab308e": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Exceptional design and powerful features to elevate your brand</p>",
+            "size": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--16815886860566__4288ca80-71df-4bba-9ad1-168d97db9530-1667494538e253ba62-0",
+        "template--16815886860566__4288ca80-71df-4bba-9ad1-168d97db9530-1667494538e253ba62-1",
+        "1645afb9-5278-4dc2-8ef0-e045a9ab308e"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "dde4c998-913f-434d-a582-d3d800979d9f": {
+      "type": "section-columns",
+      "blocks": {
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-2": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "30+ versatile sections",
+            "heading_size": 120,
+            "text": "<p>Unleash your creative freedom with over 30 customizable sections, including standout options like \"Shop the Look,\" a multifaceted \"Featured Collection\" with multiple layout choices, and an engaging \"Image Accordion\" section. These sections empower you to tailor your storefront uniquely, aligning perfectly with your brand aesthetics and vision.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-1": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "Feature-rich experience",
+            "heading_size": 120,
+            "text": "<p>Discover a robust suite of features designed to enhance your storefront's functionality and user experience. With product siblings, mega navigation, quick buy options, and intuitive upsells, Palo Alto equips your store with elements that feel seamlessly integrated, elevating the shopping experience to be more dynamic and user-centric.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-3": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "Sophisticated design & animation",
+            "heading_size": 120,
+            "text": "<p>Dive into a world of elegance with Palo Alto’s exquisite design quality and smooth animations. The meticulous attention to detail and cohesive visual elements create an immersive and aesthetically pleasing environment, captivating visitors and emphasizing your products’ uniqueness and appeal.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-2",
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-1",
+        "template--21257997484310__dde4c998-913f-434d-a582-d3d800979d9f-text_block-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": 120,
+        "layout_desktop": "carousel",
+        "align_text": "text-left",
+        "columns": 3,
+        "show_images": true,
+        "show_borders": false,
+        "layout_mobile": "carousel",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 0.6,
+        "mobile_aspect_ratio": 0.6,
+        "color_scheme": "",
+        "color_borders": "#000000",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ef59738c-794d-4c51-af28-47f8d7132b58": {
+      "type": "section-columns",
+      "blocks": {
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-3": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "World class support",
+            "heading_size": 120,
+            "text": "<p>Experience peace of mind with our world-class support, offering worldwide coverage and years of experience to assist you promptly, typically within 24 hours. Palo Alto is not just revered for its features and design but also holds hundreds of reviews with an average rating close to 100%, showcasing the theme’s reliability and the trust merchants place in it.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-1": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "Promotion-centric",
+            "heading_size": 120,
+            "text": "<p>Palo Alto is designed with a strong emphasis on promotions, featuring promotion-focused sections, newsletters, and pop-ups, alongside ad placements strategically located on your home page, within collections, and on product pages. This thoughtful integration allows you to drive sales effectively and keep your audience engaged with your latest deals and offerings.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-2": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "Mobile-optimized & accessible",
+            "heading_size": 120,
+            "text": "<p>In a world where over 50% of e-commerce traffic originates from mobile devices, Palo Alto ensures an impeccable mobile-first design, prioritizing accessibility and performance. This focus guarantees a seamless and inclusive browsing experience for all users, regardless of the device they’re using, while maintaining swift and responsive interactions.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-3",
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-1",
+        "template--21257997484310__ef59738c-794d-4c51-af28-47f8d7132b58-text_block-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": 120,
+        "layout_desktop": "carousel",
+        "align_text": "text-left",
+        "columns": 3,
+        "show_images": true,
+        "show_borders": false,
+        "layout_mobile": "carousel",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 0.6,
+        "mobile_aspect_ratio": 0.6,
+        "color_scheme": "",
+        "color_borders": "#000000",
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "1dea3823-e3ef-472c-b258-55bbc8a9be72": {
+      "type": "section-divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "06deef6e-98bd-48d9-b84b-fba0b0f20c4a": {
+      "type": "section-marquee",
+      "blocks": {
+        "template--21257997484310__06deef6e-98bd-48d9-b84b-fba0b0f20c4a-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A powerful <em>feature-rich</em> theme</p>",
+            "text_color": "",
+            "heading_highlight_type": "highlight",
+            "highlight_color": "#393939",
+            "highlight_text_color": "#ffffff",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 25,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "f4ed01be-1087-4fb2-936e-e5356e6c8df9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>•</p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 25,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "template--21257997484310__06deef6e-98bd-48d9-b84b-fba0b0f20c4a-text-1",
+        "f4ed01be-1087-4fb2-936e-e5356e6c8df9"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "padding": 10,
+        "marquee_speed": 100,
+        "direction": "ticker-rtl",
+        "slider_speed": 7,
+        "show_arrows": false,
+        "text_caps": false,
+        "type_font": "space_mono_n4",
+        "text_size": 270,
+        "text_size_mobile": 80,
+        "letter_spacing": 0,
+        "message_spacing": 10,
+        "color_scheme": "scheme-1",
+        "color": "#000000",
+        "border_color": "#000000",
+        "padding_top": 4,
+        "padding_bottom": 10
+      }
+    },
+    "1ea1eacc-db5f-4142-8cc0-2d9b711a514d": {
+      "type": "section-divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "5ee1f4e2-f6cc-4e90-9351-56f468d1c67a": {
+      "type": "section-text",
+      "blocks": {
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading</p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Optimized Shopping Journey</p>",
+            "size": 120,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "size": 100
+          }
+        },
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Read More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-0",
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-1",
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-2",
+        "template--16815886860566__5ee1f4e2-f6cc-4e90-9351-56f468d1c67a-16674957797e7d551b-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ec2c0a45-1368-473f-b231-c6cfac8387b3": {
+      "type": "section-text",
+      "blocks": {
+        "99d07120-7634-4f40-afa6-8c192715e379": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Efficient Cart and Checkout</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Utilize quick buy options, slide-out carts, and sticky carts, harmonized with in-store pickups and cart notes, providing a versatile and frictionless shopping experience.</p>",
+            "size_right": 100
+          }
+        },
+        "0313b559-a03d-4a69-b6b1-736e6c11cbb7": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Mega Navigation & Enhanced Search</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Benefit from efficient and organized navigation coupled with enhanced search functionalities, offering customers a seamless discovery experience.</p>",
+            "size_right": 100
+          }
+        },
+        "4e75cb22-e08e-42d1-8f63-1c0ecc688fb0": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Everything Else</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>More than 20+ sections available to build a truly customized site.</p>",
+            "size_right": 100
+          }
+        }
+      },
+      "block_order": [
+        "99d07120-7634-4f40-afa6-8c192715e379",
+        "0313b559-a03d-4a69-b6b1-736e6c11cbb7",
+        "4e75cb22-e08e-42d1-8f63-1c0ecc688fb0"
+      ],
+      "settings": {
+        "text_position": "left",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "818e1345-20a2-46b2-8d57-b87ff9bd9b2f": {
+      "type": "section-text",
+      "blocks": {
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading</p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Strategic Marketing and Conversion Tools</p>",
+            "size": 120,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "size": 100
+          }
+        },
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Read More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-0",
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-1",
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-2",
+        "template--16815886860566__818e1345-20a2-46b2-8d57-b87ff9bd9b2f-1667495870b58992c0-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "4501159a-0215-4d33-8efb-962d4144e1f2": {
+      "type": "section-text",
+      "blocks": {
+        "9a67a502-4a61-4ca5-a540-6649590b29ee": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Innovative Conversion Optimization</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Leverage cross-selling, quick view options, and recommended products, tailored to optimize conversions and enhance customer engagement.</p>",
+            "size_right": 100
+          }
+        },
+        "48229f70-261f-4810-b666-63ce3f32317a": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Promotional Ecosystem</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Strategically deploy in-menu promos, product badges, and promo banners, enriched with dedicated blog and press coverage sections to maximize your promotional content's impact and reach.</p>",
+            "size_right": 100
+          }
+        },
+        "a1f54567-292d-4b73-9e98-aade8df22c77": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Back-In-Stock Alerts & Email Capture</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Engage and inform your customers proactively with customizable contact forms and timely back-in-stock alerts.</p>",
+            "size_right": 100
+          }
+        }
+      },
+      "block_order": [
+        "9a67a502-4a61-4ca5-a540-6649590b29ee",
+        "48229f70-261f-4810-b666-63ce3f32317a",
+        "a1f54567-292d-4b73-9e98-aade8df22c77"
+      ],
+      "settings": {
+        "text_position": "left",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "bd626248-8602-4195-ab36-1223c010eeb5": {
+      "type": "section-text",
+      "blocks": {
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading</p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Visual Merchandising and Product Discovery</p>",
+            "size": 120,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "size": 100
+          }
+        },
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Read More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-0",
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-1",
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-2",
+        "template--16815886860566__bd626248-8602-4195-ab36-1223c010eeb5-166749608653df0a11-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "359f1006-2643-468b-8be9-4409fdd698fe": {
+      "type": "section-text",
+      "blocks": {
+        "5f521ecd-c12c-4221-9ba4-e1b148c67e93": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Sophisticated Image Display</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Showcase high-resolution images through elegant galleries, image rollovers, and zoom functionalities, enriched with visually appealing slideshows.</p>",
+            "size_right": 100
+          }
+        },
+        "a8cd854f-9158-45fa-ae41-3e044c3c7575": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Comprehensive Product Details & Visual Effects</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Offer essential product insights through color swatches, product tabs, and videos, complemented by smooth animations to captivate your audience.</p>",
+            "size_right": 100
+          }
+        },
+        "d03195f8-2709-4b34-9090-439fcdb23a1b": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Infinite Scroll & Sticky Header</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Enhance the browsing experience with uninterrupted scrolling and accessible navigation, ensuring your users find what they are looking for effortlessly.</p>",
+            "size_right": 100
+          }
+        },
+        "e831411a-3fbd-4003-956e-9ce9826a782a": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Out-Of-Stock Email Notifications</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Collect customer emails when a product is out-of-stock.</p>",
+            "size_right": 100
+          }
+        },
+        "a69cd2e1-f17a-42c6-a7eb-258e6d6422c9": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Upsell Products</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Attach products together using the upsell functionality. This will allow you to show multiple products on a single product template.</p>",
+            "size_right": 100
+          }
+        },
+        "a59e0c79-bbc9-4c44-b3cf-383eb330d8ff": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Size Chart & Popup Text</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Add a custom size chart to any product in addition to a popup link which can include more information.</p>",
+            "size_right": 100
+          }
+        },
+        "1b6b69e3-7e53-4832-8863-bb2d86590550": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Pre-Order</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Make it easier for customers to pre-order your products with the pre-order template. This automatically changes the \"Add to cart\" button into a \"Pre-order\" button.</p>",
+            "size_right": 100
+          }
+        }
+      },
+      "block_order": [
+        "5f521ecd-c12c-4221-9ba4-e1b148c67e93",
+        "a8cd854f-9158-45fa-ae41-3e044c3c7575",
+        "d03195f8-2709-4b34-9090-439fcdb23a1b",
+        "e831411a-3fbd-4003-956e-9ce9826a782a",
+        "a69cd2e1-f17a-42c6-a7eb-258e6d6422c9",
+        "a59e0c79-bbc9-4c44-b3cf-383eb330d8ff",
+        "1b6b69e3-7e53-4832-8863-bb2d86590550"
+      ],
+      "settings": {
+        "text_position": "left",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "fd37cc29-aeed-4ae5-aaa7-5abf714da666": {
+      "type": "section-text",
+      "blocks": {
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Subheading</p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>International Selling and Customer Trust</p>",
+            "size": 120,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "size": 100
+          }
+        },
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-3": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Read More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-0",
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-1",
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-2",
+        "template--16815886860566__fd37cc29-aeed-4ae5-aaa7-5abf714da666-166749625559833983-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "6e4c1dec-f12c-4389-b719-4c5440de571b": {
+      "type": "section-text",
+      "blocks": {
+        "aca69f0a-0a00-4f77-ae40-e2b9489bfadb": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Multilingual Support & Selling Internationally</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Reach a wider audience with translations available in English, French, Italian, German, and Spanish.</p>",
+            "size_right": 100
+          }
+        },
+        "1d8f4c1a-9236-4411-ad80-21fb5d517849": {
+          "type": "split-text",
+          "settings": {
+            "text_left": "<p><strong>Trust and Social Proof</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Establish credibility with product reviews and a robust FAQ page, reinforcing customer trust and confidence in your brand.</p>",
+            "size_right": 100
+          }
+        },
+        "9fd44046-9d62-4177-be8d-680cc0142e1b": {
+          "type": "split-text",
+          "disabled": true,
+          "settings": {
+            "text_left": "<p><strong>Promotions</strong></p>",
+            "size_left": 100,
+            "text_right": "<p>Introduce advertisements through your site to upsell new products and promotions. Available on the collection template, product page and cart.</p>",
+            "size_right": 100
+          }
+        }
+      },
+      "block_order": [
+        "aca69f0a-0a00-4f77-ae40-e2b9489bfadb",
+        "1d8f4c1a-9236-4411-ad80-21fb5d517849",
+        "9fd44046-9d62-4177-be8d-680cc0142e1b"
+      ],
+      "settings": {
+        "text_position": "left",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "e40ee4f3-38bc-460f-b48c-0b86fb17d246": {
+      "type": "section-text",
+      "blocks": {
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Palo Alto combines elegance with functionality, offering a seamless and enriched shopping experience.</p>",
+            "size": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
+          }
+        },
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With its blend of sophisticated design, strategic promotional tools, and optimized shopping journey features, it stands out as a versatile and reliable choice for merchants aiming for excellence and growth in the competitive e-commerce landscape.</p>",
+            "size": 100
+          }
+        },
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-button-1": {
+          "type": "button",
+          "settings": {
+            "button_text": "Purchase Palo Alto",
+            "button_link": "https://themes.shopify.com/themes/palo-alto",
+            "button_color": "btn--black",
+            "button_style": "btn--outline",
+            "button_size": "btn--large"
+          }
+        }
+      },
+      "block_order": [
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-heading-1",
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-text-1",
+        "template--21257997484310__e40ee4f3-38bc-460f-b48c-0b86fb17d246-button-1"
+      ],
+      "settings": {
+        "text_position": "center",
+        "color_scheme": "",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "4288ca80-71df-4bba-9ad1-168d97db9530",
+    "dde4c998-913f-434d-a582-d3d800979d9f",
+    "ef59738c-794d-4c51-af28-47f8d7132b58",
+    "1dea3823-e3ef-472c-b258-55bbc8a9be72",
+    "06deef6e-98bd-48d9-b84b-fba0b0f20c4a",
+    "1ea1eacc-db5f-4142-8cc0-2d9b711a514d",
+    "5ee1f4e2-f6cc-4e90-9351-56f468d1c67a",
+    "ec2c0a45-1368-473f-b231-c6cfac8387b3",
+    "818e1345-20a2-46b2-8d57-b87ff9bd9b2f",
+    "4501159a-0215-4d33-8efb-962d4144e1f2",
+    "bd626248-8602-4195-ab36-1223c010eeb5",
+    "359f1006-2643-468b-8be9-4409fdd698fe",
+    "fd37cc29-aeed-4ae5-aaa7-5abf714da666",
+    "6e4c1dec-f12c-4389-b719-4c5440de571b",
+    "e40ee4f3-38bc-460f-b48c-0b86fb17d246"
+  ]
+}

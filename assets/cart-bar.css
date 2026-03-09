@@ -1,0 +1,303 @@
+.cart-bar {
+  --bg: var(--COLOR-BG);
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2001;
+  width: 100%;
+  background: var(--bg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+}
+.cart-bar[data-position=top] {
+  top: 0;
+  bottom: auto;
+  transform: translateY(-100%);
+}
+.cart-bar.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0s;
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar {
+    display: flex;
+    align-items: center;
+    height: auto;
+  }
+}
+.cart-bar .btn--submit {
+  position: relative;
+  width: 100%;
+  transition: color 0.3s ease, border 0.3s ease, background 0.3s linear;
+}
+.cart-bar .btn--submit span {
+  transition: opacity 0.3s ease;
+}
+.cart-bar .btn--submit.is-loading {
+  opacity: 1;
+  cursor: default;
+}
+.cart-bar .btn--submit.is-loading span {
+  opacity: 0;
+  transition: opacity 0s;
+}
+.cart-bar .btn--submit.is-loading::before {
+  content: none;
+}
+.cart-bar .btn--submit .loader-indeterminate {
+  background-color: var(--btn-text);
+}
+.cart-bar .btn--submit .loader--line {
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+  background-color: var(--btn-text-alpha-10);
+}
+.cart-bar .select-popout {
+  margin-bottom: 0;
+}
+.cart-bar .quantity__selector {
+  width: auto;
+}
+
+.cart-bar:focus-within {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0s;
+}
+
+.cart-bar__form__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding: 12px;
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__form__wrapper {
+    flex: 0 1 100%;
+    align-items: stretch;
+  }
+}
+
+.cart-bar__form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 50%;
+  margin-left: auto;
+}
+@media only screen and (max-width: 767px) {
+  .has-multiple-options .cart-bar__form {
+    flex: 1 1 auto;
+  }
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__form {
+    justify-content: space-between;
+    max-width: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .cart-bar__form {
+    width: 100%;
+  }
+}
+.cart-bar__form .product__selectors {
+  margin: 0;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  height: 50px;
+  padding: 0;
+}
+.cart-bar__form select {
+  height: 100%;
+  border: 0;
+  margin: 0;
+}
+.cart-bar__form .selector-wrapper {
+  height: 100%;
+  min-width: 120px;
+  padding-right: 5px;
+  border-left: 1px solid var(--border);
+}
+.cart-bar__form .product__submit {
+  min-width: 0;
+  margin: 0;
+}
+.cart-bar__form .product__submit__buttons {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+}
+.cart-bar__form .product__submit__add {
+  position: relative;
+  overflow: hidden;
+  min-height: 50px;
+  padding-left: 35px;
+  padding-right: 35px;
+  margin: 0;
+  line-height: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cart-bar__form .product__submit__add span.btn__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+@media only screen and (max-width: 1023px) {
+  .cart-bar__form .product__submit__add {
+    min-width: 200px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .cart-bar__form .product__submit__add {
+    width: 100%;
+    min-height: var(--btn-height, 42px);
+    white-space: normal;
+  }
+}
+
+.cart-bar__options {
+  display: flex;
+  gap: 12px;
+}
+
+@media only screen and (max-width: 767px) {
+  .has-multiple-options .cart-bar__options {
+    display: none;
+  }
+}
+
+.cart-bar__mobile-options-btn {
+  display: none;
+  width: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .cart-bar__mobile-options-btn {
+    display: block;
+  }
+}
+.cart-bar__mobile-options-btn button {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.cart-bar__media {
+  display: flex;
+}
+.cart-bar__media img {
+  object-fit: cover;
+}
+
+.cart-bar__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  min-width: 0;
+  padding-right: 10px;
+}
+.cart-bar__info .cart-bar__product__price {
+  padding: 0;
+  gap: 6px;
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__info {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    text-align: center;
+  }
+  .cart-bar__info:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.cart-bar__image {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  margin: 0 10px 0 0;
+}
+.cart-bar__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cart-bar__product__title {
+  line-height: 25px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: calc(1.1rem * var(--adjust-body));
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__product__title {
+    display: inline;
+    text-align: left;
+    padding: 0 3px;
+    white-space: normal;
+  }
+}
+
+.cart-bar__product__price {
+  position: relative;
+  display: flex;
+  align-items: center;
+  line-height: 25px;
+  padding: 0 0 0 10px;
+  margin: 0;
+  font-size: calc(0.9rem * var(--adjust-body));
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__product__price {
+    display: inline;
+    padding: 0 3px;
+  }
+}
+.variant--unavailable .cart-bar__product__price {
+  display: none;
+}
+@media only screen and (max-width: 1439px) {
+  .cart-bar__product__price .product__price--sale {
+    padding-right: 6px;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .cart-bar__media,
+  .cart-bar__info,
+  .cart-bar__quantity {
+    display: none;
+  }
+}
+
+.cart-bar__submit {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .has-multiple-options .cart-bar__submit {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .has-no-options .cart-bar__submit {
+    flex: 1 1 auto;
+  }
+}

@@ -1,0 +1,151 @@
+/*================ Header Countdown ================*/
+.header-countdown-static {
+  position: relative;
+  z-index: 135;
+  background: var(--bg);
+}
+.header-countdown-static .header-countdown {
+  min-height: var(--header-countdown-height);
+}
+
+.section-header-countdown {
+  background: var(--bg);
+  background-clip: content-box;
+  overflow: hidden;
+}
+.body--rounded-corners .section-header-countdown {
+  border-radius: var(--radius);
+}
+.wrapper--full .section-header-countdown {
+  border-radius: 0;
+}
+
+.header-countdown {
+  --offset: 8px;
+  position: relative;
+  width: 100%;
+  min-width: 32px;
+  text-align: center;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.header-countdown--top-border {
+  border-top: var(--BORDER-WIDTH) solid var(--border);
+}
+
+.header-countdown--bottom-border {
+  border-bottom: var(--BORDER-WIDTH) solid var(--border);
+}
+
+.header-countdown__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.header-countdown__block {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0 30px;
+}
+
+.header-countdown__marquee {
+  width: 100%;
+  padding: var(--padding) 0;
+  overflow: hidden;
+}
+.header-countdown__marquee .ticker--animated {
+  animation-play-state: running;
+}
+
+.header-countdown__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: calc(0.75rem * var(--text-size-multiplier));
+  letter-spacing: calc(0.75em * var(--letter-spacing-multiplier));
+  text-transform: none;
+}
+
+.header-countdown--centered .header-countdown__text {
+  justify-content: center;
+}
+
+.header-countdown__block--text {
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.header-countdown__block--text p {
+  margin: 0;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.header-countdown__block--text.has-button p {
+  padding-inline-end: 1rem;
+}
+.header-countdown__block--text.caps ~ .header-countdown__block--button {
+  text-transform: uppercase;
+}
+
+.header-countdown__button {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+.header-countdown__block--timer {
+  --digits-size: calc(0.75rem * var(--digits-size-multiplier));
+  --units-size: calc(0.75rem * var(--units-size-multiplier));
+  font-size: var(--units-size);
+  text-transform: none;
+}
+.header-countdown__block--timer .countdown-timer__wrapper {
+  flex-wrap: nowrap;
+}
+.header-countdown__block--timer .countdown-timer__wrapper--stacked {
+  gap: calc(var(--units-size) * 0.9);
+}
+.header-countdown__block--timer .countdown-timer__wrapper--inline {
+  gap: var(--offset);
+}
+.header-countdown__block--timer .countdown-timer__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+.header-countdown__block--timer .countdown-timer__digit,
+.header-countdown__block--timer .countdown-timer__unit {
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  line-height: 1;
+  text-transform: none;
+}
+.header-countdown__block--timer .countdown-timer__digit {
+  font-weight: var(--FONT-WEIGHT-BODY-BOLD);
+  font-size: var(--digits-size);
+}
+.header-countdown__block--timer .countdown-timer__message {
+  font-family: inherit;
+  font-size: var(--units-size);
+  margin: auto;
+}
+.header-countdown__block--timer .countdown-timer__message p {
+  margin: 0;
+}
+.header-countdown__block--timer.caps .countdown-timer__unit,
+.header-countdown__block--timer.caps .countdown-timer__message {
+  text-transform: uppercase;
+}
+
+.header-countdown__block--timer-inline .countdown-timer__item {
+  flex-direction: row;
+  gap: var(--offset);
+}

@@ -1,0 +1,184 @@
+<!-- /snippets/product-card-siblings.liquid -->
+
+{%- liquid
+  assign animation_attributes = animation_attributes | default: ''
+  assign show_siblings_images = settings.show_siblings_images
+  assign collection_swatch_style = settings.collection_swatch_style
+  assign color_swatches_type = settings.color_swatches_type
+
+  capture swatch_class
+    echo 'siblings__swatch swatch__button'
+    case settings.color_swatches_product_style
+      when 'circle'
+        echo ' siblings__swatch--circle'
+      when 'rectangle'
+        echo ' siblings__swatch--rectangle'
+    endcase
+
+    unless show_siblings_images
+      echo ' siblings__swatch--colors'
+    else
+      echo ' siblings__swatch--image'
+    endunless
+  endcapture
+-%}
+
+{%- if metaobjects[settings.theme_siblings] != blank -%}
+  {%- paginate metaobjects[settings.theme_siblings].values by 500 -%}
+    {%- for entry in metaobjects[settings.theme_siblings].values -%}
+      {%- assign sibling_products = entry.product_list.value -%}
+      {%- assign has_siblings = sibling_products | has: 'id', product.id -%}
+
+      {%- if has_siblings and sibling_products != blank -%}
+        <native-scrollbar
+          class="product-grid-item__fieldset product-grid-item__fieldset--swatches product-grid-item__fieldset--pgi"
+          data-grid-swatch-fieldset
+        >
+          <fieldset
+            class="product-grid-item__swatch product-grid-item__swatch--siblings{% if settings.color_swatches_product_style == 'rectangle' %} product-grid__swatch--rectangle{% endif %} product-grid-item__swatch--{{ collection_swatch_style }}"
+            data-scrollbar
+          >
+            {%- for sib_product in sibling_products limit: 50 -%}
+              {%- liquid
+                assign count_string_one = 'collections.general.colors_with_count.one' | t
+                assign count_string_other = 'collections.general.colors_with_count.other' | t
+                assign is_current_product = false
+                if sib_product.handle == product.handle
+                  assign is_current_product = true
+                endif
+
+                assign sib_swatch_class = swatch_class
+                if sib_product.available == false
+                  assign sib_swatch_class = sib_swatch_class | append: ' siblings__swatch--sold-out'
+                endif
+
+                assign title_safe = sib_product.title | strip_html | escape
+                assign product_color_name = title_safe
+                assign color_name_handle = product_color_name | handle
+                assign color_metafield = sib_product.metafields.shopify['color-pattern'].value | map: 'color' | first
+                assign color_metafield_label = sib_product.metafields.shopify['color-pattern'].value | map: 'label' | first
+                assign color_name = color_metafield_label | default: product_color_name
+                assign swatch_name_handle = swatch_name | handle
+
+                unless show_siblings_images
+                  assign sib_swatch_class = sib_swatch_class | append: ' swatches swatch__button'
+                  if color_swatches_type == 'theme'
+                    assign swatch_style = '--swatch: var(--' | append: color_name_handle | append: ');'
+                  elsif color_swatches_type == 'native'
+                    assign swatch_style = '--swatch: ' | append: color_metafield
+                  endif
+                endunless
+
+                assign swatch_color_list = settings.swatch_color_list
+                assign lines = swatch_color_list | newline_to_br | split: '<br />'
+
+                for line in lines
+                  assign clean_line = line | replace: '\n', ''
+                  assign style_parts = clean_line | split: ':'
+                  assign swatch_name = style_parts[0] | handle
+                  assign swatch_color = style_parts[1] | strip | downcase | replace: ';', ''
+                  assign swatch_name_handle = swatch_name | handle
+
+                  if swatch_name == color_name_handle
+                    if swatch_color == '#000' or swatch_color == '#000000'
+                      assign swatch_name_handle = 'black'
+                    elsif swatch_color == '#fff' or swatch_color == '#ffffff'
+                      assign swatch_name_handle = 'white'
+                    endif
+                    break
+                  endif
+                endfor
+
+                assign is_hidden = false
+                if forloop.index > 4 and sibling_count > 5 and collection_swatch_style == 'limited'
+                  assign is_hidden = true
+                endif
+
+                if collection_swatch_style == 'text-slider' or collection_swatch_style == 'text'
+                  assign is_hidden = true
+                endif
+              -%}
+
+              <a
+                href="{{ sib_product.url }}"
+                class="{{ sib_swatch_class }}{%- if is_hidden %} is-hidden{%- endif -%}"
+                data-sibling-swatch
+                data-sibling-featured-image-url="{{ sib_product.featured_media.preview_image | image_url: width: 800 }}"
+                {% if is_current_product %}
+                  aria-current="true"
+                {%- endif -%}
+              >
+                <tooltip-component
+                  class="siblings__button"
+                  data-tooltip="{{ color_name }}"
+                  data-swatch="{{ swatch_name_handle }}"
+                  {% unless show_siblings_images %}
+                    style="{{ swatch_style }}"
+                  {% endunless %}
+                >
+                  {%- if show_siblings_images -%}
+                    {%- liquid
+                      assign image = sib_product.featured_media.preview_image
+                      assign image_widths = '44, 88'
+                      assign sizes = '44px'
+                      if settings.color_swatches_product_style == 'rectangle'
+                        assign image_widths = '56, 112'
+                        assign sizes = '56px'
+                      endif
+                      assign placeholder_index = forloop.index0 | modulo: 6 | plus: 1
+                      assign placeholder_svg = 'product-' | append: placeholder_index
+
+                      render 'image', image: image, widths: image_widths, sizes: sizes, cover: true, placeholder_svg: placeholder_svg, preload: true
+                    -%}
+                  {%- else -%}
+                    {%- if is_current_product and sib_product.available -%}
+                      <span class="icon icon-check"></span>
+                    {%- endif -%}
+                  {%- endif -%}
+
+                  <span class="visually-hidden">{{ color_name }}</span>
+                </tooltip-component>
+              </a>
+            {%- endfor -%}
+
+            {%- if sibling_count > 5 and collection_swatch_style == 'limited' -%}
+              {%- assign swatches_left = sibling_count | minus: 4 -%}
+
+              <div class="product-grid-item__swatch__count">
+                {{ '+' | append: swatches_left }}
+              </div>
+            {%- endif -%}
+
+            {%- if collection_swatch_style == 'text' or collection_swatch_style == 'text-slider' -%}
+              <div class="product-grid-item__swatch__count">
+                {{- sibling_count }}
+                {{ sibling_count | pluralize: count_string_one, count_string_other -}}
+              </div>
+            {%- endif -%}
+          </fieldset>
+
+          {%- if collection_swatch_style == 'text-slider' or collection_swatch_style == 'slider' -%}
+            <div class="product-grid-item__swatch__actions">
+              <button
+                type="button"
+                class="product-grid-item__fieldset__arrow product-grid-item__fieldset__arrow--prev is-hidden"
+                data-scrollbar-arrow-prev
+              >
+                {%- render 'icon-chevron-right' -%}
+                <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
+              </button>
+              <button
+                type="button"
+                class="product-grid-item__fieldset__arrow product-grid-item__fieldset__arrow--next is-hidden"
+                data-scrollbar-arrow-next
+              >
+                {%- render 'icon-chevron-right' -%}
+                <span class="visually-hidden">{{ 'products.general.see_all' | t }}</span>
+              </button>
+            </div>
+          {%- endif -%}
+        </native-scrollbar>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}

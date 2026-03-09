@@ -1,0 +1,460 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "subheading": "none",
+            "padding_bottom": 4
+          }
+        },
+        "icon": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_name": "none",
+            "icon_color": "rgba(0,0,0,0)",
+            "icon_width": 20,
+            "icon_text": "Lifetime Guarantee • Repair Kit Included",
+            "text_size": 85,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "rgba(0,0,0,0)",
+            "padding_bottom": 28
+          }
+        },
+        "5f1a2bcb-bf05-4c68-a02c-8109b61d0071": {
+          "type": "form",
+          "settings": {
+            "show_labels": true,
+            "show_quantity": false,
+            "show_payment_button": true,
+            "padding_bottom": 20
+          }
+        },
+        "b45c80c6-c04f-4da0-b22c-362dcd34dd08": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "<p>All products in this store are for demo purposes only. They have been generously provided by <a href=\"https://topodesigns.com/\" target=\"_blank\" title=\"https://topodesigns.com/\">Topo Designs</a>.</p>",
+            "text_alignment": "left",
+            "padding_bottom": 12
+          }
+        },
+        "description_jrcAma": {
+          "type": "description",
+          "settings": {
+            "padding_bottom": 20
+          }
+        },
+        "product_accordion": {
+          "type": "product_accordion",
+          "settings": {
+            "accordion_heading": "Materials and specs",
+            "heading_style": "font-heading",
+            "accordion_page": "",
+            "padding_bottom": 4
+          }
+        },
+        "divider_dPKAh8": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "padding_bottom": 8
+          }
+        },
+        "8b0185a6-0d1e-4952-bac7-d0a1b7b805e6": {
+          "type": "product_accordion",
+          "settings": {
+            "accordion_heading": "Shipping and returns",
+            "heading_style": "font-heading",
+            "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
+            "accordion_page": "",
+            "padding_bottom": 4
+          }
+        },
+        "divider_Up4mkk": {
+          "type": "divider",
+          "settings": {
+            "show_line": true,
+            "padding_bottom": 16
+          }
+        },
+        "5a7da3dc-b141-4b27-bac9-8cdc95df856f": {
+          "type": "icon",
+          "disabled": true,
+          "settings": {
+            "icon_name": "shield",
+            "icon_color": "",
+            "icon_width": 20,
+            "icon_text": "Lifetime Guarantee",
+            "text_size": 90,
+            "width": "half",
+            "text_alignment": "left",
+            "bg_color": "#ffffff",
+            "padding_bottom": 20
+          }
+        },
+        "upsell": {
+          "type": "upsell",
+          "disabled": true,
+          "settings": {
+            "padding_bottom": 20
+          }
+        },
+        "7181af84-cfe3-4539-81df-d624105fdd05": {
+          "type": "feature",
+          "settings": {
+            "icon_name": "support",
+            "icon_width": 25,
+            "title": "Need help?",
+            "text": "<p>Our mission is to help you find the ideal backpack that suits your lifestyle, comfort, and storage needs. With our extensive range of backpacks designed for every purpose finding the right size has never been easier.</p>",
+            "bg_color": "#f7f9fa",
+            "text_color": "#000000",
+            "padding_bottom": 16
+          }
+        },
+        "2a89092e-b7e3-4859-80fd-67d2c3404e69": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "<p><a href=\"/pages/faq\" title=\"FAQ\"><strong>Learn more about our warranty</strong></a></p>",
+            "text_alignment": "left",
+            "padding_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "icon",
+        "5f1a2bcb-bf05-4c68-a02c-8109b61d0071",
+        "b45c80c6-c04f-4da0-b22c-362dcd34dd08",
+        "description_jrcAma",
+        "product_accordion",
+        "divider_dPKAh8",
+        "8b0185a6-0d1e-4952-bac7-d0a1b7b805e6",
+        "divider_Up4mkk",
+        "5a7da3dc-b141-4b27-bac9-8cdc95df856f",
+        "upsell",
+        "7181af84-cfe3-4539-81df-d624105fdd05",
+        "2a89092e-b7e3-4859-80fd-67d2c3404e69"
+      ],
+      "settings": {
+        "product_sticky_enable": true,
+        "image_layout": "carousel",
+        "image_width": "standard",
+        "product_image_aspect_ratio": true,
+        "enable_zoom": true,
+        "enable_video_looping": false,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "165104010373974e3d": {
+      "type": "section-accordions",
+      "blocks": {
+        "1651040103e3874ae9-1": {
+          "type": "text",
+          "settings": {
+            "title": "Does this product come with a warranty?",
+            "text": "<p>All our products are subject to quality control.<br/><br/>Our warranty provides a guarantee against manufacturer defects.<br/><br/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br/><br/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.</p>"
+          }
+        },
+        "43df9585-9879-41aa-96c3-cf9705d2fb9a": {
+          "type": "text",
+          "settings": {
+            "title": "How durable are the materials used?",
+            "text": "<p>Utility bags are typically made of strong, durable materials such as canvas, nylon, and leather. They are designed to handle daily wear and tear, so they should last for many years proper care and maintenance.</p>"
+          }
+        },
+        "71da687a-5e3d-4655-b29c-94a53f8134b6": {
+          "type": "text",
+          "settings": {
+            "title": "Are these bags drop-proof?",
+            "text": "<p>Yes, our bags are usually made of tough and durable materials, like Kevlar and ballistic nylon, that can withstand impacts and shock. They also have reinforced seams and zippers to prevent the contents from spilling.</p>"
+          }
+        },
+        "732e74c0-f3f8-4fcb-8d61-6a44af68845e": {
+          "type": "text",
+          "settings": {
+            "title": "What kind of padding is used in the bags?",
+            "text": "<p>Utility bags usually have some form of cushioning or padding in them to protect the items inside. Foam padding and filler material are both commonly used. The thickness of the padding can vary depending on the type of bag and its intended use.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "1651040103e3874ae9-1",
+        "43df9585-9879-41aa-96c3-cf9705d2fb9a",
+        "71da687a-5e3d-4655-b29c-94a53f8134b6",
+        "732e74c0-f3f8-4fcb-8d61-6a44af68845e"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "subheading": "",
+        "title": "FAQ",
+        "text": "<p>Popular questions from our customers</p>",
+        "tabs_bg_color": "#f5f5f5",
+        "width": "wrapper--full-padded",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "1663134720ac787bcd": {
+      "type": "section-icons-row",
+      "blocks": {
+        "1663134719e2f2df05-0": {
+          "type": "text",
+          "settings": {
+            "icon_name": "fair-trade",
+            "title": "",
+            "text": "<p>Made in USA</p>"
+          }
+        },
+        "1663134719e2f2df05-1": {
+          "type": "text",
+          "settings": {
+            "icon_name": "recycle",
+            "title": "",
+            "text": "<p>Recycled Materials</p>"
+          }
+        },
+        "1663134719e2f2df05-2": {
+          "type": "text",
+          "settings": {
+            "icon_name": "star",
+            "title": "",
+            "text": "<p>Premium Quality</p>"
+          }
+        },
+        "c96b387c-9986-4f8d-8263-5be4c5983557": {
+          "type": "text",
+          "settings": {
+            "icon_name": "shield",
+            "title": "",
+            "text": "<p>Water Resistant</p>"
+          }
+        }
+      },
+      "block_order": [
+        "1663134719e2f2df05-0",
+        "1663134719e2f2df05-1",
+        "1663134719e2f2df05-2",
+        "c96b387c-9986-4f8d-8263-5be4c5983557"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "alignment": "inline-center",
+        "columns": 4,
+        "icons_width": 35,
+        "text_color": "rgba(0,0,0,0)",
+        "box_color": "#f5f5f5",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "secondary btn--small",
+        "button_size": "btn--small",
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "section_text_nRQRmQ": {
+      "type": "section-text",
+      "blocks": {
+        "heading_BHFjMk": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>We focus on <em>premium materials</em> that will hold up in every scenario. From all-day trekking to lightweight everyday needs, you'll be <em>ready for anything.</em> Handmade, with one stitch at a time, because that's how we do it.</p>",
+            "size": 100,
+            "heading_highlight_type": "highlight",
+            "highlight_color": "#000000",
+            "highlight_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BHFjMk"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_position": "left",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "5570a59d-1623-4449-9006-23e151a0bea6": {
+      "type": "section-grid",
+      "blocks": {
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-0": {
+          "type": "image",
+          "settings": {
+            "width": "66.66",
+            "text_position": "center",
+            "subheading": "Bestselling",
+            "title": "Commuter Bags",
+            "text": "Travel to your next destination",
+            "button_1_text": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-1": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "text_position": "center",
+            "subheading": "Final markdowns",
+            "title": "Clearance",
+            "text": "While supplies last",
+            "button_1_text": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-2": {
+          "type": "image",
+          "settings": {
+            "width": "50",
+            "text_position": "center",
+            "subheading": "Tech Savvy",
+            "title": "Gadget Friendly",
+            "text": "Made for digital nomads and office workers",
+            "button_1_text": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        },
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-3": {
+          "type": "image",
+          "settings": {
+            "width": "50",
+            "text_position": "center",
+            "subheading": "Maximum Comfort and Style",
+            "title": "Backpacks",
+            "text": "Keep your essentials organized",
+            "button_1_text": "",
+            "button_2_text": "",
+            "button_2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-0",
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-1",
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-2",
+        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-3"
+      ],
+      "settings": {
+        "heading_size": 130,
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--text",
+        "button_1_size": "btn--small",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--text",
+        "button_2_size": "btn--small",
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2": {
+      "type": "section-press",
+      "blocks": {
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>With a meticulous focus on functionality, durability, and style, they have managed to captivate the hearts of tech enthusiasts and professionals alike.</p>",
+            "link": "",
+            "logo_width": 120
+          }
+        },
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-0": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Their designs blend sleek aesthetics with modern sensibilities, resulting in bags that are both sophisticated and practical.</p>",
+            "link": "",
+            "logo_width": 120
+          }
+        },
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-2": {
+          "type": "press",
+          "settings": {
+            "text": "<p>The use of premium materials and robust construction techniques ensures that their bags can withstand the demands of daily use and provide long-lasting protection for valuable tech gear.</p>",
+            "link": "",
+            "logo_width": 120
+          }
+        }
+      },
+      "block_order": [
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-1",
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-0",
+        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-2"
+      ],
+      "settings": {
+        "title": "",
+        "show_quotations": true,
+        "show_rounded_corners": false,
+        "autoplay": true,
+        "duration": 4,
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "related": {
+      "type": "related-products",
+      "blocks": {
+        "related_MGQmJX": {
+          "type": "related",
+          "settings": {
+            "title": "You may also like",
+            "product_recommendations_limit": 4
+          }
+        },
+        "recent_kKPf6C": {
+          "type": "recent",
+          "settings": {
+            "title": "Recently viewed",
+            "product_recently_limit": 4
+          }
+        }
+      },
+      "block_order": [
+        "related_MGQmJX",
+        "recent_kKPf6C"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_tabs": true,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165104010373974e3d",
+    "1663134720ac787bcd",
+    "section_text_nRQRmQ",
+    "5570a59d-1623-4449-9006-23e151a0bea6",
+    "9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2",
+    "related"
+  ]
+}

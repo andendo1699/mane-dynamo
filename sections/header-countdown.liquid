@@ -1,0 +1,721 @@
+{%- liquid
+  assign section_width = section.settings.width
+  assign show_top_border = section.settings.show_top_border
+  assign show_bottom_border = section.settings.show_bottom_border
+  assign border_color = section.settings.border_color
+  assign color_scheme = 'color-' | append: section.settings.color_scheme
+  assign color = section.settings.color
+  assign padding = section.settings.padding | append: 'px'
+  assign layout = section.settings.layout
+  assign type_style = section.settings.type_style
+  assign section_id = 'header-countdown--' | append: section.id
+  assign section_selector_id = '#' | append: section_id
+  assign animation_anchor = section_selector_id
+  assign animation_duration = 500
+  assign animation_delay = 150
+-%}
+
+{{ 'section-header-countdown.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <script src="{{ 'ticker.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if request.design_mode -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.headerCountdownEventHandlersAttached) return;
+      window.headerCountdownEventHandlersAttached = true;
+
+      function reinitializeTicker(section) {
+        const tickerBar = section.querySelector('ticker-bar');
+        if (!tickerBar) return;
+
+        if (typeof tickerBar.resizeEvent === 'function') {
+          tickerBar.resizeEvent();
+        }
+
+        document.dispatchEvent(new CustomEvent('theme:resize:width', {bubbles: true}));
+      }
+
+      function handleHeaderCountdownEvent(event, type) {
+        const target = event.target;
+        const countdownSection = target.closest('[data-section-type="header-countdown"]');
+        if (!countdownSection) return;
+
+        const tickerBar = countdownSection.querySelector('ticker-bar');
+        if (!tickerBar) return;
+
+        const blockId = event.detail && event.detail.blockId;
+        if (!blockId) return;
+
+        const tickerScale = target.closest('[data-ticker-scale]');
+        if (!tickerScale) return;
+
+        // Find the original ticker-text to get the slide and calculate offset correctly
+        const tickerText = tickerScale.querySelector('[data-ticker-text]:not([data-clone])');
+        const slide = tickerText ? tickerText.querySelector(`[data-slide="${blockId}"]`) : null;
+
+        if (!tickerText || !slide) return;
+
+        // Check if ticker should be animated: either it has the class OR it has clones (which means it was animating)
+        // Also check if data-stop is set (meaning we previously paused it)
+        const hasClones = tickerScale.querySelectorAll('[data-clone]').length > 0;
+        const isAnimated =
+          tickerText.classList.contains('ticker--animated') || hasClones || tickerScale.hasAttribute('data-stop');
+
+        if (isAnimated) {
+          const tickerTexts = tickerScale.querySelectorAll('[data-ticker-text]');
+
+          if (type === 'select') {
+            tickerScale.setAttribute('data-stop', '');
+            tickerTexts.forEach((el) => {
+              el.classList.remove('ticker--animated');
+              el.style.display = 'inline-flex';
+              el.style.width = 'max-content';
+              el.style.transform = `translate3d(${-(
+                slide.offsetLeft - parseInt(getComputedStyle(slide).marginLeft, 10)
+              )}px, 0, 0)`;
+            });
+          } else if (type === 'deselect') {
+            // Only restore animation if there were clones (meaning it was animating)
+            if (hasClones) {
+              tickerTexts.forEach((el) => {
+                el.classList.add('ticker--animated');
+                el.removeAttribute('style');
+              });
+            } else {
+              // If no clones, just remove styles but don't add ticker--animated
+              tickerTexts.forEach((el) => {
+                el.removeAttribute('style');
+              });
+            }
+            tickerScale.removeAttribute('data-stop');
+            document.dispatchEvent(new CustomEvent('theme:resize:width', {bubbles: true}));
+          }
+        }
+      }
+
+      document.addEventListener('shopify:section:load', (event) => {
+        const countdownSection = event.target.querySelector('[data-section-type="header-countdown"]');
+        if (countdownSection) {
+          requestAnimationFrame(() => reinitializeTicker(countdownSection));
+        }
+      });
+
+      document.addEventListener('shopify:section:deselect', (event) => {
+        const countdownSection = event.target.querySelector('[data-section-type="header-countdown"]');
+        if (countdownSection) {
+          const tickerScale = countdownSection.querySelector('[data-ticker-scale]');
+          if (tickerScale && tickerScale.hasAttribute('data-stop')) {
+            const tickerTexts = tickerScale.querySelectorAll('[data-ticker-text]');
+            const hasClones = tickerScale.querySelectorAll('[data-clone]').length > 0;
+
+            // Only restore animation if there were clones (meaning it was animating)
+            if (hasClones) {
+              tickerTexts.forEach((el) => {
+                el.classList.add('ticker--animated');
+                el.removeAttribute('style');
+              });
+            }
+            tickerScale.removeAttribute('data-stop');
+            document.dispatchEvent(new CustomEvent('theme:resize:width', {bubbles: true}));
+          }
+        }
+      });
+
+      document.addEventListener('shopify:block:select', (event) => {
+        handleHeaderCountdownEvent(event, 'select');
+      });
+
+      document.addEventListener('shopify:block:deselect', (event) => {
+        handleHeaderCountdownEvent(event, 'deselect');
+      });
+    });
+  </script>
+{%- endif -%}
+
+<div class="{{ section_width }}">
+  <div
+    id="{{ section_id }}"
+    class="section-padding section-header-countdown {{ color_scheme }}"
+    data-countdown-timer
+    data-section-type="header-countdown"
+    data-section-id="{{ section.id }}"
+    {%- if settings.animations_enabled -%}
+      data-aos-intersection="0"
+      data-aos="fade"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-delay="{{ animation_delay }}"
+      data-aos-duration="{{ animation_duration }}"
+    {%- endif -%}
+  >
+    {%- if section.blocks.size > 0 -%}
+      {%- liquid
+        assign line_height = 1.5
+
+        capture borders_px
+          if show_top_border
+            echo ' + var(--BORDER-WIDTH)'
+          endif
+          if show_bottom_border
+            echo ' + var(--BORDER-WIDTH)'
+          endif
+        endcapture
+      -%}
+
+      {%- style -%}
+        {{ section_selector_id }} .header-countdown {
+          --padding: {{ padding }};
+          --line-height: {{ line_height }};
+
+          {%- if color != 'rgba(0,0,0,0)' and color != '' -%}
+            --text: {{ color }};
+          {%- endif -%}
+
+          {%- if border_color != 'rgba(0,0,0,0)' and border_color != '' -%}
+            --border: {{ border_color }};
+          {%- endif -%}
+        }
+      {%- endstyle -%}
+
+      <div class="header-countdown header-countdown--{{ layout }}{% if show_top_border %} header-countdown--top-border{% endif %}{% if show_bottom_border %} header-countdown--bottom-border{% endif %}">
+        <div class="header-countdown__content">
+          <ticker-bar
+            data-marquee-speed="100"
+            data-clone="true"
+            data-direction="ticker-rtl"
+            class="header-countdown__marquee"
+          >
+            <div data-ticker-scale class="ticker--unloaded header-countdown__scale">
+              <div data-ticker-text class="header-countdown__text-container ticker-rtl">
+                <div class="header-countdown__text {{ type_style }}">
+                  {%- assign button_block_markup = '' -%}
+
+                  {%- for block in section.blocks -%}
+                    {%- case block.type -%}
+                      {%- when 'text' -%}
+                        {%- liquid
+                          assign text_caps = block.settings.text_caps
+                          assign text_size_multiplier = block.settings.text_size | divided_by: 100.0
+                          assign letter_spacing_multiplier = block.settings.letter_spacing | divided_by: 100.0
+                          assign text = block.settings.text
+                          assign button_text = block.settings.button_text
+                          assign button_url = block.settings.button_url | default: '#'
+                          assign button_color = block.settings.button_color
+                          assign button_style = block.settings.button_style
+                          assign button_block = block.settings.button_block
+                          assign button_size = block.settings.button_size
+                          assign has_button = false
+
+                          case button_color
+                            when 'primary'
+                              assign button_color = 'btn--primary'
+                            when 'secondary'
+                              assign button_color = 'btn--secondary'
+                            when 'white'
+                              assign button_color = 'btn--white'
+                            when 'black'
+                              assign button_color = 'btn--black'
+                          endcase
+
+                          case button_style
+                            when 'solid'
+                              assign button_style = 'btn--solid'
+                            when 'outline'
+                              assign button_style = 'btn--outline'
+                            when 'solid-border'
+                              assign button_style = 'btn--solid-border'
+                            when 'soft'
+                              assign button_style = 'btn--soft'
+                            when 'text'
+                              assign button_style = 'btn--text'
+                          endcase
+
+                          case button_size
+                            when 'small'
+                              assign button_size = 'btn--small'
+                            when 'medium'
+                              assign button_size = 'btn--medium'
+                            when 'large'
+                              assign button_size = 'btn--large'
+                          endcase
+                        -%}
+
+                        {%- style -%}
+                          {{ section_selector_id }} .header-countdown__text {
+                            --text-size-multiplier: {{ text_size_multiplier }};
+                            --letter-spacing-multiplier: {{ letter_spacing_multiplier }};
+                          }
+                        {%- endstyle -%}
+
+                        {%- if button_text != blank -%}
+                          {%- capture button_link_markup -%}
+                            <a href="{{ button_url }}" class="header-countdown__button btn {{ button_color }} {{ button_style }} {{ button_size }} btn--advanced-width-height">
+                              <hover-button></hover-button>
+                              {{- button_text -}}
+                              </a>
+                          {%- endcapture -%}
+                        {%- endif -%}
+
+                        {%- if button_link_markup != blank and button_block == false -%}
+                          {%- assign has_button = true -%}
+                        {%- endif -%}
+
+                        {%- if text != blank or has_button -%}
+                          <div
+                            class="header-countdown__block header-countdown__block--text{% if text_caps %} caps{% endif %}{% if has_button %} has-button{% endif %}"
+                            data-slide="{{ block.id }}"
+                            {{ block.shopify_attributes }}
+                          >
+                            {{- text -}}
+
+                            {%- if has_button -%}
+                              {{ button_link_markup }}
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+
+                        {%- if button_block and button_link_markup != blank -%}
+                          {%- capture button_block_markup -%}
+                            <div
+                              class="header-countdown__block header-countdown__block--button"
+                              data-slide="{{ block.id }}"
+                              {{ block.shopify_attributes }}
+                            >
+                              {{ button_link_markup }}
+                            </div>
+                          {%- endcapture -%}
+                        {%- endif -%}
+                      {%- when 'timer' -%}
+                        {%- liquid
+                          assign end_date = block.settings.end_date
+                          assign end_time = block.settings.end_time
+                          assign period = block.settings.period
+                          assign end_message = block.settings.end_message
+                          assign show_separator = block.settings.show_separator
+                          assign show_short_text = block.settings.show_short_text
+                          assign layout_style = block.settings.layout_style | default: 'inline'
+                          assign text_caps = block.settings.text_caps
+                          assign digits_size = block.settings.digits_size | divided_by: 100.0
+                          assign units_size = block.settings.units_size | divided_by: 100.0
+                        -%}
+
+                        {%- style -%}
+                          {{ section_selector_id }} .header-countdown__block--timer {
+                            --digits-size-multiplier: {{ digits_size }};
+                            --units-size-multiplier: {{ units_size }};
+                          }
+                        {%- endstyle -%}
+
+                        {%- if end_date != blank -%}
+                          <div
+                            class="header-countdown__block header-countdown__block--timer header-countdown__block--timer-{{ layout_style }}{% if text_caps %} caps{% endif %}"
+                            data-slide="{{ block.id }}"
+                            {{ block.shopify_attributes }}
+                          >{%- liquid
+  assign end_date = block.settings.end_date
+  assign end_time = block.settings.end_time
+  assign period = block.settings.period
+  assign end_message = block.settings.end_message
+
+  assign end_time_hour = end_time | split: ':' | first | times: 1
+  assign end_time_minute = end_time | split: ':' | last
+
+  capture expiration_date
+    echo end_date
+    echo ' '
+    case period
+      when 'am'
+        case end_time_hour
+          when 0, 12
+            echo '00' | append: ':' | append: end_time_minute
+          else
+            echo end_time
+        endcase
+
+      when 'pm'
+        capture hour
+          case end_time_hour
+            when 0, 12
+              echo '12'
+            else
+              if end_time_hour < 12
+                echo end_time_hour | plus: 12
+              else
+                echo end_time_hour
+              endif
+          endcase
+        endcapture
+
+        echo hour | append: ':' | append: end_time_minute
+    endcase
+  endcapture
+-%}{%- render 'countdown-timer',
+                              expiration_date: expiration_date,
+                              end_message: end_message,
+                              show_separator: show_separator,
+                              show_short_text: show_short_text,
+                              layout_style: layout_style,
+                              leading_zero: true,
+                              animation_anchor: animation_anchor,
+                              animation_order: 1
+                            -%}
+                          </div>
+                        {%- endif -%}
+                    {%- endcase -%}
+                  {%- endfor -%}
+
+                  {%- if button_block_markup != blank -%}
+                    {{ button_block_markup }}
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          </ticker-bar>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Countdown Timer",
+  "class": "header-countdown-static",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wrapper--full",
+      "info": "Full-width is recommended if transparent header is enabled",
+      "options": [
+        {"value": "wrapper--full", "label": "Full width"},
+        {"value": "wrapper--full-padded", "label": "Full width padded"},
+        {"value": "wrapper", "label": "Page width"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "split",
+      "options": [
+        {
+          "value": "centered",
+          "label": "Centered"
+        },
+        {
+          "value": "split",
+          "label": "Split"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_top_border",
+      "label": "Show top border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_border",
+      "label": "Show bottom border",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "default": 10,
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "select",
+      "label": "Text style",
+      "id": "type_style",
+      "default": "subheading-text",
+      "options": [
+        {"label": "Heading", "value": "font-heading"},
+        {"label": "Body", "value": "font-body"},
+        {"label": "Accent", "value": "subheading-text"}
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "alpha": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "text_caps",
+          "label": "Uppercase text",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Size",
+          "default": 100,
+          "min": 50,
+          "max": 500,
+          "step": 5,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "letter_spacing",
+          "label": "Letter spacing",
+          "default": 0,
+          "min": -25,
+          "max": 200,
+          "step": 5,
+          "unit": "%"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Sale ends soon!</p>"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_color",
+          "label": "Button color",
+          "default": "black",
+          "options": [
+            {"value": "primary", "label": "Primary"},
+            {"value": "secondary", "label": "Secondary"},
+            {"value": "white", "label": "White"},
+            {"value": "black", "label": "Black"}
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "default": "text",
+          "options": [
+            {
+              "value": "solid",
+              "label": "Solid"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            },
+            {
+              "value": "solid-border",
+              "label": "Solid with border"
+            },
+            {
+              "value": "soft",
+              "label": "Soft"
+            },
+            {
+              "value": "text",
+              "label": "Text"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Button size",
+          "default": "small",
+          "options": [
+            {"value": "small", "label": "Small"},
+            {"value": "medium", "label": "Medium"},
+            {"value": "large", "label": "Large"}
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "button_block",
+          "label": "Show button as block",
+          "default": true,
+          "info": "If enabled, the button will be shown last."
+        }
+      ]
+    },
+    {
+      "type": "timer",
+      "name": "Timer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "Countdown end date",
+          "placeholder": "2026-12-31",
+          "default": "2026-12-31",
+          "info": "Use format \"YYYY-MM-DD\". End date is based on the [store primary timezone](/admin/settings/general)."
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "End time",
+          "default": "11:59",
+          "placeholder": "11:59",
+          "info": "Use 12-hour time convention in format \"HH:MM\""
+        },
+        {
+          "type": "radio",
+          "id": "period",
+          "label": "AM/PM",
+          "options": [
+            {"value": "am", "label": "AM"},
+            {"value": "pm", "label": "PM"}
+          ],
+          "default": "pm"
+        },
+        {
+          "type": "richtext",
+          "id": "end_message",
+          "label": "End message",
+          "info": "Message to show when countdown ends (optional)"
+        },
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_caps",
+          "label": "Uppercase text",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_separator",
+          "label": "Show separator",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_short_text",
+          "label": "Show short text",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "digits_size",
+          "label": "Digits size",
+          "default": 100,
+          "min": 50,
+          "max": 500,
+          "step": 5,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "units_size",
+          "label": "Units size",
+          "default": 100,
+          "min": 50,
+          "max": 500,
+          "step": 5,
+          "unit": "%"
+        },
+        {
+          "type": "select",
+          "id": "layout_style",
+          "label": "Text layout",
+          "default": "inline",
+          "options": [
+            {"value": "inline", "label": "Inline"},
+            {"value": "stacked", "label": "Stacked"}
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown Timer",
+      "category": "Header",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sale ends soon!</p>",
+            "text_caps": false,
+            "button_text": "Shop Now",
+            "button_color": "black",
+            "button_style": "text",
+            "button_size": "small",
+            "button_block": true
+          }
+        },
+        {
+          "type": "timer",
+          "settings": {
+            "end_date": "2026-12-31",
+            "end_time": "11:59",
+            "period": "pm",
+            "show_separator": true,
+            "show_short_text": true,
+            "text_caps": false,
+            "layout_style": "inline"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

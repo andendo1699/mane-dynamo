@@ -1,0 +1,174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "section_icons_row_y7zc9a": {
+      "type": "section-icons-row",
+      "blocks": {
+        "text_idLMHC": {
+          "type": "text",
+          "settings": {
+            "icon_name": "none",
+            "title": "Free Shipping",
+            "text": ""
+          }
+        },
+        "text_B43hCV": {
+          "type": "text",
+          "settings": {
+            "icon_name": "none",
+            "title": "Free Returns",
+            "text": ""
+          }
+        },
+        "text_ctFNf9": {
+          "type": "text",
+          "settings": {
+            "icon_name": "none",
+            "title": "Lifetime Guarantee",
+            "text": ""
+          }
+        },
+        "text_gA4rQc": {
+          "type": "text",
+          "settings": {
+            "icon_name": "none",
+            "title": "Recycled Materials",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_idLMHC",
+        "text_B43hCV",
+        "text_ctFNf9",
+        "text_gA4rQc"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "alignment": "center",
+        "columns": 4,
+        "icons_width": 20,
+        "show_vertical_borders": false,
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "heading_size": 80,
+        "text_size": 90,
+        "color_scheme": "scheme-3",
+        "text_color": "#000000",
+        "box_color": "",
+        "color_border": "#333333",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "layout_mobile": "grid",
+        "width": "wrapper",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_NDgcYb": {
+          "type": "newsletter",
+          "settings": {
+            "alignment": "text-left",
+            "title": "Join the Hairo Journey",
+            "uppercase_heading": false,
+            "heading_size": 100,
+            "text": "<p>Be the first to know about new products and exclusive offers.</p>",
+            "button_text": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid",
+            "column_width": "50"
+          }
+        },
+        "footer-block-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "alignment": "text-left",
+            "title": "About Us",
+            "footer_text": "<p>Hairo is the simple and effective solution to conceal thinning areas and instantly regain fuller-looking hair! ✨</p>",
+            "column_width": "20"
+          }
+        },
+        "link_KyJT6q": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "footer",
+            "title": "Navigation",
+            "column_width": "25"
+          }
+        },
+        "248796ac-667d-4725-82e9-87c8869015cc": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "legal",
+            "title": "Legal",
+            "column_width": "25"
+          }
+        },
+        "link_pJLpAi": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "alignment": "text-left",
+            "menu": "",
+            "title": "Company",
+            "column_width": "20"
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_NDgcYb",
+        "footer-block-1",
+        "link_KyJT6q",
+        "248796ac-667d-4725-82e9-87c8869015cc",
+        "link_pJLpAi"
+      ],
+      "settings": {
+        "show_footer_wave": false,
+        "enable_footer_parallax": true,
+        "increase_border_radius": true,
+        "bottom_bar_alignment": "text-left",
+        "show_social_links": true,
+        "enable_follow_on_shop": true,
+        "show_payment_icons": true,
+        "enable_greyscale": true,
+        "bottom_menu": "",
+        "color_text": "#ffffff",
+        "color_scheme": "scheme-2",
+        "color_border": "#ffffff",
+        "show_locale_selector": true,
+        "show_locale_code": true,
+        "show_country_selector": true,
+        "show_country_name": false,
+        "show_country_flag": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "section_icons_row_y7zc9a",
+    "footer"
+  ]
+}

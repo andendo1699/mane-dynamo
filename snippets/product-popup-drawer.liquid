@@ -1,0 +1,33 @@
+{%- comment -%}
+  Renders a product popup drawer element
+
+  Accepts:
+  - drawer_id: {String} Unique ID for the drawer (required)
+  - drawer_content: {String} Content to display in the drawer (required)
+
+  Usage:
+  {%- render 'product-popup-drawer', drawer_id: 'my-drawer', drawer_content: content -%}
+{%- endcomment -%}
+
+<drawer-element
+  class="product__popup drawer drawer--right"
+  id="{{ drawer_id }}"
+  aria-hidden="true"
+  role="dialog"
+>
+  <button
+    type="button"
+    class="drawer__close-button"
+    aria-controls="{{ drawer_id }}"
+  >
+    <drawer-toggle></drawer-toggle>
+    <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
+    {%- render 'icon-close' -%}
+  </button>
+
+  <div class="product__popup__inner" tabindex="0" data-scroll>
+    <div class="product__popup__content rte">
+      {{- drawer_content -}}
+    </div>
+  </div>
+</drawer-element>

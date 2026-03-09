@@ -1,0 +1,723 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_image_with_text_ydNPB4": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "subheading_A8km6p": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Introducing",
+            "size": 75,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        },
+        "heading_YwfWrG": {
+          "type": "heading",
+          "settings": {
+            "title": "<p>30 seconds from hiding to confidence</p>",
+            "size": 120,
+            "text_position": "left",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "spacing_bottom": 12
+          }
+        },
+        "text_ACVz7j": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Professional-grade hair concealment that ends the hat dependency forever.</p>",
+            "size": 100,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        },
+        "accordion_TgMqJc": {
+          "type": "accordion",
+          "disabled": true,
+          "settings": {
+            "icon_width": 25,
+            "icon_position": "inline-left",
+            "heading": "Frequently asked question",
+            "type_style": "font-heading",
+            "heading_size": 120,
+            "text": "<p>Use this text block to discuss some commonly asked questions like shipping and returns, sizing, warranties, or product and company details.</p>",
+            "text_size": 75,
+            "tabs_bg_color": "",
+            "line_thickness": "normal",
+            "spacing_bottom": 0
+          }
+        },
+        "button_VnDNHH": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": "shopify://products/mane-hair-thickening-spray",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "video_link": "",
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        }
+      },
+      "block_order": [
+        "subheading_A8km6p",
+        "heading_YwfWrG",
+        "text_ACVz7j",
+        "accordion_TgMqJc",
+        "button_VnDNHH"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "show_accordion_divider": true,
+        "increase_border_radius": false,
+        "section_height": "four-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_height": "two-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "left",
+        "image_width": "standard",
+        "image": "shopify://shop_images/372dc39a-ca27-4361-9661-bc0c9b7b7f44.webp",
+        "block_bg_color": "",
+        "color_scheme": "scheme-7",
+        "section_width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_columns_nmaBKb": {
+      "type": "section-columns",
+      "blocks": {
+        "text_block_ypb9VK": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/HAIRO_NEW_SHOOT_8_1200x_08486847-b55a-4350-8807-45324a1deb87.webp",
+            "image_width": 100,
+            "title": "Hair Density Filler",
+            "heading_size": 120,
+            "text": "<p>Up to 60% Off Right Now</p>",
+            "text_size": 100,
+            "button_text": "Discover",
+            "button_link": "",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--large",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_fWWiej": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/d9e430b1-f12a-4808-aba8-2dd2ebd06a2b_1200x_92eef861-3a66-4016-809c-26974ae04624.webp",
+            "image_width": 100,
+            "title": "Sea Salt Spray",
+            "heading_size": 120,
+            "text": "<p>Up to 20% Off Right Now</p>",
+            "text_size": 100,
+            "button_text": "Discover",
+            "button_link": "",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--large",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_pmTLBT": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/HAIRONEWSHOOT_7_1200x_1382fad5-7825-4c45-bc1f-fcb3a184490a.webp",
+            "image_width": 100,
+            "title": "The Complete System",
+            "heading_size": 120,
+            "text": "<p>Up to 60% Off Right Now</p>",
+            "text_size": 100,
+            "button_text": "Discover",
+            "button_link": "",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--large",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_NKXAP9": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_ht5kw4ht5kw4ht5k_1200x_ed9e70e4-0e6d-4f53-9e43-a51f0b2cd0e4.webp",
+            "image_width": 100,
+            "title": "Titanium Derma Roller",
+            "heading_size": 120,
+            "text": "<p>Up to 20% Off Right Now</p>",
+            "text_size": 100,
+            "button_text": "Discover",
+            "button_link": "",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--large",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_ypb9VK",
+        "text_block_fWWiej",
+        "text_block_pmTLBT",
+        "text_block_NKXAP9"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "title": "Our Best Sellers",
+        "heading_size": 100,
+        "layout_desktop": "grid",
+        "align_text": "text-left",
+        "columns": 4,
+        "show_images": true,
+        "show_borders": false,
+        "layout_mobile": "grid",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 1,
+        "mobile_aspect_ratio": 1,
+        "color_scheme": "scheme-7",
+        "color_borders": "#000",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_collection_yWMrcJ": {
+      "type": "section-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "all-products-1",
+        "products_layout": "grid",
+        "products_limit": 4,
+        "products_per_row_on_desktop": 4,
+        "columns_mobile": "2",
+        "text_alignment": "text-left",
+        "title": "<p>Our best sellers</p>",
+        "heading_size": 100,
+        "heading_highlight_type": "underline-hand-drawn",
+        "highlight_color": "#000000",
+        "highlight_text_color": "",
+        "text": "",
+        "text_size": 100,
+        "button_position": "top",
+        "button_text": "",
+        "button_color": "btn--black",
+        "button_style": "btn--text",
+        "button_size": "btn--medium",
+        "color_scheme": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_miARVK": {
+      "type": "section-text",
+      "blocks": {
+        "heading_3wqT6z": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Image slider of reviews go here</p>",
+            "size": 100,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_3wqT6z"
+      ],
+      "name": "Text",
+      "settings": {
+        "scroll_reveal_text": false,
+        "text_position": "center",
+        "color_scheme": "scheme-5",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_34UzjV": {
+      "type": "section-text",
+      "blocks": {
+        "heading_GAb47J": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2><strong>The hair innovation that changes everything</strong></h2>",
+            "size": 80,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": ""
+          }
+        },
+        "text_Hdy7qh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Instant camouflage + regrowth care, combined in one simple, proven routine.</p>",
+            "size": 100
+          }
+        },
+        "button_e7dyG3": {
+          "type": "button",
+          "settings": {
+            "button_text": "Discover our products",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid",
+            "button_size": "btn--medium"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GAb47J",
+        "text_Hdy7qh",
+        "button_e7dyG3"
+      ],
+      "name": "Text",
+      "settings": {
+        "scroll_reveal_text": false,
+        "text_position": "center",
+        "color_scheme": "scheme-2",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_NyUcNB": {
+      "type": "section-text",
+      "blocks": {
+        "heading_CRpXUW": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Image slider of autoplay videos go here</p>",
+            "size": 100,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_CRpXUW"
+      ],
+      "name": "Text",
+      "settings": {
+        "scroll_reveal_text": false,
+        "text_position": "center",
+        "color_scheme": "scheme-5",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_eNUgYr": {
+      "type": "section-text",
+      "blocks": {
+        "heading_EgfUfC": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Approved by 300+ <em>professional barbers</em> across the US & UK</h2>",
+            "size": 100,
+            "heading_highlight_type": "stroke",
+            "highlight_color": "#3d5afe",
+            "highlight_text_color": "#3d5afe"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EgfUfC"
+      ],
+      "name": "Text",
+      "settings": {
+        "scroll_reveal_text": false,
+        "text_position": "center",
+        "color_scheme": "scheme-1",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "section_sticky_images_and_text_MeU8Cx": {
+      "type": "section-sticky-images-and-text",
+      "blocks": {
+        "slide_AWhJQU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
+            "video_url": "",
+            "truncate_text": true,
+            "title_length": 10,
+            "content_length": 30,
+            "subheading": "Elite Cuts Barbershop, London UK",
+            "title": "<h4>Marco D'Angelo</h4>",
+            "heading_size": 130,
+            "content": "<p>12 years cutting hair. HAIRO looks more natural than expensive transplants. Now I recommend it over costly procedures. Game changer for my older clients.</p>",
+            "text_size": 130,
+            "button_text": "Shop now",
+            "button_link": "shopify://collections/all",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--medium",
+            "video_link": "",
+            "video_text": "Play video"
+          }
+        },
+        "slide_jatFwP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
+            "video_url": "",
+            "truncate_text": true,
+            "title_length": 10,
+            "content_length": 30,
+            "subheading": "Prestige Barber Lounge, Austin TX",
+            "title": "<h4>James</h4>",
+            "heading_size": 130,
+            "content": "<p>No fallout on my tools like those messy fibers. Three regulars said their wives noticed they looked 'sharper.' Now I keep it stocked</p>",
+            "text_size": 130,
+            "button_text": "Shop Now",
+            "button_link": "",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--medium",
+            "video_link": "",
+            "video_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_AWhJQU",
+        "slide_jatFwP"
+      ],
+      "name": "Sticky images and text: Vertical",
+      "settings": {
+        "scroll_direction": "horizontal",
+        "text_alignment": "left",
+        "image_position": "is-reversed",
+        "space_around_images": true,
+        "image_width": "standard",
+        "aspect_ratio_desktop": 1,
+        "aspect_ratio_mobile": 1,
+        "show_single_text": false,
+        "color_scheme": "scheme-7",
+        "width": "wrapper",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_columns_6UGnPK": {
+      "type": "section-columns",
+      "blocks": {
+        "text_block_tMgh7V": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
+            "image_width": 100,
+            "title": "Marco D'Angelo",
+            "heading_size": 120,
+            "text": "<p>12 years cutting hair. HAIRO looks more natural than expensive transplants. Now I recommend it over costly procedures. Game changer for my older clients.</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_jieiLh": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
+            "image_width": 100,
+            "title": "James",
+            "heading_size": 120,
+            "text": "<p>No fallout on my tools like those messy fibers. Three regulars said their wives noticed they looked 'sharper.' Now I keep it stocked</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_tMgh7V",
+        "text_block_jieiLh"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "title": "Approved by 300+ professional barbers across the US & UK",
+        "heading_size": 100,
+        "layout_desktop": "grid",
+        "align_text": "text-left",
+        "columns": 4,
+        "show_images": true,
+        "show_borders": false,
+        "layout_mobile": "carousel",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 1,
+        "mobile_aspect_ratio": 1,
+        "color_scheme": "",
+        "color_borders": "#000",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_text_9Q3djh": {
+      "type": "section-text",
+      "blocks": {
+        "heading_YUzgDA": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>32,000+ reviews section</h2>",
+            "size": 100,
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#ffffff",
+            "highlight_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_YUzgDA"
+      ],
+      "name": "Text",
+      "settings": {
+        "scroll_reveal_text": false,
+        "text_position": "center",
+        "color_scheme": "scheme-5",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_newsletter_GNQg7B": {
+      "type": "section-newsletter",
+      "disabled": true,
+      "settings": {
+        "flex_align": "align--middle-center",
+        "title": "Stay in the loop",
+        "text": "<p>Sign up for exclusive deals and early access to new products.</p>",
+        "extra_fields": "",
+        "button_text": "",
+        "color_scheme": "scheme-2",
+        "image_height": "three-fifty-height",
+        "overlay_type": "disabled",
+        "width": "wrapper",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "section_columns_WTPJbe": {
+      "type": "section-columns",
+      "blocks": {
+        "text_block_rGXJNV": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "New customers get 15% off",
+            "heading_size": 120,
+            "text": "<p>on your first purchase</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_ALEtAh": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "Right to repair",
+            "heading_size": 120,
+            "text": "<p>empowering you to keep your bag in use for the long haul</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_F7WwnU": {
+          "type": "text_block",
+          "settings": {
+            "image_width": 100,
+            "title": "ShopPay + AfterPay",
+            "heading_size": 120,
+            "text": "<p>buy now, pay later</p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_rGXJNV",
+        "text_block_ALEtAh",
+        "text_block_F7WwnU"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": 80,
+        "layout_desktop": "carousel",
+        "align_text": "text-center",
+        "columns": 3,
+        "show_images": false,
+        "show_borders": true,
+        "layout_mobile": "stacked",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 0.8,
+        "mobile_aspect_ratio": 0.8,
+        "color_scheme": "scheme-1",
+        "color_borders": "#000000",
+        "width": "wrapper",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "section_image_with_text_ciUcph": {
+      "type": "section-image-with-text",
+      "blocks": {
+        "heading_CfG8fw": {
+          "type": "heading",
+          "settings": {
+            "title": "<h2><strong>Coming Soon to Your </strong><em><strong>Local Barber</strong></em></h2>",
+            "size": 90,
+            "text_position": "left",
+            "heading_highlight_type": "highlight",
+            "highlight_color": "#ffffff",
+            "highlight_text_color": "#0c0c0f",
+            "spacing_bottom": 12
+          }
+        },
+        "text_T8CYnp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>HAIRO is arriving at 300+ professional barbershops across the US and UK</p>",
+            "size": 100,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        }
+      },
+      "block_order": [
+        "heading_CfG8fw",
+        "text_T8CYnp"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "show_accordion_divider": true,
+        "increase_border_radius": true,
+        "section_height": "four-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "image": "shopify://shop_images/20_b998888c-b593-4d11-b5c4-d526c25586a9.webp",
+        "block_bg_color": "#3d5afe",
+        "color_scheme": "scheme-ee9604a6-53bd-4b7e-bd55-6e554c4d1734",
+        "section_width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section_contact_form_cTpJzK": {
+      "type": "section-contact-form",
+      "blocks": {
+        "heading_yUDLz3": {
+          "type": "heading",
+          "settings": {
+            "title": "Contact us"
+          }
+        },
+        "text_tJX6UB": {
+          "type": "text",
+          "settings": {
+            "title": "Name",
+            "required": false
+          }
+        },
+        "email_QCh4yE": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "required": true
+          }
+        },
+        "body_d6V9KR": {
+          "type": "body",
+          "settings": {
+            "title": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_yUDLz3",
+        "text_tJX6UB",
+        "email_QCh4yE",
+        "body_d6V9KR"
+      ],
+      "name": "Contact form",
+      "settings": {
+        "button_color": "btn--primary",
+        "button_style": "btn--solid",
+        "button_size": "btn--medium",
+        "color_scheme": "scheme-7",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "section_image_with_text_ydNPB4",
+    "section_columns_nmaBKb",
+    "section_collection_yWMrcJ",
+    "section_text_miARVK",
+    "section_text_34UzjV",
+    "section_text_NyUcNB",
+    "section_text_eNUgYr",
+    "section_sticky_images_and_text_MeU8Cx",
+    "section_columns_6UGnPK",
+    "section_text_9Q3djh",
+    "section_newsletter_GNQg7B",
+    "section_columns_WTPJbe",
+    "section_image_with_text_ciUcph",
+    "section_contact_form_cTpJzK"
+  ]
+}
