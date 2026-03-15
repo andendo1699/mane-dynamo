@@ -128,12 +128,12 @@
         "show_top_border": false,
         "show_bottom_border": true,
         "padding": 10,
-        "slider_speed": 7,
+        "slider_speed": 5,
         "show_arrows": false,
         "marquee_speed": 50,
         "direction": "ticker-rtl",
         "text_caps": false,
-        "type_font": "space_mono_n4",
+        "type_font": "inter_n4",
         "text_size": 100,
         "letter_spacing": 0,
         "message_spacing": 20,
@@ -145,23 +145,42 @@
     "header": {
       "type": "header",
       "blocks": {
-        "fda277c0-c8fe-4ce2-8c68-9b146fa102a4": {
+        "image_6KmULB": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "1",
             "image_second_menu": false,
-            "aspect_ratio": 1.2,
+            "aspect_ratio": 1,
             "wide_image": false,
             "overlay_type": "disabled",
-            "title": "Best Sellers",
-            "heading_size": 90,
-            "link_text": "These bags redefine everyday carry",
+            "title": "",
+            "heading_size": 100,
+            "link_text": "",
             "link": "",
-            "text_color": "#ffffff"
+            "text_color": ""
+          }
+        },
+        "image_tYPw6J": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "position": "1",
+            "image_second_menu": false,
+            "image": "shopify://shop_images/white1.png",
+            "aspect_ratio": 0.5,
+            "wide_image": true,
+            "overlay_type": "disabled",
+            "title": "The easy solution for instantly thicker, fuller hair.",
+            "heading_size": 100,
+            "link_text": "",
+            "link": "shopify://collections/all",
+            "text_color": "#0c0c0f"
           }
         },
         "image_VhmLNT": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "1",
             "image_second_menu": false,
@@ -177,6 +196,7 @@
         },
         "image_G3FgdL": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "1",
             "image_second_menu": false,
@@ -190,8 +210,25 @@
             "text_color": "#ffffff"
           }
         },
+        "image_nyQNYR": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "position": "1",
+            "image_second_menu": false,
+            "aspect_ratio": 1,
+            "wide_image": false,
+            "overlay_type": "disabled",
+            "title": "",
+            "heading_size": 100,
+            "link_text": "",
+            "link": "",
+            "text_color": ""
+          }
+        },
         "image_hAVtCX": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "2",
             "image_second_menu": false,
@@ -207,6 +244,7 @@
         },
         "image_YPF8J8": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "2",
             "image_second_menu": false,
@@ -222,6 +260,7 @@
         },
         "image_k7iRGd": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "position": "2",
             "image_second_menu": false,
@@ -237,9 +276,11 @@
         }
       },
       "block_order": [
-        "fda277c0-c8fe-4ce2-8c68-9b146fa102a4",
+        "image_6KmULB",
+        "image_tYPw6J",
         "image_VhmLNT",
         "image_G3FgdL",
+        "image_nyQNYR",
         "image_hAVtCX",
         "image_YPF8J8",
         "image_k7iRGd"
@@ -252,10 +293,10 @@
         "header_border_color": "#0000004d",
         "border_opacity": 25,
         "logo_not_home": "shopify://shop_images/mane_checkout_logo.png",
-        "logo_max_width": 150,
+        "logo_max_width": 110,
         "main-menu": "main-menu",
         "main_menu_secondary": "",
-        "show_images": false,
+        "show_images": true,
         "image_aspect_ratio": 1,
         "menu_alignment": "center",
         "header_icons_as_text": false,

@@ -82,6 +82,8 @@
     assign video_link = block.settings.video_link
     assign video_url = block.settings.video_url
     assign video_text = block.settings.video_text
+    assign rating_stars = block.settings.rating_stars
+    assign rating_color = block.settings.rating_color
     assign animation_order = 1
 
     assign entire_image_link = false
@@ -138,51 +140,30 @@
         {% endif %}
       >
         <div class="sticky-text__inner" data-sticky-text-inner>
-          {%- if subheading != blank -%}
-            <div class="sticky-text__subheading subheading-text main-subheading"
-              {% if animations_enabled %}
-                data-aos="when-active-animate-up"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-order="{{ animation_order }}"
-                {%- assign animation_order = animation_order | plus: 1 -%}
-              {% endif %}
-            >
-              {{- subheading -}}
-            </div>
-          {%- endif -%}
+          {%- if title != blank -%}
 
-          {%- if title != blank -%}{% comment %}
-  Modify text in title whenever there is a percentage off string, such as "20% off", so that output will include HTML tags with which to style promo texts better
+            {%- liquid
+              assign numbers_string = '0%,1%,2%,3%,4%,5%,6%,7%,8%,9%' | split: ','
+              assign has_percent_off = false
+              assign has_number_percent = false
+              for num in numbers_string
+                if title contains num
+                  assign has_number_percent = true
+                endif
+              endfor
 
-  Dependencies:
-    - title: {Object} Liquid object from settings that contains the heading that would be modified and rendered - `assign title = section.settings.title`
+              if has_number_percent
+                assign title = title | replace: '%', '<sup>%</sup>'
 
-  Returns variables:
-    - has_percent_off: {Boolean}
-    - has_number_percent: {Boolean}
-{%- endcomment -%}
-
-{%- liquid
-  assign numbers_string = '0%,1%,2%,3%,4%,5%,6%,7%,8%,9%' | split: ','
-  assign has_percent_off = false
-  assign has_number_percent = false
-  for num in numbers_string
-    if title contains num
-      assign has_number_percent = true
-    endif
-  endfor
-
-  if has_number_percent
-    assign title = title | replace: '%', '<sup>%</sup>'
-
-    if title contains '<sup>%</sup> off' or title contains '<sup>%</sup> OFF' or title contains '<sup>%</sup> Off'
-      assign has_percent_off = true
-      assign title = title | replace: '<sup>%</sup> off', '<sup>%</sup> <small>off</small>'
-      assign title = title | replace: '<sup>%</sup> OFF', '<sup>%</sup> <small>OFF</small>'
-      assign title = title | replace: '<sup>%</sup> Off', '<sup>%</sup> <small>Off</small>'
-    endif
-  endif
--%}<h3 class="sticky-text__heading h2{% if has_percent_off %} haspercentoff{% elsif has_number_percent %} hasnumberpercent{% endif %}"
+                if title contains '<sup>%</sup> off' or title contains '<sup>%</sup> OFF' or title contains '<sup>%</sup> Off'
+                  assign has_percent_off = true
+                  assign title = title | replace: '<sup>%</sup> off', '<sup>%</sup> <small>off</small>'
+                  assign title = title | replace: '<sup>%</sup> OFF', '<sup>%</sup> <small>OFF</small>'
+                  assign title = title | replace: '<sup>%</sup> Off', '<sup>%</sup> <small>Off</small>'
+                endif
+              endif
+            -%}
+            <h3 class="sticky-text__heading h2{% if has_percent_off %} haspercentoff{% elsif has_number_percent %} hasnumberpercent{% endif %}"
               {% if animations_enabled %}
                 data-aos="when-active-animate-up"
                 data-aos-anchor="{{ animation_anchor }}"
@@ -209,6 +190,34 @@
                 {% endif %}
               >
             {%- endif -%}
+          {%- endif -%}
+
+          {%- if subheading != blank -%}
+            <div class="sticky-text__subheading subheading-text main-subheading"
+              {% if animations_enabled %}
+                data-aos="when-active-animate-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-order="{{ animation_order }}"
+                {%- assign animation_order = animation_order | plus: 1 -%}
+              {% endif %}
+            >
+              {{- subheading -}}
+            </div>
+          {%- endif -%}
+
+          {%- if rating_stars > 0 -%}
+            <div class="sticky-text__rating"
+              {% if animations_enabled %}
+                data-aos="when-active-animate-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-order="{{ animation_order }}"
+                {%- assign animation_order = animation_order | plus: 1 -%}
+              {% endif %}
+            >
+              {%- for i in (1..rating_stars) -%}
+                <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="fill: {{ rating_color }}; color: {{ rating_color }}; width: 18px; height: 18px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+              {%- endfor -%}
+            </div>
           {%- endif -%}
 
           {%- if content != blank -%}
@@ -652,6 +661,25 @@
           "type": "text",
           "id": "subheading",
           "label": "Subheading"
+        },
+        {
+          "type": "header",
+          "content": "Rating"
+        },
+        {
+          "type": "range",
+          "id": "rating_stars",
+          "label": "Number of stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "rating_color",
+          "label": "Stars color",
+          "default": "#FFB800"
         },
         {
           "type": "richtext",

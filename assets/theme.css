@@ -13806,8 +13806,25 @@ body:not(.no-outline) .deferred-media__poster.focus-visible {
   transition: opacity 0.15s ease;
   padding: 6px 8px;
   height: auto;
-  border-radius: var(--RADIUS-BADGE);
+  border-radius: var(--ROUNDED-BADGE);
 }
+
+.product-badge__item.product-badge__item--tag-best-seller {
+  background-color: var(--COLOR-CUSTOM-BEST-SELLER-BG);
+  color: var(--COLOR-CUSTOM-BEST-SELLER);
+}
+
+.product-badge__item.product-badge__item--tag-hot {
+  background-color: var(--COLOR-CUSTOM-HOT-BG);
+  color: var(--COLOR-CUSTOM-HOT);
+}
+
+.product-badge__item.product-badge__item--tag-sale {
+  background-color: var(--COLOR-CUSTOM-SALE-BG);
+  color: var(--COLOR-CUSTOM-SALE);
+}
+
+
 @media only screen and (max-width: 479px) {
   .product-badge__item {
     font-size: calc(0.825rem * var(--adjust-badges));
