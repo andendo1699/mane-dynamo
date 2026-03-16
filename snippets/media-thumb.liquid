@@ -45,7 +45,7 @@
   {%- endif -%}
 {%- endcapture -%}
 
-<div class="product-single__thumbnail" data-id="{{ media_id }}" data-thumbnail-id="{{ thumbnail_id }}">
+<div class="product-single__thumbnail swiper-slide" data-id="{{ media_id }}" data-thumbnail-id="{{ thumbnail_id }}">
   {%- if has_link -%}
     <a
       href="{{ thumbnail | img_url: '2048x' }}"

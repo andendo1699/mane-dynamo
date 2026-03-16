@@ -42,6 +42,8 @@
       assign product_wrapper_modifiers = ' ' | append: 'product-single__wrapper--grid'
     when 'stacked'
       assign product_wrapper_modifiers = ' ' | append: 'product-single__wrapper--stacked'
+    when 'thumbnails_left'
+      assign product_wrapper_modifiers = ' ' | append: 'product-single__wrapper--thumbnails-left'
   endcase
 
   case image_width
@@ -70,7 +72,7 @@
           endcase
         endif
 
-      when 'stacked', 'carousel'
+      when 'stacked', 'carousel', 'thumbnails_left'
         if section_width == 'wrapper--full-padded'
           case image_width
             when 'standard'
@@ -121,6 +123,9 @@
   assign product_gallery_modifiers = ''
   if image_layout == 'grid' and product_image_aspect_ratio
     assign product_gallery_modifiers = product_gallery_modifiers | append: ' ' | append: 'product-gallery--equal'
+  endif
+  if image_layout == 'thumbnails_left'
+    assign product_gallery_modifiers = product_gallery_modifiers | append: ' ' | append: 'product-gallery--thumbs-left'
   endif
 
   assign sold_out = true
@@ -270,35 +275,101 @@
         {%- assign animation_order = animation_order | plus: 1 -%}
       {% endif %}
     >
-      <div class="product-gallery__media-slider{% if product.media.size == 1 %} product-gallery__media-slider--single{% endif %}" data-product-single-media-slider>
-        {%- if product.media.size > 0 -%}
-          {%- comment -%} Show Featured media first {%- endcomment -%}
-          {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+      {%- comment -%} Thumbnails Left: render thumbs before main slider {%- endcomment -%}
+      {%- if image_layout == 'thumbnails_left' and product.media.size > 1 and hide_product_thumbnails == false -%}
+        <div class="product-gallery__inner" data-thumbs-position="left">
+          <div class="swiper product-gallery__thumbs product-gallery__thumbs--vertical" data-product-single-media-thumbs data-thumbs-direction="vertical">
+            <div class="swiper-wrapper">
+              {%- render 'media-thumb', media: featured_media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+              {%- for media in product.media -%}
+                {%- if media.id != featured_media_id -%}
+                  {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
 
-          {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
-          {%- for media in product.media -%}
-            {%- if media.id != featured_media_id -%}
-              {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+          <div class="swiper product-gallery__swiper" data-product-single-media-slider>
+            <div class="swiper-wrapper">
+              {%- if product.media.size > 0 -%}
+                {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+                {%- for media in product.media -%}
+                  {%- if media.id != featured_media_id -%}
+                    {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- else -%}
+                {%- assign media_aspect_ratio = 1 -%}
+                {%- assign media_padding_top = 1 | divided_by: media_aspect_ratio | times: 100 | round: 1 -%}
+                <div
+                  id="FeaturedMedia-{{ unique }}"
+                  class="product-gallery__media-slide swiper-slide"
+                  data-id="{{ unique }}" data-media-id="{{ unique }}"
+                  data-aspectratio="{{ media_aspect_ratio }}"
+                  data-product-single-media-wrapper>
+                  <div class="product-gallery__media product-gallery__media--image">
+                    <div class="product-gallery__media-space" style="--media-padding-top: {{ media_padding_top }}%;"></div>
+                    {%- render 'image-fill', aspect_ratio: 1, is_background: true, img_object: '', alt: product_title, placeholder_svg: 'image' -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            </div>
+
+            {%- if product.media.size > 1 -%}
+              <div class="swiper-button-prev product-gallery__nav-btn"></div>
+              <div class="swiper-button-next product-gallery__nav-btn"></div>
             {%- endif -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- assign media_aspect_ratio = 1 -%}
-          {%- assign media_padding_top = 1 | divided_by: media_aspect_ratio | times: 100 | round: 1 -%}
+          </div>
+        </div>
 
-          <div
-            id="FeaturedMedia-{{ unique }}"
-            class="product-gallery__media-slide{% unless featured_media == media %} media--hidden{% endunless %}"
-            data-id="{{ unique }}"
-            data-media-id="{{ unique }}"
-            data-aspectratio="{{ media_aspect_ratio }}"
-            data-product-single-media-wrapper>
-            <div class="product-gallery__media product-gallery__media--image">
-              <div class="product-gallery__media-space" style="--media-padding-top: {{ media_padding_top }}%;"></div>
-              {%- render 'image-fill', aspect_ratio: 1, is_background: true, img_object: '', alt: product_title, placeholder_svg: 'image' -%}
+      {%- else -%}
+        {%- comment -%} Default layouts: Main Swiper Slider {%- endcomment -%}
+        <div class="swiper product-gallery__swiper" data-product-single-media-slider>
+          <div class="swiper-wrapper">
+            {%- if product.media.size > 0 -%}
+              {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+              {%- for media in product.media -%}
+                {%- if media.id != featured_media_id -%}
+                  {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type, autoplay: false -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- else -%}
+              {%- assign media_aspect_ratio = 1 -%}
+              {%- assign media_padding_top = 1 | divided_by: media_aspect_ratio | times: 100 | round: 1 -%}
+              <div
+                id="FeaturedMedia-{{ unique }}"
+                class="product-gallery__media-slide swiper-slide{% unless featured_media == media %} media--hidden{% endunless %}"
+                data-id="{{ unique }}" data-media-id="{{ unique }}"
+                data-aspectratio="{{ media_aspect_ratio }}"
+                data-product-single-media-wrapper>
+                <div class="product-gallery__media product-gallery__media--image">
+                  <div class="product-gallery__media-space" style="--media-padding-top: {{ media_padding_top }}%;"></div>
+                  {%- render 'image-fill', aspect_ratio: 1, is_background: true, img_object: '', alt: product_title, placeholder_svg: 'image' -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if product.media.size > 1 -%}
+            <div class="swiper-button-prev product-gallery__nav-btn"></div>
+            <div class="swiper-button-next product-gallery__nav-btn"></div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Product Thumbnails (Swiper Thumbs) - below main slider {%- endcomment -%}
+        {%- if product.media.size > 1 and hide_product_thumbnails == false -%}
+          <div class="swiper product-gallery__thumbs" data-product-single-media-thumbs>
+            <div class="swiper-wrapper">
+              {%- render 'media-thumb', media: featured_media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+              {%- for media in product.media -%}
+                {%- if media.id != featured_media_id -%}
+                  {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+                {%- endif -%}
+              {%- endfor -%}
             </div>
           </div>
         {%- endif -%}
-      </div>
+      {%- endif -%}
 
       {%- if first_3d_model -%}
         <button
@@ -312,21 +383,6 @@
           {%- render 'icon-media-model' -%}
           <span class='product-gallery__view-in-space-text'>{{ 'products.product.view_in_space' | t }}</span>
         </button>
-      {%- endif -%}
-
-      {%- comment -%} Product Thumbnails {%- endcomment -%}
-      {%- if product.media.size > 1 and hide_product_thumbnails == false -%}
-        <div class="product-single__thumbnails" id="ProductThumbs" data-product-single-media-thumbs>
-          {%- comment -%} Show Featured media thumbnail first {%- endcomment -%}
-          {%- render 'media-thumb', media: featured_media, featured_media: featured_media, has_link: true, product_title: product.title -%}
-
-          {%- comment -%} Loop product media skipping the featured media thumbnail {%- endcomment -%}
-          {%- for media in product.media -%}
-            {%- if media.id != featured_media_id -%}
-              {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
       {%- endif -%}
 
       {%- if show_badges_over_gallery and show_badges -%}
@@ -384,6 +440,9 @@
   {%- endunless -%}
 {%- endcapture -%}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
+<script src="{{ 'product-gallery-swiper.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'subscription-price-updater.js' | asset_url }}" defer="defer"></script>
 
@@ -422,7 +481,7 @@
     class="{{ product_wrapper_class }}{{ product_wrapper_modifiers }}"
     data-section="{{ section_id }}"
     data-section-id="{{ unique }}"
-    data-tall-layout="{% if section.settings.image_layout == 'carousel' %}false{% else %}true{% endif %}"
+    data-tall-layout="{% if section.settings.image_layout == 'carousel' or section.settings.image_layout == 'thumbnails_left' %}false{% else %}true{% endif %}"
     data-product-handle="{{ product.handle }}"
     data-product-id="{{ product.id }}"
     data-url="{{ product.url }}"
