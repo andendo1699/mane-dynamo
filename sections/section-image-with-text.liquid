@@ -639,6 +639,81 @@
                 </div>
               {%- endif -%}
 
+            {%- when 'rating_badge' -%}
+              {%- liquid
+                assign badge_avatar_1 = block.settings.avatar_1
+                assign badge_avatar_2 = block.settings.avatar_2
+                assign badge_avatar_3 = block.settings.avatar_3
+                assign badge_avatar_4 = block.settings.avatar_4
+                assign badge_avatar_5 = block.settings.avatar_5
+                assign badge_stars = block.settings.rating_stars
+                assign badge_color = block.settings.rating_color
+                assign badge_caption = block.settings.caption
+              -%}
+
+              <div class="image-with-text__rating-badge text-{{ text_position }} block-spacing"
+                id="ImageWithText--{{ block.id }}"
+                style="{{ block_style }}"
+                {% if animations_enabled %}
+                  data-aos="fade-up"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {% endif %}
+                {{ block.shopify_attributes }}
+              >
+                <div class="rating-badge">
+                  <div class="rating-badge__top">
+                    {%- liquid
+                      assign avatars = badge_avatar_1 | default: '' | append: '||' | append: badge_avatar_2 | append: '||' | append: badge_avatar_3 | append: '||' | append: badge_avatar_4 | append: '||' | append: badge_avatar_5
+                      assign has_avatars = false
+                    -%}
+                    {%- if badge_avatar_1 != blank or badge_avatar_2 != blank or badge_avatar_3 != blank or badge_avatar_4 != blank or badge_avatar_5 != blank -%}
+                      {%- assign has_avatars = true -%}
+                      <div class="rating-badge__avatars">
+                        {%- if badge_avatar_1 != blank -%}
+                          <div class="rating-badge__avatar">
+                            <img src="{{ badge_avatar_1 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                          </div>
+                        {%- endif -%}
+                        {%- if badge_avatar_2 != blank -%}
+                          <div class="rating-badge__avatar">
+                            <img src="{{ badge_avatar_2 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                          </div>
+                        {%- endif -%}
+                        {%- if badge_avatar_3 != blank -%}
+                          <div class="rating-badge__avatar">
+                            <img src="{{ badge_avatar_3 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                          </div>
+                        {%- endif -%}
+                        {%- if badge_avatar_4 != blank -%}
+                          <div class="rating-badge__avatar">
+                            <img src="{{ badge_avatar_4 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                          </div>
+                        {%- endif -%}
+                        {%- if badge_avatar_5 != blank -%}
+                          <div class="rating-badge__avatar">
+                            <img src="{{ badge_avatar_5 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if badge_stars > 0 -%}
+                      <div class="rating-badge__stars">
+                        {%- for i in (1..badge_stars) -%}
+                          <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="color: {{ badge_color }}; fill: currentColor; width: 18px; height: 18px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if badge_caption != blank -%}
+                    <p class="rating-badge__caption">{{ badge_caption }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+
               {%- capture video_link_capture -%}
                 {%- unless video_link == blank -%}
                   <script src="{{ 'video-play.js' | asset_url }}" defer="defer"></script>
@@ -1263,6 +1338,92 @@
             "unit": "px",
             "label": "Padding bottom",
             "default": 0
+          }
+        ]
+      },
+      {
+        "type": "rating_badge",
+        "name": "Rating badge",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Avatars"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar_1",
+            "label": "Avatar 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar_2",
+            "label": "Avatar 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar_3",
+            "label": "Avatar 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar_4",
+            "label": "Avatar 4"
+          },
+          {
+            "type": "image_picker",
+            "id": "avatar_5",
+            "label": "Avatar 5"
+          },
+          {
+            "type": "header",
+            "content": "Rating"
+          },
+          {
+            "type": "range",
+            "id": "rating_stars",
+            "label": "Number of stars",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "default": 5
+          },
+          {
+            "type": "color",
+            "id": "rating_color",
+            "label": "Stars color",
+            "default": "#00B67A"
+          },
+          {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption",
+            "default": "*Rating is verified by real users only"
+          },
+          {
+            "type": "select",
+            "id": "text_position",
+            "label": "Text position",
+            "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Block spacing"
+          },
+          {
+            "type": "range",
+            "id": "spacing_bottom",
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 12
           }
         ]
       }

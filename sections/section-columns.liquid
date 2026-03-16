@@ -205,6 +205,9 @@
               assign button_color = block.settings.button_color
               assign button_size = block.settings.button_size
               assign title = block.settings.title
+              assign block_subheading = block.settings.subheading
+              assign block_rating_stars = block.settings.rating_stars
+              assign block_rating_color = block.settings.rating_color
               assign image = block.settings.image
               assign image_width = block.settings.image_width
               assign text = block.settings.text
@@ -335,6 +338,18 @@
                 >
                   {%- if title != blank -%}
                     <h3 class="column-item__heading h6">{{ title | escape }}</h3>
+                  {%- endif -%}
+
+                  {%- if block_subheading != blank -%}
+                    <p class="column-item__subheading subheading-text">{{ block_subheading }}</p>
+                  {%- endif -%}
+
+                  {%- if block_rating_stars > 0 -%}
+                    <div class="column-item__rating">
+                      {%- for i in (1..block_rating_stars) -%}
+                        <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="fill: currentColor; color: {{ block_rating_color }}; width: 16px; height: 16px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+                      {%- endfor -%}
+                    </div>
                   {%- endif -%}
 
                   {%- if text != blank -%}
@@ -569,6 +584,30 @@
           "id": "title",
           "label": "Heading",
           "default": "Add a title or tagline"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "header",
+          "content": "Rating"
+        },
+        {
+          "type": "range",
+          "id": "rating_stars",
+          "label": "Number of stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "rating_color",
+          "label": "Stars color",
+          "default": "#FFB800"
         },
         {
           "type": "range",

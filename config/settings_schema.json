@@ -1686,6 +1686,15 @@
         "default": "rounded"
       },
       {
+        "type": "range",
+        "id": "rounded_badge",
+        "label": "Rounded badge",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "default": 25
+      },
+      {
         "type": "header",
         "content": "Sale badge"
       },
@@ -1746,6 +1755,13 @@
         "default": true
       },
       {
+        "type": "text",
+        "label": "Badge custom list",
+        "id": "badge_custom_list",
+        "default": "Hot, Sale, Best Seller",
+        "info": "Exp: Hot, Sale, Best Seller, ..."
+      },
+      {
         "type": "color",
         "id": "custom_bg_color",
         "visible_if": "{{ settings.show_custom_badge }}",
@@ -1758,6 +1774,54 @@
         "id": "custom_text_color",
         "visible_if": "{{ settings.show_custom_badge }}",
         "label": "Text",
+        "default": "#ffffff",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_bg_color_best_seller",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Background for best seller",
+        "default": "#000000",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_text_color_best_seller",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Text for best seller",
+        "default": "#ffffff",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_bg_color_hot",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Background for hot",
+        "default": "#000000",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_text_color_hot",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Text for hot",
+        "default": "#ffffff",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_bg_color_sale",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Background for sale",
+        "default": "#000000",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "custom_text_color_sale",
+        "visible_if": "{{ settings.show_custom_badge }}",
+        "label": "Text for sale",
         "default": "#ffffff",
         "alpha": true
       },

@@ -525,7 +525,10 @@
     if saving_badge_text == blank
       assign show_saving_badge = false
     endif
+
   endif
+
+  assign list_badge_visible = settings.badge_custom_list | downcase | split: ',' | strip | join: ', '
 -%}
 
 {%- capture product_badges -%}
@@ -535,10 +538,13 @@
     </div>
   {%- endif -%}
 
-  {%- if custom_badge_metafield and show_custom_badge -%}
-    <div class="product-badge__item product-badge__item--custom">
-      <span>{{ custom_badge_metafield_text }}</span>
-    </div>
+  {%- if show_custom_badge -%}
+    {% for tag in product.tags %}
+      {% assign downcase_tag = tag | downcase %}
+      {% if list_badge_visible contains downcase_tag %}
+        <div class="product-badge__item product-badge__item--tag-{{ downcase_tag | strip_html | handle }}">{{ tag | upcase }}</div>
+      {% endif %}         
+    {% endfor %}
   {%- endif -%}
 
   {%- if sold_out and show_sold_badge and preorder == false -%}

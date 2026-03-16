@@ -66,6 +66,8 @@
     assign image_mobile = block.settings.image_mobile
     assign video = block.settings.video
     assign subheading = block.settings.subheading
+    assign block_rating_stars = block.settings.rating_stars
+    assign block_rating_color = block.settings.rating_color
     assign title = block.settings.title
     assign heading_size = block.settings.heading_size | times: 0.01
     assign truncate_text = block.settings.truncate_text
@@ -125,12 +127,6 @@
         data-sticky-card-text
       >
         <div class="sticky-text__inner">
-          {%- if subheading != blank -%}
-            <div class="sticky-text__subheading subheading-text main-subheading">
-              {{- subheading -}}
-            </div>
-          {%- endif -%}
-
           {%- if title != blank -%}
             <div class="sticky-text__heading h2">
               {%-  liquid
@@ -155,6 +151,20 @@
             {%- if settings.show_spacer_lines -%}
               <hr>
             {%- endif -%}
+          {%- endif -%}
+
+          {%- if subheading != blank -%}
+            <div class="sticky-text__subheading subheading-text main-subheading">
+              {{- subheading -}}
+            </div>
+          {%- endif -%}
+
+          {%- if block_rating_stars > 0 -%}
+            <div class="sticky-text__rating">
+              {%- for i in (1..block_rating_stars) -%}
+                <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="fill: currentColor; color: {{ block_rating_color }}; width: 18px; height: 18px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+              {%- endfor -%}
+            </div>
           {%- endif -%}
 
           {%- if button_text != blank -%}
@@ -489,6 +499,25 @@
           "type": "text",
           "id": "subheading",
           "label": "Subheading"
+        },
+        {
+          "type": "header",
+          "content": "Rating"
+        },
+        {
+          "type": "range",
+          "id": "rating_stars",
+          "label": "Number of stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "rating_color",
+          "label": "Stars color",
+          "default": "#FFB800"
         },
         {
           "type": "richtext",

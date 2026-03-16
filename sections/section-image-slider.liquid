@@ -1,0 +1,490 @@
+{%- liquid
+  assign unique = section.id
+  assign color_scheme = 'color-' | append: section.settings.color_scheme
+  assign section_width = section.settings.width
+  assign columns = section.settings.columns
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
+  assign layout_mobile = section.settings.layout_mobile
+  assign heading_size = section.settings.heading_size | times: 0.01
+  assign desktop_aspect_ratio = section.settings.desktop_aspect_ratio | times: 100
+  assign mobile_aspect_ratio = section.settings.mobile_aspect_ratio | times: 100
+  assign id = 'ImageSlider--' | append: section.id
+  assign selector_id = '#' | append: id
+  assign animation_anchor = selector_id
+  assign animations_enabled = settings.animations_enabled
+  assign animation_delay = 150
+
+  case layout_mobile
+    when 'stacked'
+      assign mobile_width = 'mobile--one-whole'
+      assign mobile_class = ' stacked--mobile'
+    when 'carousel'
+      assign mobile_class = ' carousel--mobile'
+      case columns_mobile
+        when 1
+          assign mobile_width = 'mobile--one-whole'
+        when 2
+          assign mobile_width = 'mobile--one-half'
+      endcase
+  endcase
+
+  case columns
+    when 2
+      assign item_width = 'one-half'
+    when 3
+      assign item_width = 'one-third'
+    else
+      assign item_width = 'one-quarter'
+  endcase
+
+  assign blocks_gaps = columns | minus: 1
+  assign gaps_calc = 20 | times: blocks_gaps | append: 'px'
+
+  if section_width == 'wrapper--full-padded'
+    assign wrapper_width_lg = '(100vw - 120px)'
+  endif
+  if section_width == 'wrapper'
+    assign wrapper_width_lg = '(1440px - 120px)'
+  endif
+
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / ' | append: columns | append: ' / 2)'
+  assign wrapper_width_md = '(100vw - 2 * 20px)'
+  assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' * 0.9 - 20px) / 2 / 2)'
+  assign img_width_sm = 'calc((' | append: wrapper_width_md | append: ' - 20px) / 2)'
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
+-%}
+
+<link href="{{ 'section-image-slider.css' | asset_url }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+{%- style -%}
+  {{ selector_id }} {
+    --PT: {{ section.settings.padding_top }}px;
+    --PB: {{ section.settings.padding_bottom }}px;
+  }
+  {{ selector_id }} .section__heading {
+    --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }});
+  }
+
+  {% if columns_mobile > 1 -%}
+    @media screen and (max-width: 767px) {
+      {{ selector_id }} .carousel--mobile { --item-width-mobile: calc(90% / {{ columns_mobile }} - var(--grid-gutter)); }
+    }
+  {%- endif %}
+
+  @media screen and (min-width: 1024px) {
+    {{ selector_id }} { --grid: repeat({{ columns }}, minmax(0, 1fr)); }
+  }
+{%- endstyle -%}
+
+<div
+  id="{{ id }}"
+  class="section-padding {{ color_scheme }} image-slider text-left"
+  data-section-id="{{ unique }}"
+  data-section-type="image-slider"
+>
+  <div class="{{ section_width }}">
+    {%- if section.settings.title != blank -%}
+      <div class="section__header">
+        <h2
+          class="section__heading h2"
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 150 -%}
+          {% endif %}
+        >
+          {{ section.settings.title }}
+        </h2>
+
+        {%- if settings.show_spacer_lines -%}
+          <hr
+            class="section__heading-line"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+              {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}
+          >
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="image-slider__wrapper carousel__container">
+      {%- if section.blocks.size > 0 -%}
+        <script src="{{ 'columns-with-image.js' | asset_url }}" defer></script>
+
+        <columns-slider class="image-slider__carousel carousel {{ mobile_class }}" role="group">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign before_image = block.settings.before_image
+              assign after_image = block.settings.after_image
+              assign review_text = block.settings.review_text
+              assign customer_name = block.settings.customer_name
+              assign show_verified = block.settings.show_verified
+
+              if before_image != blank
+                assign before_alt = before_image.alt | default: 'Before' | strip_html | escape
+              endif
+              if after_image != blank
+                assign after_alt = after_image.alt | default: 'After' | strip_html | escape
+              endif
+            -%}
+
+            <div
+              id="imageSliderItem--{{ block.id }}"
+              class="image-slider__item carousel__item {{ item_width }} {{ mobile_width }}"
+              {{ block.shopify_attributes }}
+              data-slider-item
+              {% if animations_enabled %}
+                data-aos="fade"
+                data-aos-delay="0"
+                data-aos-duration="0"
+                data-aos-anchor="{{ animation_anchor }}"
+              {% endif %}
+            >
+              {%- style -%}
+                #imageSliderItem--{{ block.id }} .image-slider__image { --aspect-ratio: {{ desktop_aspect_ratio }}%; }
+                @media screen and (max-width: 767px) {
+                  #imageSliderItem--{{ block.id }} .image-slider__image { --aspect-ratio: {{ mobile_aspect_ratio }}%; }
+                }
+              {%- endstyle -%}
+
+              <div class="image-slider__card">
+                <div
+                  class="image-slider__images"
+                  data-media-container
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ animation_delay }}"
+                  {% endif %}
+                >
+                  <div class="image-slider__image-col">
+                    <div class="image-slider__image">
+                      {%- render 'image-fill',
+                        is_background: true,
+                        img_object: before_image,
+                        sizes: sizes,
+                        classes: 'image-slider__img',
+                        alt: before_alt
+                      -%}
+                    </div>
+                    <span class="image-slider__label">{{ block.settings.before_label | default: 'BEFORE' }}</span>
+                  </div>
+
+                  <div class="image-slider__image-col">
+                    <div class="image-slider__image">
+                      {%- render 'image-fill',
+                        is_background: true,
+                        img_object: after_image,
+                        sizes: sizes,
+                        classes: 'image-slider__img',
+                        alt: after_alt
+                      -%}
+                    </div>
+                    <span class="image-slider__label">{{ block.settings.after_label | default: 'AFTER' }}</span>
+                  </div>
+                </div>
+
+                <div
+                  class="image-slider__content"
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ animation_delay }}"
+                  {% endif %}
+                >
+                  {%- if review_text != blank -%}
+                    <p class="image-slider__text">{{ review_text }}</p>
+                  {%- endif -%}
+
+                  <div class="image-slider__meta">
+                    {%- if customer_name != blank -%}
+                      <span class="image-slider__name">{{ customer_name | escape }}</span>
+                    {%- endif -%}
+
+                    {%- if show_verified -%}
+                      <span class="image-slider__verified">
+                        {%- render 'icon-star' -%}
+                        <span>{{ section.settings.verified_text | default: 'Verified review' }}</span>
+                      </span>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </columns-slider>
+
+        <div class="image-slider__scrollbar">
+          <div class="image-slider__scrollbar-track">
+            <div class="image-slider__scrollbar-thumb"></div>
+          </div>
+        </div>
+
+        <script>
+          (function() {
+            var id = '{{ id }}';
+            var section = document.getElementById(id);
+            var slider = section.querySelector('columns-slider');
+            var thumb = section.querySelector('.image-slider__scrollbar-thumb');
+
+            function repositionArrows() {
+              if (slider && typeof slider.setSliderArrowsPosition === 'function') {
+                slider.setSliderArrowsPosition(slider);
+              }
+            }
+
+            function updateScrollbar() {
+              var flkty = window.theme.Flickity && window.theme.Flickity.data(slider);
+              if (flkty && flkty.isActive) {
+                var total = flkty.slides.length;
+                if (total <= 1) { thumb.style.width = '100%'; return; }
+                var pct = 100 / total;
+                thumb.style.width = pct + '%';
+                thumb.style.transform = 'translateX(' + (flkty.selectedIndex * 100) + '%)';
+              } else if (slider.scrollWidth > slider.offsetWidth) {
+                var maxScroll = slider.scrollWidth - slider.offsetWidth;
+                var ratio = slider.offsetWidth / slider.scrollWidth;
+                var progress = slider.scrollLeft / maxScroll;
+                thumb.style.width = (ratio * 100) + '%';
+                thumb.style.transform = 'translateX(' + (progress * (1 / ratio - 1) * 100) + '%)';
+              } else {
+                thumb.style.width = '100%';
+              }
+            }
+
+            function onFlktyReady() {
+              var flkty = window.theme.Flickity && window.theme.Flickity.data(slider);
+              if (flkty) {
+                flkty.on('change', updateScrollbar);
+                flkty.on('ready', updateScrollbar);
+              }
+              updateScrollbar();
+            }
+
+            slider.addEventListener('scroll', updateScrollbar, { passive: true });
+            window.addEventListener('load', function() { repositionArrows(); onFlktyReady(); });
+            document.addEventListener('theme:resize:width', function() { repositionArrows(); updateScrollbar(); });
+          })();
+        </script>
+      {%- endif -%}
+
+      {%- if section.blocks.size == 0 -%}
+        {%- render 'no-blocks' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image slider",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "98% of our customers notice a difference immediately!"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": 120,
+      "min": 70,
+      "max": 200,
+      "step": 10,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Verified badge text",
+      "default": "Verified review"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns per row on desktop",
+      "default": 3,
+      "min": 2,
+      "max": 4,
+      "step": 1
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "layout_mobile",
+      "label": "Type",
+      "default": "carousel",
+      "options": [
+        {"value": "stacked", "label": "Stacked"},
+        {"value": "carousel", "label": "Slider"}
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "visible_if": "{{ section.settings.layout_mobile == 'carousel' }}",
+      "label": "Columns per slide on mobile",
+      "default": "1",
+      "options": [
+        {"label": "1", "value": "1"},
+        {"label": "2", "value": "2"}
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Image height"
+    },
+    {
+      "type": "range",
+      "id": "desktop_aspect_ratio",
+      "min": 0.5,
+      "max": 1.5,
+      "step": 0.1,
+      "unit": ":1",
+      "label": "Desktop height",
+      "info": "Wide to tall",
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "mobile_aspect_ratio",
+      "min": 0.5,
+      "max": 1.5,
+      "step": 0.1,
+      "unit": ":1",
+      "label": "Mobile height",
+      "info": "Wide to tall",
+      "default": 1.2
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wrapper",
+      "options": [
+        {"value": "wrapper--full-padded", "label": "Full width padded"},
+        {"value": "wrapper", "label": "Page width"}
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Before image"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "After image"
+        },
+        {
+          "type": "text",
+          "id": "before_label",
+          "label": "Before label",
+          "default": "BEFORE"
+        },
+        {
+          "type": "text",
+          "id": "after_label",
+          "label": "After label",
+          "default": "AFTER"
+        },
+        {
+          "type": "header",
+          "content": "Review"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review text",
+          "default": "\"I've always been very self conscious about my hair. These are my personal results which are amazing!\""
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Dave"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show verified badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image slider",
+      "category": "Storytelling",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "aside"]
+  }
+}
+{% endschema %}
