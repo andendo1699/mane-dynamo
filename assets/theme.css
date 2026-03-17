@@ -11763,6 +11763,34 @@ body:has(.card-scrolling-effect):has([data-header-sticky]) .main-content > .shop
   }
 }
 
+.product__title-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.product__title-star {
+    font-size: 10px;
+    color: #fff;
+}
+
+.product__title-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    margin-top: 4px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #fff;
+    background: linear-gradient(90deg, #09184c 0%, #2c4ff0 100%);
+    box-shadow: 0 2px 8px rgba(44, 79, 240, 0.3);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 .product__title {
   font-size: calc(2rem * var(--adjust-heading));
   margin-bottom: 0;
@@ -11998,6 +12026,14 @@ body:has(.card-scrolling-effect):has([data-header-sticky]) .main-content > .shop
   align-items: center;
   font-size: calc(1.1rem * var(--adjust-label));
   line-height: 1.5625;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #b8b8b8;
+  border-radius: 12px;
+  background: #fdfdfd;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 .product__popup__link .icon {
   margin-right: 5px;
@@ -12007,6 +12043,10 @@ body:has(.card-scrolling-effect):has([data-header-sticky]) .main-content > .shop
 }
 .product__popup__link span {
   pointer-events: none;
+}
+.product__popup__link span::before,
+.product__popup__link span::after {
+  display: none !important;
 }
 @media only screen and (max-width: 767px) {
   .product__popup__link {
@@ -12108,8 +12148,10 @@ body:has(.card-scrolling-effect):has([data-header-sticky]) .main-content > .shop
   display: block;
   position: relative;
   width: 100%;
-  height: 0;
-  padding-top: var(--aspect-ratio);
+  height: fit-content;
+}
+.product__icon__holder img {
+  display: block;
 }
 
 .product__icon__text:not(:only-child) {
@@ -12118,20 +12160,88 @@ body:has(.card-scrolling-effect):has([data-header-sticky]) .main-content > .shop
 
 .product__icon__row--multiple {
   display: grid;
-  column-gap: calc(var(--grid-gutter) * 2);
+  column-gap: 18px;
+  row-gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #cfcfcf;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 @media only screen and (min-width: 768px) {
   .product__icon__row--multiple {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 }
 @media only screen and (max-width: 767px) {
   .product__icon__row--multiple {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 10px;
+    row-gap: 8px;
+    padding: 10px 12px;
   }
+}
+
+.product__icon__row--multiple .product__icon__row {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  gap: 10px;
+  align-items: center;
+}
+
+.product__icon__row--multiple .product__icon__text {
+  line-height: 1.3;
+}
+
+.product__icon__row--multiple .icons-row-block__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px;
+}
+
+.product__icon__row--multiple .icons-row-block__icon {
+  width: var(--icon-size, 32px);
+  height: var(--icon-size, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__icon__row--multiple .icons-row-block__holder {
+  width: 100%;
+  height: 0;
+  padding-top: var(--aspect-ratio, 100%);
+  position: relative;
+}
+
+.product__icon__row--multiple .icons-row-block__holder img,
+.product__icon__row--multiple .icons-row-block__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product__icon__row--multiple .icons-row-block__textwrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.product__icon__row--multiple .icons-row-block__text--meta {
+  font-size: 0.9rem;
+  color: #4d4d4d;
+  line-height: 1.2;
+}
+
+.product__icon__row--multiple .icons-row-block__text--title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #161616;
+  line-height: 1.2;
 }
 
 .product__feature {

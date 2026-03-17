@@ -623,6 +623,7 @@
 
 .text-left .icons-row-block__icon {
   transform: translate(0, -50%);
+  top: 50%;
 }
 @media only screen and (min-width: 768px) {
   .text-left .icons-row-block__icon {

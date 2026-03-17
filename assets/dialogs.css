@@ -1468,6 +1468,47 @@ body:not(.no-outline) model-viewer.focus-visible {
   left: 100vw;
 }
 
+/* Product popup: restyle drawer into centered modal */
+.product__popup.drawer {
+  --drawer-width: min(420px, 92vw);
+  position: fixed;
+  left: 50%;
+  right: auto;
+  top: 14vh;
+  bottom: auto;
+  transform: translate(-50%, -18%) scale(0.98);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+  background: #fff;
+  padding: 22px 22px 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.28s ease, opacity 0.22s ease, visibility 0s linear 0.28s;
+}
+
+.product__popup.drawer.is-open {
+  transform: translate(-50%, 0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.28s ease, opacity 0.22s ease, visibility 0s linear 0s;
+}
+
+.product__popup.drawer .product__popup__inner {
+  max-height: calc(100vh - 40px);
+  padding: 0;
+  overflow: auto;
+}
+
+.product__popup.drawer .product__popup__content {
+  padding: 0;
+}
+
+.product__popup.drawer .drawer__close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
 .drawer--bottom {
   transform: translateY(100vh);
 }

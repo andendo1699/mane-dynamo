@@ -574,91 +574,99 @@
                       <a href="{{ vendor | url_for_vendor }}">{{ vendor }}</a>
                     </nav>
                 {%- endcase -%}
-
-                <h1
-                  class="product__title"
-                  {% if title_style != blank %}
-                    {{- title_style -}}
+                <div class="product__title-wrapper">
+                  <h1
+                    class="product__title"
+                    {% if title_style != blank %}
+                      {{- title_style -}}
+                    {% endif %}
+                  >
+                    {%- if template.name == 'product' and section_type != 'featured' -%}
+                      {{- product_title -}}
+                    {%- else -%}
+                      <a href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
+                    {%- endif -%}
+                  </h1>
+                  {% if product.metafields.custom.season_badge != blank %}
+                    <div class="product__title-badge">
+                      <span class="product__title-star">★</span>
+                      {{ product.metafields.custom.season_badge }}
+                    </div>
                   {% endif %}
-                >
-                  {%- if template.name == 'product' and section_type != 'featured' -%}
-                    {{- product_title -}}
-                  {%- else -%}
-                    <a href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
-                  {%- endif -%}
-                </h1>
+                </div>
               </div>
 
             {%- when 'price' -%}
               {%- assign price_size = block.settings.price_size | times: 0.01 -%}
-              {%- assign bold_price = block.settings.bold_price -%}{%- liquid
-  assign currency_code_enable = settings.currency_code_enable
+              {%- assign bold_price = block.settings.bold_price -%}
+              {%- liquid
+                assign currency_code_enable = settings.currency_code_enable
 
-  if price_size != 1
-    capture price_style
-      echo ' style="'
-      echo '--adjust-body-desktop: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size | append: ');'
-      if price_size_mobile != blank
-        echo ' --adjust-body-mobile: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size_mobile | append: ');'
-      endif
-      echo '"'
-    endcapture
-  endif
+                if price_size != 1
+                  capture price_style
+                    echo ' style="'
+                    echo '--adjust-body-desktop: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size | append: ');'
+                    if price_size_mobile != blank
+                      echo ' --adjust-body-mobile: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size_mobile | append: ');'
+                    endif
+                    echo '"'
+                  endcapture
+                endif
 
-  assign show_saving_badge = settings.show_saving_badge
-  assign saving_badge_type = settings.saving_badge_type
+                assign show_saving_badge = settings.show_saving_badge
+                assign saving_badge_type = settings.saving_badge_type
 
-  # Check final sale status - global setting acts as master switch
-  # Variant-level metafield takes priority over product-level
-  assign is_final_sale = false
+                # Check final sale status - global setting acts as master switch
+                # Variant-level metafield takes priority over product-level
+                assign is_final_sale = false
 
-  if settings.final_sale or current_variant.metafields.theme.final_sale.value or product.metafields.theme.final_sale.value
-    assign is_final_sale = true
-  endif
+                if settings.final_sale or current_variant.metafields.theme.final_sale.value or product.metafields.theme.final_sale.value
+                  assign is_final_sale = true
+                endif
 
-  assign color_body_text = settings.color_body_text
-  assign final_sale_color = settings.final_sale_color
+                assign color_body_text = settings.color_body_text
+                assign final_sale_color = settings.final_sale_color
 
-  if final_sale_color.alpha == 0.0 or final_sale_color == ''
-    assign final_sale_color = color_body_text
-  endif
+                if final_sale_color.alpha == 0.0 or final_sale_color == ''
+                  assign final_sale_color = color_body_text
+                endif
 
-  capture sale_style
-    echo '--final-sale-color: ' | append: final_sale_color | append: ';'
-  endcapture
-  assign discount_amount = ''
-  assign compare_price = current_variant.compare_at_price | times: 1.0
-  assign sale_price = current_variant.price | times: 1.0
+                capture sale_style
+                  echo '--final-sale-color: ' | append: final_sale_color | append: ';'
+                endcapture
+                assign discount_amount = ''
+                assign compare_price = current_variant.compare_at_price | times: 1.0
+                assign sale_price = current_variant.price | times: 1.0
 
-  if compare_price and sale_price
-    if compare_price > sale_price
-      if saving_badge_type == 'percentage'
-        assign discount_difference = compare_price | minus: sale_price
-        assign discount_percentage = discount_difference | divided_by: compare_price | times: 100
-        assign discount_int = discount_percentage | round
-        if discount_int > 0
-          assign discount_amount = discount_int | append: '%'
-        endif
-      else
-        assign discount = compare_price | minus: sale_price
-        if discount > 0
-          if settings.currency_code_enable
-            assign discount_amount = discount | money_with_currency
-          else
-            assign discount_amount = discount | money
-          endif
-        endif
-      endif
-    endif
-  endif
+                if compare_price and sale_price
+                  if compare_price > sale_price
+                    if saving_badge_type == 'percentage'
+                      assign discount_difference = compare_price | minus: sale_price
+                      assign discount_percentage = discount_difference | divided_by: compare_price | times: 100
+                      assign discount_int = discount_percentage | round
+                      if discount_int > 0
+                        assign discount_amount = discount_int | append: '%'
+                      endif
+                    else
+                      assign discount = compare_price | minus: sale_price
+                      if discount > 0
+                        if settings.currency_code_enable
+                          assign discount_amount = discount | money_with_currency
+                        else
+                          assign discount_amount = discount | money
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
 
-  # Only show final sale when there's an actual sale
-  unless compare_price > sale_price
-    assign is_final_sale = false
-  endunless
--%}
+                # Only show final sale when there's an actual sale
+                unless compare_price > sale_price
+                  assign is_final_sale = false
+                endunless
+              -%}
 
-{% capture saving_final_sale_markup %}
+              {% capture saving_final_sale_markup %}
   {% if show_saving_badge or is_final_sale %}
     <span class="product__price--off"
       {% if is_final_sale %} data-final-sale{% endif %}
@@ -681,93 +689,96 @@
   {% endif %}
 {% endcapture %}
 
-<div
-  class="product__block product__price-and-badge"
-  {% if animations_enabled %}
-    data-aos="hero"
-    data-aos-anchor="{{ animation_anchor }}"
-    data-aos-order="{{ animation_order }}"
-    {%- assign animation_order = animation_order | plus: 1 -%}
-  {% endif %}
-  {{ block_style }}
->
-  <div class="product__price-wrapper" id="Price-{{ unique }}">
-    <div
-      class="product__price"
-      data-price-wrapper
-      {% if price_style != blank %}
-        {{- price_style -}}
-      {% endif %}
-    >
-      {%- unless product == blank -%}
-        <span
-          data-product-price
-          class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}{% if bold_price %} product__price--bold{% endif %}"
-        >
-          {%- liquid
-            if current_variant.price == 0
-              echo 'products.product.free' | t
-            elsif currency_code_enable
-              echo current_variant.price | money_with_currency
-            else
-              echo current_variant.price | money
-            endif
-          -%}
-        </span>
-      {%- else -%}
-        <span id="ProductPrice" class="product__price--regular{% if bold_price %} product__price--bold{% endif %}">
-          {%- liquid
-            if currency_code_enable
-              echo 1999 | money_with_currency
-            else
-              echo 1999 | money
-            endif
-          -%}
-        </span>
-      {%- endunless -%}
+              <div
+                class="product__block product__price-and-badge"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="{{ animation_order }}"
+                  {%- assign animation_order = animation_order | plus: 1 -%}
+                {% endif %}
+                {{ block_style }}
+              >
+                <div class="product__price-wrapper" id="Price-{{ unique }}">
+                  <div
+                    class="product__price"
+                    data-price-wrapper
+                    {% if price_style != blank %}
+                      {{- price_style -}}
+                    {% endif %}
+                  >
+                    {%- unless product == blank -%}
+                      <span
+                        data-product-price
+                        class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}{% if bold_price %} product__price--bold{% endif %}"
+                      >
+                        {%- liquid
+                          if current_variant.price == 0
+                            echo 'products.product.free' | t
+                          elsif currency_code_enable
+                            echo current_variant.price | money_with_currency
+                          else
+                            echo current_variant.price | money
+                          endif
+                        -%}
+                      </span>
+                    {%- else -%}
+                      <span
+                        id="ProductPrice"
+                        class="product__price--regular{% if bold_price %} product__price--bold{% endif %}"
+                      >
+                        {%- liquid
+                          if currency_code_enable
+                            echo 1999 | money_with_currency
+                          else
+                            echo 1999 | money
+                          endif
+                        -%}
+                      </span>
+                    {%- endunless -%}
 
-      {% comment %}Always render compare price element for subscription price updater{% endcomment %}
-      <s
-        data-compare-price
-        class="product__price--compare{% if bold_price %} product__price--bold{% endif %}"
-        {% unless current_variant.compare_at_price > current_variant.price %}
-          style="display: none;"
-        {% endunless %}
-      >
-        {%- liquid
-          if current_variant.compare_at_price > current_variant.price
-            if currency_code_enable
-              echo current_variant.compare_at_price | money_with_currency
-            else
-              echo current_variant.compare_at_price | money
-            endif
-          else
-            if currency_code_enable
-              echo current_variant.price | money_with_currency
-            else
-              echo current_variant.price | money
-            endif
-          endif
-        -%}
-      </s>
+                    {% comment %}Always render compare price element for subscription price updater{% endcomment %}
+                    <s
+                      data-compare-price
+                      class="product__price--compare{% if bold_price %} product__price--bold{% endif %}"
+                      {% unless current_variant.compare_at_price > current_variant.price %}
+                        style="display: none;"
+                      {% endunless %}
+                    >
+                      {%- liquid
+                        if current_variant.compare_at_price > current_variant.price
+                          if currency_code_enable
+                            echo current_variant.compare_at_price | money_with_currency
+                          else
+                            echo current_variant.compare_at_price | money
+                          endif
+                        else
+                          if currency_code_enable
+                            echo current_variant.price | money_with_currency
+                          else
+                            echo current_variant.price | money
+                          endif
+                        endif
+                      -%}
+                    </s>
 
-      {%- liquid
-        assign units = product.variants | map: 'unit_price' | compact
-        if units[0]
-          assign has_units = true
-        else
-          assign has_units = false
-        endif
-      -%}
+                    {%- liquid
+                      assign units = product.variants | map: 'unit_price' | compact
+                      if units[0]
+                        assign has_units = true
+                      else
+                        assign has_units = false
+                      endif
+                    -%}
 
-      {%- if has_units -%}
-        {%- assign current_variant_unit_price = current_variant.unit_price -%}
+                    {%- if has_units -%}
+                      {%- assign current_variant_unit_price = current_variant.unit_price -%}
 
-        {%- capture unit_price_separator -%}
+                      {%- capture unit_price_separator -%}
           <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
         {%- endcapture -%}
 
-        {%- capture unit_price_base_unit -%}
+                      {%- capture unit_price_base_unit -%}
           <span>
             {%- if current_variant.unit_price_measurement -%}
               {% if current_variant.unit_price_measurement.reference_value != 1 %}
@@ -778,26 +789,28 @@
           </span>
         {%- endcapture -%}
 
-        <span class="product__unit-price">
-          <span
-            data-product-unit
-            class="product__price--unit{% unless current_variant_unit_price %} hidden{% endunless %}"
-          >
-            <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
-            <span data-product-unit-price id="unit-price-{{ section.id }}">
-              {{- current_variant_unit_price | money -}}
-            </span>
-            {{ unit_price_separator }}
-            <span data-product-base id="unit-price-base-{{ section.id }}">{{ unit_price_base_unit }}</span>
-          </span>
-        </span>
-      {%- endif -%}
+                      <span class="product__unit-price">
+                        <span
+                          data-product-unit
+                          class="product__price--unit{% unless current_variant_unit_price %} hidden{% endunless %}"
+                        >
+                          <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
+                          <span data-product-unit-price id="unit-price-{{ section.id }}">
+                            {{- current_variant_unit_price | money -}}
+                          </span>
+                          {{ unit_price_separator }}
+                          <span data-product-base id="unit-price-base-{{ section.id }}">
+                            {{- unit_price_base_unit -}}
+                          </span>
+                        </span>
+                      </span>
+                    {%- endif -%}
 
-      {{ saving_final_sale_markup }}
-    </div>
-  </div>
-</div>
-{%- when 'form' -%}
+                    {{ saving_final_sale_markup }}
+                  </div>
+                </div>
+              </div>
+            {%- when 'form' -%}
               {%- liquid
                 assign show_quantity = block.settings.show_quantity
                 assign show_payment_button = block.settings.show_payment_button
@@ -922,22 +935,24 @@
                 {% endif %}
                 {{ block_style }}
                 {{ block.shopify_attributes }}
-              >{%- if product.metafields.theme.cutline != blank and product.metafields.theme.cutline.type == 'single_line_text_field' -%}
+              >
+                {%- if product.metafields.theme.cutline != blank
+                  and product.metafields.theme.cutline.type == 'single_line_text_field'
+                -%}
+                  {%- liquid
+                    capture style
+                      case cutline_color
+                        when 'body'
+                          echo 'color: var(--text);'
+                        when 'accent'
+                          echo 'color: var(--accent);'
+                      endcase
+                    endcapture
+                  -%}
 
-{%- liquid
-  capture style
-    case cutline_color
-      when 'body'
-        echo 'color: var(--text);'
-      when 'accent'
-        echo 'color: var(--accent);'
-    endcase
-  endcapture
--%}
-
-  <p class="product-cutline" style="{{ style }}">{{ product.metafields.theme.cutline.value }}</p>
-{%- endif -%}
-</div>
+                  <p class="product-cutline" style="{{ style }}">{{ product.metafields.theme.cutline.value }}</p>
+                {%- endif -%}
+              </div>
 
             {%- when 'product_accordion' -%}
               {%- if enable_full_width -%}
@@ -1230,6 +1245,83 @@
                 </div>
               </div>
 
+            {%- when 'icon_list' -%}
+              {%- liquid
+                assign icon_width = block.settings.icon_width
+                assign icon_image = block.settings.icon_image
+                assign icon_name = block.settings.icon_name
+                assign icon_color = block.settings.icon_color
+                assign text_size = block.settings.text_size | times: 0.01
+                assign bg_color = block.settings.bg_color | default: 'rgba(0,0,0,0)'
+                assign border_color = block.settings.border_color | default: 'rgba(0,0,0,0.12)'
+                assign border_radius = block.settings.border_radius | default: 12
+                assign padding = block.settings.padding | default: 16
+
+                assign retina_size = icon_width | times: 2
+                assign image_widths = icon_width | append: ', ' | append: retina_size
+                assign sizes = icon_width | append: 'px'
+
+                assign custom_check_src = 'https://cdn.shopify.com/s/files/1/0655/0591/9107/files/HAIRO_NEW_SHOOT_26.png?v=1768567471'
+              -%}
+
+              <div
+                class="product__block"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="{{ animation_order }}"
+                  {%- assign animation_order = animation_order | plus: 1 -%}
+                {% endif %}
+                {{ block_style }}
+                {{ block.shopify_attributes }}
+              >
+                <div
+                  class="product__icon-list"
+                  style="background: {{ bg_color }}; border: 1px solid {{ border_color }}; border-radius: {{ border_radius }}px; padding: {{ padding }}px; display: flex; flex-direction: column; gap: 8px;"
+                >
+                  {%- for i in (1..5) -%}
+                    {%- assign text_key = 'text_' | append: i -%}
+                    {%- assign item_text = block.settings[text_key] -%}
+
+                    {%- if item_text != blank -%}
+                      <div
+                        class="product__icon__row product__icon-list__item"
+                        style="--bg: transparent; --radius: 0; --icon-size: {{ icon_width }}px; --icon-color: {{ icon_color }}; --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});"
+                      >
+                        <div class="product__icon icon-stroke">
+                          {%- if icon_image != blank -%}
+                            <div class="product__icon__holder">
+                              {%- render 'image',
+                                image: icon_image,
+                                width: retina_size,
+                                widths: image_widths,
+                                sizes: sizes,
+                                classes: 'product__icon__img'
+                              -%}
+                            </div>
+                          {%- elsif icon_name == 'check' -%}
+                            <div class="product__icon__holder">
+                              <img
+                                src="{{ custom_check_src }}"
+                                alt=""
+                                loading="lazy"
+                                class="product__icon__img"
+                                width="{{ icon_width }}"
+                                height="{{ icon_width }}"
+                              >
+                            </div>
+                          {%- elsif icon_name != 'none' -%}
+                            {%- render 'icons', icon: icon_name -%}
+                          {%- endif -%}
+                        </div>
+
+                        <div class="product__icon__text">{{ item_text }}</div>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+
             {%- when 'icon_row' -%}
               {%- assign bg_color = block.settings.bg_color -%}
               {%- assign alignment = block.settings.alignment -%}
@@ -1446,108 +1538,113 @@
                 {%- endif -%}
               </div>
 
-            {%- when 'feature' -%}{%- liquid
-  assign block_id = block.id
-  assign prev_index = forloop.index0 | minus: 1
-  assign next_index = forloop.index0 | plus: 1
-  assign prev_block = section.blocks[prev_index]
-  assign next_block = section.blocks[next_index]
-  assign bg_color = block.settings.bg_color
-  assign text_color = block.settings.text_color
-  assign icon_name = block.settings.icon_name
-  assign title = block.settings.title
-  assign text = block.settings.text
-  assign icon_image = block.settings.icon_image
-  assign icon_width = block.settings.icon_width
-
-  capture style
-    echo '--bg: ' | append: bg_color | append: ';'
-
-    if text_color != '' and text_color != 'rgba(0,0,0,0)'
-      echo '--text: ' | append: text_color | append: ';'
-      echo '--heading: ' | append: text_color | append: ';'
-    endif
-
-    if bg_color != 'rgba(0,0,0,0)' and bg_color != '' and bg_color != section.settings.bg_color
-      echo 'padding: ' | append: 'var(--grid-gutter);'
-    endif
-  endcapture
-
-  capture icon_style
-    echo '--icon-size: ' | append: icon_width | append: 'px;'
-
-    if icon_image
-      echo 1 | divided_by: icon_image.aspect_ratio | times: 100 | round: 1 | append: '%;' | prepend: '--aspect-ratio: '
-    endif
-
-    if text_color != '' and text_color != 'rgba(0,0,0,0)' and icon_image == blank
-      echo '--text: ' | append: text_color | append: ';'
-    endif
-  endcapture
--%}
-
-{%- if forloop.index0 == 0 or prev_block.type != 'feature' -%}
-  <div class="product__block product__features"
-    {% if animations_enabled %}
-      data-aos="hero"
-      data-aos-anchor="{{ animation_anchor }}"
-      data-aos-order="{{ animation_order }}"
-      {%- assign animation_order = animation_order | plus: 1 -%}
-    {% endif %}
-    data-slider
-    {{ block_style }}>
-{%- endif -%}
-
-<div class="product__feature"
-  data-block-id="{{ block_id }}"
-  style="{{ style }}"
-  {{ block.shopify_attributes }}>
-
-  <div class="product__feature__content">
-    {%- unless icon_image == blank and icon_name == 'none' and title == blank -%}
-      <div class="product__feature__icon__container">
-        {%- unless icon_image == blank and icon_name == 'none' -%}
-          <div class="product__icon icon-stroke" style="{{ icon_style }}">
-            {%- if icon_image != blank -%}
+            {%- when 'feature' -%}
               {%- liquid
-                assign retina_size = icon_width | times: 2
-                assign image_widths = icon_width | append: ', ' | append: retina_size
-                assign sizes = icon_width | append: 'px'
+                assign block_id = block.id
+                assign prev_index = forloop.index0 | minus: 1
+                assign next_index = forloop.index0 | plus: 1
+                assign prev_block = section.blocks[prev_index]
+                assign next_block = section.blocks[next_index]
+                assign bg_color = block.settings.bg_color
+                assign text_color = block.settings.text_color
+                assign icon_name = block.settings.icon_name
+                assign title = block.settings.title
+                assign text = block.settings.text
+                assign icon_image = block.settings.icon_image
+                assign icon_width = block.settings.icon_width
+
+                capture style
+                  echo '--bg: ' | append: bg_color | append: ';'
+
+                  if text_color != '' and text_color != 'rgba(0,0,0,0)'
+                    echo '--text: ' | append: text_color | append: ';'
+                    echo '--heading: ' | append: text_color | append: ';'
+                  endif
+
+                  if bg_color != 'rgba(0,0,0,0)' and bg_color != '' and bg_color != section.settings.bg_color
+                    echo 'padding: ' | append: 'var(--grid-gutter);'
+                  endif
+                endcapture
+
+                capture icon_style
+                  echo '--icon-size: ' | append: icon_width | append: 'px;'
+
+                  if icon_image
+                    echo 1 | divided_by: icon_image.aspect_ratio | times: 100 | round: 1 | append: '%;' | prepend: '--aspect-ratio: '
+                  endif
+
+                  if text_color != '' and text_color != 'rgba(0,0,0,0)' and icon_image == blank
+                    echo '--text: ' | append: text_color | append: ';'
+                  endif
+                endcapture
               -%}
-              <div class="product__icon__holder">
-                {%- render 'image',
-                  image: icon_image,
-                  width: retina_size,
-                  sizes: sizes,
-                  widths: image_widths,
-                  classes: 'product__icon__img' -%}
+
+              {%- if forloop.index0 == 0 or prev_block.type != 'feature' -%}
+                <div
+                  class="product__block product__features"
+                  {% if animations_enabled %}
+                    data-aos="hero"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-order="{{ animation_order }}"
+                    {%- assign animation_order = animation_order | plus: 1 -%}
+                  {% endif %}
+                  data-slider
+                  {{ block_style }}
+                >
+              {%- endif -%}
+
+              <div
+                class="product__feature"
+                data-block-id="{{ block_id }}"
+                style="{{ style }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="product__feature__content">
+                  {%- unless icon_image == blank and icon_name == 'none' and title == blank -%}
+                    <div class="product__feature__icon__container">
+                      {%- unless icon_image == blank and icon_name == 'none' -%}
+                        <div class="product__icon icon-stroke" style="{{ icon_style }}">
+                          {%- if icon_image != blank -%}
+                            {%- liquid
+                              assign retina_size = icon_width | times: 2
+                              assign image_widths = icon_width | append: ', ' | append: retina_size
+                              assign sizes = icon_width | append: 'px'
+                            -%}
+                            <div class="product__icon__holder">
+                              {%- render 'image',
+                                image: icon_image,
+                                width: retina_size,
+                                sizes: sizes,
+                                widths: image_widths,
+                                classes: 'product__icon__img'
+                              -%}
+                            </div>
+                          {%- else -%}
+                            {%- render 'icons', icon: icon_name -%}
+                          {%- endif -%}
+                        </div>
+                      {%- endunless -%}
+
+                      {%- if title != blank -%}
+                        <div class="product__feature__heading">
+                          <h5>{{ title }}</h5>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endunless -%}
+
+                  {%- if text != blank -%}
+                    <div class="product__feature__text">
+                      {{ text }}
+                    </div>
+                  {%- endif -%}
+                </div>
               </div>
-            {%- else -%}
-              {%- render 'icons', icon: icon_name -%}
-            {%- endif -%}
-          </div>
-        {%- endunless -%}
 
-        {%- if title != blank -%}
-          <div class="product__feature__heading">
-            <h5>{{ title }}</h5>
-          </div>
-        {%- endif -%}
-      </div>
-    {%- endunless -%}
-
-    {%- if text != blank -%}
-      <div class="product__feature__text">
-        {{ text }}
-      </div>
-    {%- endif -%}
-  </div>
-</div>
-
-{%- if forloop.index == section.blocks.size or next_block.type != 'feature' -%}
-  </div>
-{%- endif -%}
-{%- when 'badges' -%}
+              {%- if forloop.index == section.blocks.size or next_block.type != 'feature' -%}
+                </div>
+              {%- endif -%}
+            {%- when 'badges' -%}
               <div
                 class="product__block"
                 {% if animations_enabled %}
@@ -1597,45 +1694,47 @@
                 assign digits_size_mobile = digits_size | times: 0.8 | at_least: 0.75
                 assign digits_size_unit = digits_size | at_least: 0.8
                 assign digits_size_unit_mobile = digits_size_mobile | at_least: 1
-              -%}{%- liquid
-  assign end_date = block.settings.end_date
-  assign end_time = block.settings.end_time
-  assign period = block.settings.period
-  assign end_message = block.settings.end_message
+              -%}
+              {%- liquid
+                assign end_date = block.settings.end_date
+                assign end_time = block.settings.end_time
+                assign period = block.settings.period
+                assign end_message = block.settings.end_message
 
-  assign end_time_hour = end_time | split: ':' | first | times: 1
-  assign end_time_minute = end_time | split: ':' | last
+                assign end_time_hour = end_time | split: ':' | first | times: 1
+                assign end_time_minute = end_time | split: ':' | last
 
-  capture expiration_date
-    echo end_date
-    echo ' '
-    case period
-      when 'am'
-        case end_time_hour
-          when 0, 12
-            echo '00' | append: ':' | append: end_time_minute
-          else
-            echo end_time
-        endcase
+                capture expiration_date
+                  echo end_date
+                  echo ' '
+                  case period
+                    when 'am'
+                      case end_time_hour
+                        when 0, 12
+                          echo '00' | append: ':' | append: end_time_minute
+                        else
+                          echo end_time
+                      endcase
 
-      when 'pm'
-        capture hour
-          case end_time_hour
-            when 0, 12
-              echo '12'
-            else
-              if end_time_hour < 12
-                echo end_time_hour | plus: 12
-              else
-                echo end_time_hour
-              endif
-          endcase
-        endcapture
+                    when 'pm'
+                      capture hour
+                        case end_time_hour
+                          when 0, 12
+                            echo '12'
+                          else
+                            if end_time_hour < 12
+                              echo end_time_hour | plus: 12
+                            else
+                              echo end_time_hour
+                            endif
+                        endcase
+                      endcapture
 
-        echo hour | append: ':' | append: end_time_minute
-    endcase
-  endcapture
--%}<div
+                      echo hour | append: ':' | append: end_time_minute
+                  endcase
+                endcapture
+              -%}
+              <div
                 class="product__block product__block--timer {{ text_align }}"
                 {% if animations_enabled %}
                   data-aos="hero"
@@ -1920,74 +2019,75 @@
                 {% endif %}
               >
                 <a href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
-              </h1>{%- liquid
-  assign currency_code_enable = settings.currency_code_enable
+              </h1>
+              {%- liquid
+                assign currency_code_enable = settings.currency_code_enable
 
-  if price_size != 1
-    capture price_style
-      echo ' style="'
-      echo '--adjust-body-desktop: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size | append: ');'
-      if price_size_mobile != blank
-        echo ' --adjust-body-mobile: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size_mobile | append: ');'
-      endif
-      echo '"'
-    endcapture
-  endif
+                if price_size != 1
+                  capture price_style
+                    echo ' style="'
+                    echo '--adjust-body-desktop: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size | append: ');'
+                    if price_size_mobile != blank
+                      echo ' --adjust-body-mobile: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size_mobile | append: ');'
+                    endif
+                    echo '"'
+                  endcapture
+                endif
 
-  assign show_saving_badge = settings.show_saving_badge
-  assign saving_badge_type = settings.saving_badge_type
+                assign show_saving_badge = settings.show_saving_badge
+                assign saving_badge_type = settings.saving_badge_type
 
-  # Check final sale status - global setting acts as master switch
-  # Variant-level metafield takes priority over product-level
-  assign is_final_sale = false
+                # Check final sale status - global setting acts as master switch
+                # Variant-level metafield takes priority over product-level
+                assign is_final_sale = false
 
-  if settings.final_sale or current_variant.metafields.theme.final_sale.value or product.metafields.theme.final_sale.value
-    assign is_final_sale = true
-  endif
+                if settings.final_sale or current_variant.metafields.theme.final_sale.value or product.metafields.theme.final_sale.value
+                  assign is_final_sale = true
+                endif
 
-  assign color_body_text = settings.color_body_text
-  assign final_sale_color = settings.final_sale_color
+                assign color_body_text = settings.color_body_text
+                assign final_sale_color = settings.final_sale_color
 
-  if final_sale_color.alpha == 0.0 or final_sale_color == ''
-    assign final_sale_color = color_body_text
-  endif
+                if final_sale_color.alpha == 0.0 or final_sale_color == ''
+                  assign final_sale_color = color_body_text
+                endif
 
-  capture sale_style
-    echo '--final-sale-color: ' | append: final_sale_color | append: ';'
-  endcapture
-  assign discount_amount = ''
-  assign compare_price = current_variant.compare_at_price | times: 1.0
-  assign sale_price = current_variant.price | times: 1.0
+                capture sale_style
+                  echo '--final-sale-color: ' | append: final_sale_color | append: ';'
+                endcapture
+                assign discount_amount = ''
+                assign compare_price = current_variant.compare_at_price | times: 1.0
+                assign sale_price = current_variant.price | times: 1.0
 
-  if compare_price and sale_price
-    if compare_price > sale_price
-      if saving_badge_type == 'percentage'
-        assign discount_difference = compare_price | minus: sale_price
-        assign discount_percentage = discount_difference | divided_by: compare_price | times: 100
-        assign discount_int = discount_percentage | round
-        if discount_int > 0
-          assign discount_amount = discount_int | append: '%'
-        endif
-      else
-        assign discount = compare_price | minus: sale_price
-        if discount > 0
-          if settings.currency_code_enable
-            assign discount_amount = discount | money_with_currency
-          else
-            assign discount_amount = discount | money
-          endif
-        endif
-      endif
-    endif
-  endif
+                if compare_price and sale_price
+                  if compare_price > sale_price
+                    if saving_badge_type == 'percentage'
+                      assign discount_difference = compare_price | minus: sale_price
+                      assign discount_percentage = discount_difference | divided_by: compare_price | times: 100
+                      assign discount_int = discount_percentage | round
+                      if discount_int > 0
+                        assign discount_amount = discount_int | append: '%'
+                      endif
+                    else
+                      assign discount = compare_price | minus: sale_price
+                      if discount > 0
+                        if settings.currency_code_enable
+                          assign discount_amount = discount | money_with_currency
+                        else
+                          assign discount_amount = discount | money
+                        endif
+                      endif
+                    endif
+                  endif
+                endif
 
-  # Only show final sale when there's an actual sale
-  unless compare_price > sale_price
-    assign is_final_sale = false
-  endunless
--%}
+                # Only show final sale when there's an actual sale
+                unless compare_price > sale_price
+                  assign is_final_sale = false
+                endunless
+              -%}
 
-{% capture saving_final_sale_markup %}
+              {% capture saving_final_sale_markup %}
   {% if show_saving_badge or is_final_sale %}
     <span class="product__price--off"
       {% if is_final_sale %} data-final-sale{% endif %}
@@ -2010,93 +2110,96 @@
   {% endif %}
 {% endcapture %}
 
-<div
-  class="product__block product__price-and-badge"
-  {% if animations_enabled %}
-    data-aos="hero"
-    data-aos-anchor="{{ animation_anchor }}"
-    data-aos-order="{{ animation_order }}"
-    {%- assign animation_order = animation_order | plus: 1 -%}
-  {% endif %}
-  {{ block_style }}
->
-  <div class="product__price-wrapper" id="Price-{{ unique }}">
-    <div
-      class="product__price"
-      data-price-wrapper
-      {% if price_style != blank %}
-        {{- price_style -}}
-      {% endif %}
-    >
-      {%- unless product == blank -%}
-        <span
-          data-product-price
-          class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}{% if bold_price %} product__price--bold{% endif %}"
-        >
-          {%- liquid
-            if current_variant.price == 0
-              echo 'products.product.free' | t
-            elsif currency_code_enable
-              echo current_variant.price | money_with_currency
-            else
-              echo current_variant.price | money
-            endif
-          -%}
-        </span>
-      {%- else -%}
-        <span id="ProductPrice" class="product__price--regular{% if bold_price %} product__price--bold{% endif %}">
-          {%- liquid
-            if currency_code_enable
-              echo 1999 | money_with_currency
-            else
-              echo 1999 | money
-            endif
-          -%}
-        </span>
-      {%- endunless -%}
+              <div
+                class="product__block product__price-and-badge"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="{{ animation_order }}"
+                  {%- assign animation_order = animation_order | plus: 1 -%}
+                {% endif %}
+                {{ block_style }}
+              >
+                <div class="product__price-wrapper" id="Price-{{ unique }}">
+                  <div
+                    class="product__price"
+                    data-price-wrapper
+                    {% if price_style != blank %}
+                      {{- price_style -}}
+                    {% endif %}
+                  >
+                    {%- unless product == blank -%}
+                      <span
+                        data-product-price
+                        class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}{% if bold_price %} product__price--bold{% endif %}"
+                      >
+                        {%- liquid
+                          if current_variant.price == 0
+                            echo 'products.product.free' | t
+                          elsif currency_code_enable
+                            echo current_variant.price | money_with_currency
+                          else
+                            echo current_variant.price | money
+                          endif
+                        -%}
+                      </span>
+                    {%- else -%}
+                      <span
+                        id="ProductPrice"
+                        class="product__price--regular{% if bold_price %} product__price--bold{% endif %}"
+                      >
+                        {%- liquid
+                          if currency_code_enable
+                            echo 1999 | money_with_currency
+                          else
+                            echo 1999 | money
+                          endif
+                        -%}
+                      </span>
+                    {%- endunless -%}
 
-      {% comment %}Always render compare price element for subscription price updater{% endcomment %}
-      <s
-        data-compare-price
-        class="product__price--compare{% if bold_price %} product__price--bold{% endif %}"
-        {% unless current_variant.compare_at_price > current_variant.price %}
-          style="display: none;"
-        {% endunless %}
-      >
-        {%- liquid
-          if current_variant.compare_at_price > current_variant.price
-            if currency_code_enable
-              echo current_variant.compare_at_price | money_with_currency
-            else
-              echo current_variant.compare_at_price | money
-            endif
-          else
-            if currency_code_enable
-              echo current_variant.price | money_with_currency
-            else
-              echo current_variant.price | money
-            endif
-          endif
-        -%}
-      </s>
+                    {% comment %}Always render compare price element for subscription price updater{% endcomment %}
+                    <s
+                      data-compare-price
+                      class="product__price--compare{% if bold_price %} product__price--bold{% endif %}"
+                      {% unless current_variant.compare_at_price > current_variant.price %}
+                        style="display: none;"
+                      {% endunless %}
+                    >
+                      {%- liquid
+                        if current_variant.compare_at_price > current_variant.price
+                          if currency_code_enable
+                            echo current_variant.compare_at_price | money_with_currency
+                          else
+                            echo current_variant.compare_at_price | money
+                          endif
+                        else
+                          if currency_code_enable
+                            echo current_variant.price | money_with_currency
+                          else
+                            echo current_variant.price | money
+                          endif
+                        endif
+                      -%}
+                    </s>
 
-      {%- liquid
-        assign units = product.variants | map: 'unit_price' | compact
-        if units[0]
-          assign has_units = true
-        else
-          assign has_units = false
-        endif
-      -%}
+                    {%- liquid
+                      assign units = product.variants | map: 'unit_price' | compact
+                      if units[0]
+                        assign has_units = true
+                      else
+                        assign has_units = false
+                      endif
+                    -%}
 
-      {%- if has_units -%}
-        {%- assign current_variant_unit_price = current_variant.unit_price -%}
+                    {%- if has_units -%}
+                      {%- assign current_variant_unit_price = current_variant.unit_price -%}
 
-        {%- capture unit_price_separator -%}
+                      {%- capture unit_price_separator -%}
           <span aria-hidden="true">/</span><span class="visually-hidden">{{ 'general.accessibility.unit_price_separator' | t }}&nbsp;</span>
         {%- endcapture -%}
 
-        {%- capture unit_price_base_unit -%}
+                      {%- capture unit_price_base_unit -%}
           <span>
             {%- if current_variant.unit_price_measurement -%}
               {% if current_variant.unit_price_measurement.reference_value != 1 %}
@@ -2107,26 +2210,28 @@
           </span>
         {%- endcapture -%}
 
-        <span class="product__unit-price">
-          <span
-            data-product-unit
-            class="product__price--unit{% unless current_variant_unit_price %} hidden{% endunless %}"
-          >
-            <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
-            <span data-product-unit-price id="unit-price-{{ section.id }}">
-              {{- current_variant_unit_price | money -}}
-            </span>
-            {{ unit_price_separator }}
-            <span data-product-base id="unit-price-base-{{ section.id }}">{{ unit_price_base_unit }}</span>
-          </span>
-        </span>
-      {%- endif -%}
+                      <span class="product__unit-price">
+                        <span
+                          data-product-unit
+                          class="product__price--unit{% unless current_variant_unit_price %} hidden{% endunless %}"
+                        >
+                          <span class="visually-hidden">{{ 'products.product.unit_price_label' | t }}</span>
+                          <span data-product-unit-price id="unit-price-{{ section.id }}">
+                            {{- current_variant_unit_price | money -}}
+                          </span>
+                          {{ unit_price_separator }}
+                          <span data-product-base id="unit-price-base-{{ section.id }}">
+                            {{- unit_price_base_unit -}}
+                          </span>
+                        </span>
+                      </span>
+                    {%- endif -%}
 
-      {{ saving_final_sale_markup }}
-    </div>
-  </div>
-</div>
-</div>
+                    {{ saving_final_sale_markup }}
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="popup-quick-view__gallery">
               {{- product_gallery -}}
@@ -2154,22 +2259,24 @@
             -%}
           </div>
 
-          {%- if settings.quick_buy_text == 'cutline' -%}{%- if product.metafields.theme.cutline != blank and product.metafields.theme.cutline.type == 'single_line_text_field' -%}
+          {%- if settings.quick_buy_text == 'cutline' -%}
+            {%- if product.metafields.theme.cutline != blank
+              and product.metafields.theme.cutline.type == 'single_line_text_field'
+            -%}
+              {%- liquid
+                capture style
+                  case cutline_color
+                    when 'body'
+                      echo 'color: var(--text);'
+                    when 'accent'
+                      echo 'color: var(--accent);'
+                  endcase
+                endcapture
+              -%}
 
-{%- liquid
-  capture style
-    case cutline_color
-      when 'body'
-        echo 'color: var(--text);'
-      when 'accent'
-        echo 'color: var(--accent);'
-    endcase
-  endcapture
--%}
-
-  <p class="product-cutline" style="{{ style }}">{{ product.metafields.theme.cutline.value }}</p>
-{%- endif -%}
-{%- elsif settings.quick_buy_text == 'description' -%}
+              <p class="product-cutline" style="{{ style }}">{{ product.metafields.theme.cutline.value }}</p>
+            {%- endif -%}
+          {%- elsif settings.quick_buy_text == 'description' -%}
             <p>{{ product.description | strip_html | truncatewords: settings.quick_buy_text_length }}</p>
           {% endif %}
         </div>
