@@ -140,6 +140,11 @@
         "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
         "disabled": false,
         "settings": {}
+      },
+      "11532412952436166569": {
+        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
@@ -311,7 +316,7 @@
           "section_heading": "#0c0c0f",
           "section_text": "#0c0c0f",
           "section_bg_gradient": "",
-          "btn_primary_bg": "#3d5afe",
+          "btn_primary_bg": "#ff763d",
           "btn_secondary_bg": "#d3d3d3",
           "accent": "#585858",
           "lines_and_border": "#d3d3d3",

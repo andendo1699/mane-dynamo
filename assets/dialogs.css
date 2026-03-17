@@ -1675,7 +1675,7 @@ body:not(.no-outline) model-viewer.focus-visible {
 
 .js-drawer-open-cart .drawer__overlay,
 .js-drawer-open .drawer__overlay {
-  opacity: 0.2;
+  opacity: 0.9;
   visibility: visible;
   will-change: opacity;
 }

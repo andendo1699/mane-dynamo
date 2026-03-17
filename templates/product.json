@@ -15,14 +15,14 @@
         "loox_reviews_loox_rating_n8ymxq": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
-            "contentSize": 12,
+            "contentSize": 14,
             "pattern": "Excellent ([count] reviews)",
             "hideText": false,
-            "alignment": "",
+            "alignment": "left",
             "layout": "",
             "textColor": "",
-            "starColor": "#3d5afe",
-            "showAllReviews": false,
+            "starColor": "#ff763d",
+            "showAllReviews": true,
             "looxOpenFloatingWidget": false,
             "emptyRatingWidget": false
           }
@@ -57,7 +57,7 @@
           "type": "title",
           "settings": {
             "subheading": "none",
-            "title_size": 80,
+            "title_size": 95,
             "padding_bottom": 4
           }
         },
@@ -75,54 +75,32 @@
             "padding_bottom": 10
           }
         },
-        "5a7da3dc-b141-4b27-bac9-8cdc95df856f": {
-          "type": "icon",
+        "icon_list_W4UHqN": {
+          "type": "icon_list",
           "settings": {
             "icon_name": "check",
-            "icon_color": "#3d5afe",
+            "icon_color": "",
             "icon_width": 22,
-            "icon_text": "Fill bald & thinning spots instantly",
             "text_size": 100,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "rgba(0,0,0,0)",
-            "padding_bottom": 6
-          }
-        },
-        "icon_zFch7q": {
-          "type": "icon",
-          "settings": {
-            "icon_name": "check",
-            "icon_color": "#3d5afe",
-            "icon_width": 22,
-            "icon_text": "Looks Like Real Hair, 100% Undetectable",
-            "text_size": 100,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "rgba(0,0,0,0)",
-            "padding_bottom": 6
-          }
-        },
-        "icon_w8ALar": {
-          "type": "icon",
-          "settings": {
-            "icon_name": "check",
-            "icon_color": "#3d5afe",
-            "icon_width": 22,
-            "icon_text": "Sweat & Rain Proof during +48H",
-            "text_size": 100,
-            "width": "full",
-            "text_alignment": "left",
-            "bg_color": "rgba(0,0,0,0)",
-            "padding_bottom": 12
+            "text_1": "Fill bald & thinning spots instantly",
+            "text_2": "Sweat & Rain Proof during +48H",
+            "text_3": "Looks Like Real Hair, 100% Undetectable",
+            "text_4": "",
+            "text_5": "",
+            "bg_color": "#ffffff",
+            "border_color": "#d9d9d9",
+            "border_radius": 12,
+            "padding": 16,
+            "padding_bottom": 10
           }
         },
         "popup_text_hBzxcT": {
           "type": "popup_text",
           "settings": {
+            "icon_name": "warning",
             "text": "tap to see shade guide",
-            "popup_page": "",
-            "padding_bottom": 36
+            "popup_page": "shape-guide",
+            "padding_bottom": 10
           }
         },
         "5f1a2bcb-bf05-4c68-a02c-8109b61d0071": {
@@ -137,22 +115,28 @@
         "icon_row_Ueaajz": {
           "type": "icon_row",
           "settings": {
-            "icon_name_1": "truck",
+            "icon_name_1": "none",
             "icon_color_1": "",
-            "icon_width_1": 20,
-            "icon_text_1": "Ships within 24h  with tracking",
-            "icon_name_2": "check",
+            "icon_image_1": "shopify://shop_images/box.webp",
+            "icon_width_1": 40,
+            "icon_text_1": "Ships within 24h",
+            "icon_subtext_1": "with tracking",
+            "icon_name_2": "none",
             "icon_color_2": "",
-            "icon_width_2": 20,
-            "icon_text_2": "60 days returns  guarantee",
+            "icon_image_2": "shopify://shop_images/check.png",
+            "icon_width_2": 40,
+            "icon_text_2": "60 days returns",
+            "icon_subtext_2": "guarantee",
             "icon_name_3": "none",
             "icon_color_3": "",
             "icon_width_3": 20,
             "icon_text_3": "",
+            "icon_subtext_3": "",
             "icon_name_4": "none",
             "icon_color_4": "",
             "icon_width_4": 20,
             "icon_text_4": "",
+            "icon_subtext_4": "",
             "alignment": "left",
             "bg_color": "#ff763d",
             "padding_bottom": 0
@@ -177,11 +161,41 @@
             "padding_bottom": 20
           }
         },
-        "text_yJT7qq": {
-          "type": "text",
+        "video_slider_dy33RH": {
+          "type": "video-slider",
           "settings": {
-            "title": "<p><strong>Autoplay videos & images here</strong></p>",
-            "text_alignment": "left",
+            "video_1": "shopify://files/videos/4177894-hd_1080_1920_30fps.mp4",
+            "video_url_1": "",
+            "username_1": "",
+            "comment_1": "",
+            "video_2": "shopify://files/videos/Mane Hair Touch Up video for Beards.mp4",
+            "video_url_2": "",
+            "username_2": "",
+            "comment_2": "",
+            "video_3": "shopify://files/videos/Mane Hair Touch Up Video.mp4",
+            "video_url_3": "",
+            "username_3": "",
+            "comment_3": "",
+            "video_4": "shopify://files/videos/Mane-UK-TVC-Q1-2020-ASW-MNHS006-030.mp4",
+            "video_url_4": "",
+            "username_4": "",
+            "comment_4": "",
+            "video_url_5": "",
+            "username_5": "",
+            "comment_5": "",
+            "video_url_6": "",
+            "username_6": "",
+            "comment_6": "",
+            "slides_per_view": 3,
+            "card_border_radius": 16,
+            "card_gap": 8,
+            "arrow_bg_color": "#333333",
+            "arrow_icon_color": "#ffffff",
+            "arrow_size": 44,
+            "overlay_bg_color": "#1a1a1a",
+            "overlay_text_color": "#ffffff",
+            "play_btn_bg_color": "#1a1a1a",
+            "play_btn_icon_color": "#ffffff",
             "padding_bottom": 20
           }
         },
@@ -193,10 +207,13 @@
             "show_read_more": true,
             "open_by_default": false,
             "enable_full_width": false,
-            "tabs_bg_color": "#f4f4f4",
-            "show_accordion_divider": false,
+            "tabs_bg_color": "rgba(0,0,0,0)",
+            "show_accordion_divider": true,
             "line_thickness": "normal",
             "accordion_heading": "What is it?",
+            "heading_icon": "flower",
+            "heading_icon_color": "",
+            "heading_icon_size": 16,
             "heading_style": "font-heading",
             "accordion_text": "<p>Use this accordion to add info such as Materials, Sizing, Features, Shipping and Returns policies</p>",
             "accordion_page": "",
@@ -211,10 +228,13 @@
             "show_read_more": true,
             "open_by_default": false,
             "enable_full_width": false,
-            "tabs_bg_color": "#f4f4f4",
+            "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
             "accordion_heading": "What if I have completely bald areas?",
+            "heading_icon": "star",
+            "heading_icon_color": "",
+            "heading_icon_size": 16,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
@@ -229,10 +249,13 @@
             "show_read_more": true,
             "open_by_default": false,
             "enable_full_width": false,
-            "tabs_bg_color": "#f4f4f4",
+            "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
             "accordion_heading": "How to apply?",
+            "heading_icon": "star",
+            "heading_icon_color": "",
+            "heading_icon_size": 16,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
@@ -247,119 +270,39 @@
             "show_read_more": true,
             "open_by_default": false,
             "enable_full_width": false,
-            "tabs_bg_color": "#f4f4f4",
+            "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
             "accordion_heading": "Shipping & Returns",
+            "heading_icon": "star",
+            "heading_icon_color": "",
+            "heading_icon_size": 16,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
-            "padding_bottom": 8
+            "padding_bottom": 12
           }
         },
-        "upsell": {
-          "type": "upsell",
-          "disabled": true,
+        "offer_banner_VJmRmB": {
+          "type": "offer_banner",
           "settings": {
-            "product_list": [],
-            "padding_bottom": 20
-          }
-        },
-        "7181af84-cfe3-4539-81df-d624105fdd05": {
-          "type": "feature",
-          "disabled": true,
-          "settings": {
-            "icon_name": "message",
-            "icon_width": 25,
-            "title": "Need help?",
-            "text": "<p>Our mission is to help you find the ideal backpack that suits your lifestyle, comfort, and storage needs. With our extensive range of backpacks designed for every purpose finding the right size has never been easier.</p>",
-            "bg_color": "#f4f4f4",
-            "text_color": "#000000",
-            "padding_bottom": 28
-          }
-        },
-        "product_accordion_dNtTAp": {
-          "type": "product_accordion",
-          "disabled": true,
-          "settings": {
-            "accordion_style": "collapsible",
-            "show_description": false,
-            "show_read_more": true,
-            "open_by_default": false,
-            "enable_full_width": true,
-            "tabs_bg_color": "#f4f4f4",
-            "show_accordion_divider": false,
-            "line_thickness": "normal",
-            "accordion_heading": "Does this product come with a warranty?",
-            "heading_style": "font-heading",
-            "accordion_text": "<p>Use this accordion to add info such as Materials, Sizing, Features, Shipping and Returns policies</p>",
-            "accordion_page": "",
-            "padding_bottom": 8
-          }
-        },
-        "product_accordion_CFPtYX": {
-          "type": "product_accordion",
-          "disabled": true,
-          "settings": {
-            "accordion_style": "collapsible",
-            "show_description": false,
-            "show_read_more": true,
-            "open_by_default": false,
-            "enable_full_width": true,
-            "tabs_bg_color": "#f4f4f4",
-            "show_accordion_divider": false,
-            "line_thickness": "normal",
-            "accordion_heading": "How durable are the materials used?",
-            "heading_style": "font-heading",
-            "accordion_text": "<p>Utility bags are typically made of strong, durable materials such as canvas, nylon, and leather. They are designed to handle daily wear and tear, so they should last for many years proper care and maintenance.</p>",
-            "accordion_page": "",
-            "padding_bottom": 8
-          }
-        },
-        "product_accordion_YXUqzA": {
-          "type": "product_accordion",
-          "disabled": true,
-          "settings": {
-            "accordion_style": "collapsible",
-            "show_description": false,
-            "show_read_more": true,
-            "open_by_default": false,
-            "enable_full_width": true,
-            "tabs_bg_color": "#f4f4f4",
-            "show_accordion_divider": false,
-            "line_thickness": "normal",
-            "accordion_heading": "Are these bags drop-proof?",
-            "heading_style": "font-heading",
-            "accordion_text": "<p>Yes, our bags are usually made of tough and durable materials, like Kevlar and ballistic nylon, that can withstand impacts and shock. They also have reinforced seams and zippers to prevent the contents from spilling.</p>",
-            "accordion_page": "",
-            "padding_bottom": 8
-          }
-        },
-        "product_accordion_H8chtK": {
-          "type": "product_accordion",
-          "disabled": true,
-          "settings": {
-            "accordion_style": "collapsible",
-            "show_description": false,
-            "show_read_more": true,
-            "open_by_default": false,
-            "enable_full_width": true,
-            "tabs_bg_color": "#f4f4f4",
-            "show_accordion_divider": false,
-            "line_thickness": "normal",
-            "accordion_heading": "What kind of padding is used in the bags?",
-            "heading_style": "font-heading",
-            "accordion_text": "<p>Utility bags usually have some form of cushioning or padding in them to protect the items inside. Foam padding and filler material are both commonly used. The thickness of the padding can vary depending on the type of bag and its intended use.</p>",
-            "accordion_page": "",
-            "padding_bottom": 20
-          }
-        },
-        "description_Vywz6F": {
-          "type": "description",
-          "disabled": true,
-          "settings": {
-            "enable_full_width": true,
-            "padding_bottom": 26
+            "badge_text": "🌸 SPRING OFFER LIVE!",
+            "heading": "",
+            "subtext": "<p>Limited time only: <strong>from February 27 to March 04</strong></p>",
+            "benefit_1": "✓ 60-Day Guarantee",
+            "benefit_2": "✓ Free Express Shipping",
+            "benefit_3": "✓ Instant Result",
+            "shell_bg_color": "#f5f2eb",
+            "main_bg_color": "#e45216",
+            "main_bg_color_2": "#e45216",
+            "bottom_bg_color": "#b13400",
+            "badge_text_color": "#fff7f1",
+            "badge_icon_color": "#ffb1b1",
+            "heading_color": "#efeaff",
+            "subtext_color": "#ffffff",
+            "benefit_text_color": "#f7f7ff",
+            "benefit_icon_color": "#f7f7ff",
+            "padding_bottom": 0
           }
         }
       },
@@ -370,66 +313,154 @@
         "inventory_countdown",
         "title",
         "icon_QN8Th9",
-        "5a7da3dc-b141-4b27-bac9-8cdc95df856f",
-        "icon_zFch7q",
-        "icon_w8ALar",
+        "icon_list_W4UHqN",
         "popup_text_hBzxcT",
         "5f1a2bcb-bf05-4c68-a02c-8109b61d0071",
         "icon_row_Ueaajz",
         "essential_countdown_timer_app_block_fekk3W",
         "fit_guide_n4Hd4n",
-        "text_yJT7qq",
+        "video_slider_dy33RH",
         "product_accordion",
         "8b0185a6-0d1e-4952-bac7-d0a1b7b805e6",
         "product_accordion_Nenqxp",
         "product_accordion_FaXqhG",
-        "upsell",
-        "7181af84-cfe3-4539-81df-d624105fdd05",
-        "product_accordion_dNtTAp",
-        "product_accordion_CFPtYX",
-        "product_accordion_YXUqzA",
-        "product_accordion_H8chtK",
-        "description_Vywz6F"
+        "offer_banner_VJmRmB"
       ],
       "settings": {
         "product_sticky_enable": true,
-        "image_layout": "grid",
+        "image_layout": "thumbnails_left",
         "image_width": "large",
         "product_image_aspect_ratio": true,
         "show_cart_bar": true,
         "enable_zoom": true,
         "enable_video_looping": false,
-        "color_scheme": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full-padded",
+        "padding_top": 40,
+        "padding_bottom": 20
       }
     },
-    "section_text_ehzCfb": {
+    "section_divider_WETYFG": {
+      "type": "section-divider",
+      "name": "Divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full",
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "section_text_nXcUf8": {
       "type": "section-text",
       "blocks": {
-        "heading_iLkpiC": {
+        "heading_h4LTz3": {
           "type": "heading",
           "settings": {
-            "text": "<p>Autoplay Video slider Section here</p>",
+            "text": "<h2><em>Undetectable</em> results guys trust</h2>",
             "size": 100,
-            "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000000",
+            "heading_highlight_type": "underline",
+            "highlight_color": "#ff763d",
             "highlight_text_color": ""
+          }
+        },
+        "text_yMRPy3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Swipe to see their transformations →<br/><em>(and imagine yours)</em></p>",
+            "size": 100
           }
         }
       },
       "block_order": [
-        "heading_iLkpiC"
+        "heading_h4LTz3",
+        "text_yMRPy3"
       ],
       "name": "Text",
       "settings": {
         "scroll_reveal_text": false,
         "text_position": "center",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
         "width": "wrapper--narrow",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 0
+      }
+    },
+    "section_video_slider_D3qt74": {
+      "type": "section-video-slider",
+      "blocks": {
+        "video_nW9rcY": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/4177894-hd_1080_1920_30fps.mp4"
+          }
+        },
+        "video_jVVAa9": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Mane Hair Touch Up video for Beards.mp4"
+          }
+        },
+        "video_wX6yna": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Mane Hair Touch Up Video.mp4"
+          }
+        },
+        "video_ViBbBJ": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Mane-UK-TVC-Q1-2020-ASW-MNHS006-030.mp4"
+          }
+        },
+        "video_YTQMFP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/6616733-uhd_2160_4096_25fps.mp4"
+          }
+        },
+        "video_LMXmUW": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/7388177-uhd_2160_3840_24fps.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_nW9rcY",
+        "video_jVVAa9",
+        "video_wX6yna",
+        "video_ViBbBJ",
+        "video_YTQMFP",
+        "video_LMXmUW"
+      ],
+      "name": "Video slider",
+      "settings": {
+        "title": "",
+        "heading_size": 8,
+        "align_heading": "text-left",
+        "slide_width": 240,
+        "slide_width_mobile": 200,
+        "card_border_radius": 16,
+        "card_gap": 12,
+        "arrow_bg_color": "#333333",
+        "arrow_icon_color": "#ffffff",
+        "arrow_size": 48,
+        "bg": "palette--dark bg--invert--accent",
+        "width": "wrapper",
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
+    },
+    "section_divider_CtFQEY": {
+      "type": "section-divider",
+      "name": "Divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full",
+        "padding_top": 20,
+        "padding_bottom": 0
       }
     },
     "section_text_jAw8WG": {
@@ -440,8 +471,8 @@
           "settings": {
             "text": "<h2>That bald spot that haunts you <em>every morning?</em></h2>",
             "size": 100,
-            "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000000",
+            "heading_highlight_type": "underline",
+            "highlight_color": "#ff763d",
             "highlight_text_color": ""
           }
         },
@@ -461,10 +492,10 @@
       "settings": {
         "scroll_reveal_text": false,
         "text_position": "center",
-        "color_scheme": "",
-        "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 20
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full-padded",
+        "padding_top": 20,
+        "padding_bottom": 26
       }
     },
     "section_columns_XkzKYD": {
@@ -524,14 +555,14 @@
         "columns": 2,
         "show_images": true,
         "show_borders": false,
-        "layout_mobile": "grid",
+        "layout_mobile": "stacked",
         "columns_mobile": "1",
         "equalize_height": true,
         "desktop_aspect_ratio": 1,
         "mobile_aspect_ratio": 1,
-        "color_scheme": "",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
         "color_borders": "#000000",
-        "width": "wrapper",
+        "width": "wrapper--full-padded",
         "padding_top": 0,
         "padding_bottom": 60
       }
@@ -545,8 +576,8 @@
             "title": "<h2><strong>Complete </strong><em><strong>Coverage</strong></em><strong>, Everywhere It Matters</strong></h2>",
             "size": 120,
             "text_position": "left",
-            "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000000",
+            "heading_highlight_type": "underline",
+            "highlight_color": "#ff763d",
             "highlight_text_color": "",
             "spacing_bottom": 12
           }
@@ -570,18 +601,18 @@
         "show_accordion_divider": true,
         "increase_border_radius": false,
         "section_height": "six-fifty-height",
-        "enable_mobile_height": false,
-        "mobile_height": "four-fifty-height-mobile",
+        "enable_mobile_height": true,
+        "mobile_height": "three-fifty-height-mobile",
         "layout": "inline",
         "image_location": "left",
         "image_width": "standard",
         "image": "shopify://shop_images/15_716257aa-85dd-4c00-96dd-00a0f150de7a.webp",
         "block_bg_color": "",
-        "color_scheme": "",
-        "section_width": "wrapper",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "section_width": "wrapper--full-padded",
         "add_gutter": true,
         "padding_top": 0,
-        "padding_bottom": 30
+        "padding_bottom": 20
       }
     },
     "section_text_q3wkxg": {
@@ -601,6 +632,7 @@
       "block_order": [
         "heading_ejRpYa"
       ],
+      "disabled": true,
       "name": "Text",
       "settings": {
         "scroll_reveal_text": false,
@@ -611,58 +643,307 @@
         "padding_bottom": 60
       }
     },
-    "section_text_aF8rFj": {
-      "type": "section-text",
+    "section_marquee_nPWgLj": {
+      "type": "section-marquee",
       "blocks": {
-        "heading_zpVzct": {
-          "type": "heading",
+        "text_dftbR4": {
+          "type": "text",
           "settings": {
-            "text": "<h2>Approved by 300+ <em>professional barbers</em> section</h2>",
-            "size": 100,
+            "text": "<h1>OFFER ENDS TODAY</h1>",
+            "text_color": "",
             "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#f4f4f4",
-            "highlight_text_color": ""
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 25,
+            "target_device_enabled": false,
+            "target_device": "mobile"
           }
         }
       },
       "block_order": [
-        "heading_zpVzct"
+        "text_dftbR4"
       ],
-      "name": "Text",
+      "name": "Marquee",
       "settings": {
-        "scroll_reveal_text": false,
-        "text_position": "center",
-        "color_scheme": "scheme-5",
-        "width": "wrapper--narrow",
-        "padding_top": 60,
+        "layout": "marquee",
+        "show_top_border": false,
+        "show_bottom_border": false,
+        "padding": 5,
+        "marquee_speed": 50,
+        "direction": "ticker-rtl",
+        "slider_speed": 10,
+        "show_arrows": false,
+        "text_caps": true,
+        "type_font": "sans_serif_n7",
+        "text_size": 300,
+        "text_size_mobile": 250,
+        "letter_spacing": 0,
+        "message_spacing": 65,
+        "color_scheme": "scheme-8",
+        "color": "",
+        "border_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "section_reviews_slider_LX8jYP": {
+      "type": "section-reviews-slider",
+      "blocks": {
+        "review_b9hpfa": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/HAIRO_NEW_SHOOT_25.webp",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"I was skeptical about trying this and put it off for months. It seemed too good to be true but thought there's only one way to find out so I ordered some and I was not disappointed. Doesn't give me 100% coverage but a damn sight better than without!\"",
+            "customer_name": "Carlos",
+            "customer_age": "39"
+          }
+        },
+        "review_MJx46P": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/23.webp",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"Was wearing baseball caps to client meetings. Now my clients look at me, not my forehead. Paid £25 for 1, then instantly regretted not going for 2. You WILL reorder, just be smart and save money the first time.\"",
+            "customer_name": "Michael",
+            "customer_age": "45"
+          }
+        },
+        "review_X3Q3gh": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/HAIRO_NEW_SHOOT_24_1.webp",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"The product was incredibly easy to use and completely mess-free. It lasts significantly longer than any other product I’ve tried, which makes it even more impressive. comes with a built in applicator and is convenient to take with you wherever you go.\"",
+            "customer_name": "Jake",
+            "customer_age": "29"
+          }
+        },
+        "review_CcgKbq": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/30.webp",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"The Hairo filler arrived very quickly after placing the order, I ordered 3 pots for a great price. I use the filler most days on a thinning spot near the crown of my hair and the results are amazing. It’s easy to apply and isn’t messy to use\"",
+            "customer_name": "David",
+            "customer_age": "41"
+          }
+        },
+        "review_NRLrJC": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/26.webp",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"I genuinely found the hair density I wanted at my hairline. My wife just said I looked great, and some of my friends even regretted their hair transplant after trying this\"",
+            "customer_name": "Marcus",
+            "customer_age": "34"
+          }
+        },
+        "review_wrJjeq": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/28.jpg",
+            "star_rating": 5,
+            "card_background": "#ffffff",
+            "card_border": "#d6d9e1",
+            "text_color": "#212121",
+            "star_color": "#ff763d",
+            "review_text": "\"I’ve been using Hairo and I’m very impressed with the results. It provides a natural-looking cover-up and performs better than other hair fibers I’ve tried. It’s ideal for people with thinning hair or small bald patches\"",
+            "customer_name": "Robert",
+            "customer_age": "52"
+          }
+        }
+      },
+      "block_order": [
+        "review_b9hpfa",
+        "review_MJx46P",
+        "review_X3Q3gh",
+        "review_CcgKbq",
+        "review_NRLrJC",
+        "review_wrJjeq"
+      ],
+      "name": "Reviews slider",
+      "settings": {
+        "title": "Thousands of men have reclaimed their confidence",
+        "heading_size": 100,
+        "columns": 4,
+        "desktop_aspect_ratio": 1.2,
+        "mobile_aspect_ratio": 1.2,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "card_background": "#ffffff",
+        "card_border": "#585858",
+        "star_color": "#ff763d",
+        "star_size": 20,
+        "star_spacing": 4,
+        "width": "wrapper--full-padded",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "section_divider_zPrEex": {
+      "type": "section-divider",
+      "name": "Divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full",
+        "padding_top": 20,
+        "padding_bottom": 18
+      }
+    },
+    "section_columns_bxP3Vg": {
+      "type": "section-columns",
+      "blocks": {
+        "text_block_yHhYyq": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
+            "image_width": 100,
+            "title": "Marco D'Angelo",
+            "subheading": "Elite Cuts Barbershop, London UK",
+            "rating_stars": 5,
+            "rating_color": "#0c0c0f",
+            "heading_size": 120,
+            "text": "<p>12 years cutting hair. HAIRO looks more natural than expensive transplants. Now I recommend it over costly procedures. Game changer for my older clients.</p>",
+            "text_size": 120,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": ""
+          }
+        },
+        "text_block_xHkNwa": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
+            "image_width": 100,
+            "title": "Marco D'Angelo",
+            "subheading": "Prestige Barber Lounge, Austin TX",
+            "rating_stars": 5,
+            "rating_color": "#0c0c0f",
+            "heading_size": 120,
+            "text": "<p>No fallout on my tools like those messy fibers. Three regulars said their wives noticed they looked 'sharper.' Now I keep it stocked</p>",
+            "text_size": 120,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--medium",
+            "video_link_popup": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_block_yHhYyq",
+        "text_block_xHkNwa"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "title": "Approved by 300+ professional barbers across the US & UK",
+        "heading_size": 80,
+        "layout_desktop": "carousel",
+        "align_text": "text-left",
+        "columns": 4,
+        "show_images": true,
+        "show_borders": false,
+        "layout_mobile": "carousel",
+        "columns_mobile": "1",
+        "equalize_height": true,
+        "desktop_aspect_ratio": 1,
+        "mobile_aspect_ratio": 1,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "color_borders": "#000000",
+        "width": "wrapper--full-padded",
+        "padding_top": 10,
         "padding_bottom": 60
       }
     },
-    "section_text_bNNKmU": {
-      "type": "section-text",
+    "section_image_with_text_UEfFgt": {
+      "type": "section-image-with-text",
       "blocks": {
-        "heading_ntfYhA": {
+        "heading_4cpAKm": {
           "type": "heading",
           "settings": {
-            "text": "<h2>32,000+ reviews section</h2>",
-            "size": 100,
+            "title": "<h2><strong>32,000+</strong></h2>",
+            "size": 190,
+            "text_position": "left",
             "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#f4f4f4",
-            "highlight_text_color": ""
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "spacing_bottom": 0
+          }
+        },
+        "text_xzJtqD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Real Results, Real Guys</p>",
+            "size": 160,
+            "text_position": "left",
+            "spacing_bottom": 12
+          }
+        },
+        "rating_badge_a3i7W4": {
+          "type": "rating_badge",
+          "settings": {
+            "avatar_1": "shopify://shop_images/imgi_12_36.png",
+            "avatar_2": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
+            "avatar_3": "shopify://shop_images/imgi_11_41.png",
+            "avatar_4": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
+            "avatar_5": "shopify://shop_images/image4.png",
+            "rating_stars": 5,
+            "rating_color": "#ff763d",
+            "caption": "*Rating is verified by real users only",
+            "text_position": "left",
+            "spacing_bottom": 12
           }
         }
       },
       "block_order": [
-        "heading_ntfYhA"
+        "heading_4cpAKm",
+        "text_xzJtqD",
+        "rating_badge_a3i7W4"
       ],
-      "name": "Text",
+      "name": "Image with text",
       "settings": {
-        "scroll_reveal_text": false,
-        "text_position": "center",
-        "color_scheme": "scheme-5",
-        "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "show_accordion_divider": false,
+        "increase_border_radius": false,
+        "section_height": "six-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_height": "three-fifty-height-mobile",
+        "layout": "inline",
+        "image_location": "left",
+        "image_width": "standard",
+        "image": "shopify://shop_images/HAIRO_ROLL_ON_6_800x_79d6f8cc-149d-4564-883d-13109dedd54e.webp",
+        "block_bg_color": "",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "section_width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "section_image_with_text_gzbcaj": {
@@ -699,18 +980,29 @@
         "show_accordion_divider": true,
         "increase_border_radius": true,
         "section_height": "four-fifty-height",
-        "enable_mobile_height": false,
-        "mobile_height": "four-fifty-height-mobile",
+        "enable_mobile_height": true,
+        "mobile_height": "two-fifty-height-mobile",
         "layout": "inline",
         "image_location": "right",
         "image_width": "standard",
         "image": "shopify://shop_images/20_b998888c-b593-4d11-b5c4-d526c25586a9.webp",
         "block_bg_color": "#ff763d",
-        "color_scheme": "scheme-ee9604a6-53bd-4b7e-bd55-6e554c4d1734",
-        "section_width": "wrapper",
+        "color_scheme": "scheme-615e575a-8b18-4e78-b5e4-e67709da8254",
+        "section_width": "wrapper--full-padded",
         "add_gutter": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "section_divider_yxDniq": {
+      "type": "section-divider",
+      "name": "Divider",
+      "settings": {
+        "show_line": true,
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "width": "wrapper--full-padded",
+        "padding_top": 20,
+        "padding_bottom": 18
       }
     },
     "section_accordions_dPF7hd": {
@@ -719,29 +1011,50 @@
         "text_gUih7Y": {
           "type": "text",
           "settings": {
-            "title": "How long does it take to get my products?",
-            "text": "<p>Domestic shipping can take up to 5 business days.<br/><br/>Foreign shipping could take up to 14 business days.<br/><br/>Due to global supply chain challenges, shipping times could be longer than usual.</p>"
+            "title": "What is Mane?",
+            "text": "<p>Mane is a micro fine cosmetic powder for making fine or thinning hair look thicker. It instantly increases the apparent thickness and density of the hair, so creating a natural finish, dramatically adding texture and volume to any kind of hair. Mane is the original and most effective product of its kind.</p>"
           }
         },
         "text_FCw4c8": {
           "type": "text",
           "settings": {
-            "title": "Do you offer warranty for your products?",
-            "text": "<p>All our products are subject to quality control.<br/><br/>Our warranty provides a guarantee against manufacturer defects.<br/><br/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br/><br/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.</p>"
+            "title": "How do I use it?",
+            "text": "<p>Mane must be applied when the hair is clean and dry and should be sprayed through the hair roots. It is not necessary to over spray the hair lengths. After applying your hair will look fuller and give you that extra confidence. Your previous concerns about your thinning hair will disappear.</p>"
           }
         },
         "text_iCekGA": {
           "type": "text",
           "settings": {
-            "title": "Do you offer refunds?",
-            "text": "<p>Yes, we offer full and partial refunds.<br/><br/>Please enquire for more information about our Refund policy.</p>"
+            "title": "How often do I wash my hair?",
+            "text": "<p>For best results you should shampoo your hair daily to increase the effectiveness of the product and maintain hygiene levels.</p>"
           }
         },
         "text_dAAaHm": {
           "type": "text",
           "settings": {
-            "title": "What shipping methods do you offer?",
-            "text": "<p>We use all major carriers, and local courier partners. Use the shipping estimator in the cart to check your shipping rates.</p>"
+            "title": "Can Mane harm my scalp?",
+            "text": "<p>Mane is a non-allergenic product, the ingredients of which have been tested and used in all cosmetic and skin applications such as lipsticks and eye make-up. Mane has been widely used for over thirty years in the entertainment industry and by many thousands of the general public.</p>"
+          }
+        },
+        "text_bMeDMa": {
+          "type": "text",
+          "settings": {
+            "title": "Can I use other with Mane?",
+            "text": "<p>Yes. Mane is natural and inert and so you can use any products you like with it. It is recommended by Doctors and is compatible for use with other hair loss medications and with styling products.</p>"
+          }
+        },
+        "text_KXiBrF": {
+          "type": "text",
+          "settings": {
+            "title": "What does Mane Seal and Control do?",
+            "text": "<p>Mane Seal and Control has been specially formulated to be used after applying the Mane Hair Thickening Spray, to hold and seal the thickener in place to give your hair that fuller, more natural look. It also protects the thickener from rubbing off or running in the wet.</p>"
+          }
+        },
+        "text_QN6kpR": {
+          "type": "text",
+          "settings": {
+            "title": "Will Mane run in the wet?",
+            "text": "<p>Once Mane Hair Thickener is sealed with Mane Seal and Control, it is water, rain, wind and perspiration resistant. We do recommend however that wet hair be allowed to dry naturally rather than rubbing rigorously with a dry towel.</p>"
           }
         }
       },
@@ -749,444 +1062,33 @@
         "text_gUih7Y",
         "text_FCw4c8",
         "text_iCekGA",
-        "text_dAAaHm"
+        "text_dAAaHm",
+        "text_bMeDMa",
+        "text_KXiBrF",
+        "text_QN6kpR"
       ],
       "name": "Accordions",
       "settings": {
         "layout": "one-column",
-        "show_accordion_divider": false,
-        "line_thickness": "normal",
-        "subheading": "",
-        "title": "Frequently Asked Questions",
-        "type_style": "font-heading",
-        "heading_size": 120,
-        "text": "<p>Your Final Questions Answered</p>",
-        "tabs_bg_color": "#fafafa",
-        "color_scheme": "scheme-1",
-        "border_color": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "section_image_hFAaQa": {
-      "type": "section-image",
-      "disabled": true,
-      "settings": {
-        "height": "six-fifty-height",
-        "enable_mobile_height": true,
-        "mobile_height": "one-third-height-mobile",
-        "enable_stretch": true,
-        "image_position": "center",
-        "color_scheme": "",
-        "width": "wrapper",
-        "padding_top": 20,
-        "padding_bottom": 100
-      }
-    },
-    "section_image_with_text_wXTEDq": {
-      "type": "section-image-with-text",
-      "blocks": {
-        "heading_XHQXDa": {
-          "type": "heading",
-          "settings": {
-            "title": "<p>Image with text</p>",
-            "size": 120,
-            "text_position": "left",
-            "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000000",
-            "highlight_text_color": "",
-            "spacing_bottom": 12
-          }
-        },
-        "text_N8KLMN": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "size": 100,
-            "text_position": "left",
-            "spacing_bottom": 12
-          }
-        },
-        "text_R9ERVe": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "size": 100,
-            "text_position": "left",
-            "spacing_bottom": 12
-          }
-        }
-      },
-      "block_order": [
-        "heading_XHQXDa",
-        "text_N8KLMN",
-        "text_R9ERVe"
-      ],
-      "disabled": true,
-      "settings": {
         "show_accordion_divider": true,
-        "increase_border_radius": false,
-        "section_height": "six-fifty-height",
-        "enable_mobile_height": false,
-        "mobile_height": "four-fifty-height-mobile",
-        "layout": "inline",
-        "image_location": "right",
-        "image_width": "standard",
-        "block_bg_color": "",
-        "color_scheme": "scheme-3",
-        "section_width": "wrapper",
-        "add_gutter": true,
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "165104010373974e3d": {
-      "type": "section-accordions",
-      "blocks": {
-        "1651040103e3874ae9-1": {
-          "type": "text",
-          "settings": {
-            "title": "Does this product come with a warranty?",
-            "text": "<p>All our products are subject to quality control.<br/><br/>Our warranty provides a guarantee against manufacturer defects.<br/><br/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br/><br/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.</p>"
-          }
-        },
-        "43df9585-9879-41aa-96c3-cf9705d2fb9a": {
-          "type": "text",
-          "settings": {
-            "title": "How durable are the materials used?",
-            "text": "<p>Utility bags are typically made of strong, durable materials such as canvas, nylon, and leather. They are designed to handle daily wear and tear, so they should last for many years proper care and maintenance.</p>"
-          }
-        },
-        "71da687a-5e3d-4655-b29c-94a53f8134b6": {
-          "type": "text",
-          "settings": {
-            "title": "Are these bags drop-proof?",
-            "text": "<p>Yes, our bags are usually made of tough and durable materials, like Kevlar and ballistic nylon, that can withstand impacts and shock. They also have reinforced seams and zippers to prevent the contents from spilling.</p>"
-          }
-        },
-        "732e74c0-f3f8-4fcb-8d61-6a44af68845e": {
-          "type": "text",
-          "settings": {
-            "title": "What kind of padding is used in the bags?",
-            "text": "<p>Utility bags usually have some form of cushioning or padding in them to protect the items inside. Foam padding and filler material are both commonly used. The thickness of the padding can vary depending on the type of bag and its intended use.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "1651040103e3874ae9-1",
-        "43df9585-9879-41aa-96c3-cf9705d2fb9a",
-        "71da687a-5e3d-4655-b29c-94a53f8134b6",
-        "732e74c0-f3f8-4fcb-8d61-6a44af68845e"
-      ],
-      "disabled": true,
-      "settings": {
-        "layout": "two-columns",
-        "show_accordion_divider": false,
         "line_thickness": "normal",
         "subheading": "",
         "title": "FAQ",
         "type_style": "font-heading",
         "heading_size": 120,
-        "text": "<p>Popular questions from our customers</p>",
-        "tabs_bg_color": "#f5f5f5",
-        "color_scheme": "",
-        "border_color": "",
-        "width": "wrapper",
-        "padding_top": 80,
+        "text": "<p>Your Final Questions Answered</p>",
+        "tabs_bg_color": "rgba(0,0,0,0)",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
+        "border_color": "#d3d3d382",
+        "width": "wrapper--narrow",
+        "padding_top": 20,
         "padding_bottom": 20
       }
     },
-    "1663134720ac787bcd": {
-      "type": "section-icons-row",
-      "blocks": {
-        "1663134719e2f2df05-0": {
-          "type": "text",
-          "settings": {
-            "icon_name": "fair-trade",
-            "title": "",
-            "text": "<p>Made in USA</p>"
-          }
-        },
-        "1663134719e2f2df05-2": {
-          "type": "text",
-          "settings": {
-            "icon_name": "check",
-            "title": "",
-            "text": "<p>Premium Quality</p>"
-          }
-        },
-        "1663134719e2f2df05-1": {
-          "type": "text",
-          "settings": {
-            "icon_name": "recycle",
-            "title": "",
-            "text": "<p>Recycled Materials</p>"
-          }
-        },
-        "c96b387c-9986-4f8d-8263-5be4c5983557": {
-          "type": "text",
-          "settings": {
-            "icon_name": "shield",
-            "title": "",
-            "text": "<p>Water Resistant</p>"
-          }
-        }
-      },
-      "block_order": [
-        "1663134719e2f2df05-0",
-        "1663134719e2f2df05-2",
-        "1663134719e2f2df05-1",
-        "c96b387c-9986-4f8d-8263-5be4c5983557"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "alignment": "inline-center",
-        "columns": 4,
-        "icons_width": 35,
-        "show_vertical_borders": true,
-        "show_top_border": true,
-        "show_bottom_border": true,
-        "heading_size": 120,
-        "text_size": 100,
-        "color_scheme": "",
-        "text_color": "rgba(0,0,0,0)",
-        "box_color": "#f5f5f5",
-        "color_border": "#333333",
-        "button_text": "",
-        "button_link": "",
-        "button_color": "btn--black",
-        "button_style": "secondary btn--small",
-        "button_size": "btn--small",
-        "layout_mobile": "grid",
-        "width": "wrapper",
-        "padding_top": 0,
-        "padding_bottom": 40
-      }
-    },
-    "section_text_nRQRmQ": {
-      "type": "section-text",
-      "blocks": {
-        "heading_BHFjMk": {
-          "type": "heading",
-          "settings": {
-            "text": "<p>We focus on <em>premium materials</em> that will hold up in every scenario. From all-day trekking to lightweight everyday needs, you'll be <em>ready for anything.</em> Handmade, with one stitch at a time, because that's how we do it.</p>",
-            "size": 100,
-            "heading_highlight_type": "highlight",
-            "highlight_color": "#000000",
-            "highlight_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_BHFjMk"
-      ],
-      "disabled": true,
-      "settings": {
-        "scroll_reveal_text": false,
-        "text_position": "left",
-        "color_scheme": "",
-        "width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "5570a59d-1623-4449-9006-23e151a0bea6": {
-      "type": "section-grid",
-      "blocks": {
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-2": {
-          "type": "image",
-          "settings": {
-            "width": "66.66",
-            "overlay_type": "disabled",
-            "text_position": "center",
-            "subheading": "Tech Savvy",
-            "title": "Gadget Friendly",
-            "text": "Made for digital nomads and office workers",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "show_text_background": false,
-            "bg_color": "",
-            "text_color": ""
-          }
-        },
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-0": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "width": "66.66",
-            "overlay_type": "disabled",
-            "text_position": "center",
-            "subheading": "Bestselling",
-            "title": "Commuter Bags",
-            "text": "Travel to your next destination",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "show_text_background": false,
-            "bg_color": "",
-            "text_color": ""
-          }
-        },
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-1": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "width": "33.33",
-            "overlay_type": "disabled",
-            "text_position": "center",
-            "subheading": "Final markdowns",
-            "title": "Clearance",
-            "text": "While supplies last",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "show_text_background": false,
-            "bg_color": "",
-            "text_color": ""
-          }
-        },
-        "text_3Vw3ME": {
-          "type": "text",
-          "settings": {
-            "width": "33.33",
-            "text_position": "center",
-            "subheading": "Final markdowns",
-            "title": "Clearance",
-            "text": "While supplies last",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "block_bg_color": "#f4f4f4",
-            "text_color": "#000000"
-          }
-        },
-        "text_ERRzmL": {
-          "type": "text",
-          "settings": {
-            "width": "33.33",
-            "text_position": "center",
-            "subheading": "Bestselling",
-            "title": "Commuter",
-            "text": "Travel to your next destination",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "block_bg_color": "#f4f4f4",
-            "text_color": "#000000"
-          }
-        },
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-3": {
-          "type": "image",
-          "settings": {
-            "width": "66.66",
-            "overlay_type": "disabled",
-            "text_position": "center",
-            "subheading": "Maximum Comfort and Style",
-            "title": "Backpacks",
-            "text": "Keep your essentials organized",
-            "button_1_text": "",
-            "button_1_link": "",
-            "button_2_text": "",
-            "button_2_link": "",
-            "show_text_background": false,
-            "bg_color": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-2",
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-0",
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-1",
-        "text_3Vw3ME",
-        "text_ERRzmL",
-        "template--19886097793322__5570a59d-1623-4449-9006-23e151a0bea6-168873674146c44add-3"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_height": "four-fifty-height",
-        "enable_mobile_height": true,
-        "mobile_height": "three-fifty-height-mobile",
-        "heading_size": 130,
-        "text_size": 100,
-        "button_1_color": "btn--white",
-        "button_1_style": "btn--text",
-        "button_1_size": "btn--small",
-        "button_2_color": "btn--black",
-        "button_2_style": "btn--text",
-        "button_2_size": "btn--small",
-        "color_scheme": "",
-        "overlayed_text": "#ffffff",
-        "enable_slider_mobile": false,
-        "columns_mobile": "1",
-        "overlay_text": true,
-        "width": "wrapper",
-        "add_gutter": true,
-        "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
-    "9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2": {
-      "type": "section-press",
-      "blocks": {
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-1": {
-          "type": "press",
-          "settings": {
-            "text": "<p>With a meticulous focus on functionality, durability, and style, they have managed to captivate the hearts of tech enthusiasts and professionals alike.</p>",
-            "link": "",
-            "logo_width": 120
-          }
-        },
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-0": {
-          "type": "press",
-          "settings": {
-            "text": "<p>Their designs blend sleek aesthetics with modern sensibilities, resulting in bags that are both sophisticated and practical.</p>",
-            "link": "",
-            "logo_width": 120
-          }
-        },
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-2": {
-          "type": "press",
-          "settings": {
-            "text": "<p>The use of premium materials and robust construction techniques ensures that their bags can withstand the demands of daily use and provide long-lasting protection for valuable tech gear.</p>",
-            "link": "",
-            "logo_width": 120
-          }
-        }
-      },
-      "block_order": [
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-1",
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-0",
-        "template--19886097793322__9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2-1688737592c993cae0-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "show_quotations": true,
-        "show_rounded_corners": false,
-        "logo_opacity": 50,
-        "autoplay": true,
-        "duration": 4,
-        "color_scheme": "",
-        "enable_slider_mobile": true,
-        "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 40
-      }
-    },
-    "16510974288c13450b": {
+    "17737449894269db53": {
       "type": "apps",
       "blocks": {
-        "loox_reviews_loox_dynamic_section_tRzP3H": {
+        "loox_reviews_loox_dynamic_section_pwiNKX": {
           "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "reviews_to_display": "product_reviews_only",
@@ -1195,18 +1097,18 @@
             "aggregated": false,
             "limit": 20,
             "hide_thumbnails": false,
-            "maxwidth": 1920,
+            "maxwidth": 1080,
             "is_sample": true
           }
         }
       },
       "block_order": [
-        "loox_reviews_loox_dynamic_section_tRzP3H"
+        "loox_reviews_loox_dynamic_section_pwiNKX"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
         "width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 20,
         "padding_bottom": 60
       }
     },
@@ -1248,23 +1150,23 @@
   },
   "order": [
     "main",
-    "section_text_ehzCfb",
+    "section_divider_WETYFG",
+    "section_text_nXcUf8",
+    "section_video_slider_D3qt74",
+    "section_divider_CtFQEY",
     "section_text_jAw8WG",
     "section_columns_XkzKYD",
     "section_image_with_text_W83cy3",
     "section_text_q3wkxg",
-    "section_text_aF8rFj",
-    "section_text_bNNKmU",
+    "section_marquee_nPWgLj",
+    "section_reviews_slider_LX8jYP",
+    "section_divider_zPrEex",
+    "section_columns_bxP3Vg",
+    "section_image_with_text_UEfFgt",
     "section_image_with_text_gzbcaj",
+    "section_divider_yxDniq",
     "section_accordions_dPF7hd",
-    "section_image_hFAaQa",
-    "section_image_with_text_wXTEDq",
-    "165104010373974e3d",
-    "1663134720ac787bcd",
-    "section_text_nRQRmQ",
-    "5570a59d-1623-4449-9006-23e151a0bea6",
-    "9477cb49-16ee-4bcf-a04c-bf55ee8d3bc2",
-    "16510974288c13450b",
+    "17737449894269db53",
     "related"
   ]
 }

@@ -6,6 +6,9 @@
   assign show_accordion_divider = block_settings.show_accordion_divider
   assign heading = block_settings.accordion_heading
   assign heading_style = block_settings.heading_style
+  assign heading_icon = block_settings.heading_icon | default: 'none'
+  assign heading_icon_size = block_settings.heading_icon_size | default: 16
+  assign heading_icon_color = block_settings.heading_icon_color
   assign bg_color = section.settings.bg_color
   assign tabs_bg_color = block_settings.tabs_bg_color
   assign text = block_settings.accordion_text
@@ -47,6 +50,11 @@
 {%- capture style -%}
   --border-opacity: {{ border_opacity }};
   --border-width: {{ border_width }}px;
+  --accordion-heading-icon-size: {{ heading_icon_size }}px;
+
+  {% if heading_icon_color != blank and heading_icon_color != 'rgba(0,0,0,0)' -%}
+    --accordion-heading-icon-color: {{ heading_icon_color }};
+  {%- endif %}
 
   {% if has_bg_color -%}
     --bg-item: {{ tabs_bg_color }};
@@ -75,9 +83,18 @@
         data-collapsible-trigger
         aria-expanded="{% if open_by_default %}true{% else %}false{% endif %}"
       >
-        {{- heading -}}
-        {%- render 'icon-toggle-plus' -%}
-        {%- render 'icon-toggle-minus' -%}
+        <span class="product__accordion__title-content">
+          {%- if heading_icon != 'none' -%}
+            <span class="product__accordion__title-icon">
+              {%- render 'icons', icon: heading_icon -%}
+            </span>
+          {%- endif -%}
+          <span class="product__accordion__title-text">{{- heading -}}</span>
+        </span>
+        <span class="product__accordion__toggle-icons" aria-hidden="true">
+          {%- render 'icon-toggle-plus' -%}
+          {%- render 'icon-toggle-minus' -%}
+        </span>
       </button>
       <div
         class="product__accordion__content{% if open_by_default %} is-expanded{% endif %}"
@@ -108,8 +125,17 @@
         data-drawer-trigger
       >
         <drawer-toggle></drawer-toggle>
-        <span>{{- heading -}}</span>
-        {%- render 'icon-chevron-right' -%}
+        <span class="product__accordion__title-content">
+          {%- if heading_icon != 'none' -%}
+            <span class="product__accordion__title-icon">
+              {%- render 'icons', icon: heading_icon -%}
+            </span>
+          {%- endif -%}
+          <span class="product__accordion__title-text">{{- heading -}}</span>
+        </span>
+        <span class="product__accordion__toggle-icons" aria-hidden="true">
+          {%- render 'icon-chevron-right' -%}
+        </span>
       </button>
     </div>
   {%- endif -%}
