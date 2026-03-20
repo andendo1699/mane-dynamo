@@ -5,23 +5,54 @@
     background: var(--bg);
 }
 
+.image-slider .flickity-slider {
+    height: fit-content;
+}
+
 .image-slider__wrapper,
 .image-slider__carousel .flickity-viewport {
     overflow: initial;
 }
 
 .image-slider__carousel .flickity-button {
-    background: var(--bg);
+    background: var(--arrow-bg, #333);
+    color: var(--arrow-color, #fff);
+}
+
+.image-slider__carousel .flickity-prev-next-button {
+    width: var(--arrow-size, 48px);
+    height: var(--arrow-size, 48px);
+    border-radius: 50%;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease, transform 0.25s ease-out;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.image-slider__carousel .flickity-prev-next-button:before {
+    background: var(--arrow-color, #fff);
+}
+
+.image-slider__carousel .flickity-prev-next-button:hover {
+    background: var(--arrow-bg, #333);
+    opacity: 0.9;
+    transform: scale(1.06) translateY(-50%);
+}
+
+.image-slider__carousel .flickity-prev-next-button:disabled {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .image-slider__wrapper .flickity-button.next {
     right: 0!important;
-    border-radius: 4px 50% 50% 4px!important;
+    border-radius: 50%!important;
 }
 
 .image-slider__wrapper .flickity-button.previous {
     left: 0!important;
-    border-radius: 50% 4px 4px 50%!important;
+    border-radius: 50%!important;
 }
 
 @media (min-width: 768px) {
@@ -151,6 +182,5 @@
 @media only screen and (min-width: 768px) {
     .image-slider__scrollbar {
         padding: 0;
-        display: none;
     }
 }

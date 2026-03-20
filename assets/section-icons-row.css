@@ -612,6 +612,7 @@
   top: calc(var(--offset-top) / 2);
   max-height: var(--icon-size);
 }
+
 @supports (-webkit-hyphens: none) {
   .icons-row-block__icon {
     width: calc(var(--icon-size) + 2px);
@@ -624,11 +625,12 @@
 .text-left .icons-row-block__icon {
   transform: translate(0, -50%);
   top: 50%;
+  left: 0;
 }
-@media only screen and (min-width: 768px) {
-  .text-left .icons-row-block__icon {
-    left: 0;
-  }
+
+.text-left .icons-row-block__textwrap {
+  text-align: left;
+  padding: 6px 4px 6px var(--icon-size);
 }
 
 .text-center .icons-row-block__icon {

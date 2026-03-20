@@ -185,8 +185,11 @@ body:not(.no-outline) model-viewer.focus-visible {
 }
 
 .pswp__custom-native video {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+
 }
 
 .pswp--animate_opacity {
@@ -1675,7 +1678,7 @@ body:not(.no-outline) model-viewer.focus-visible {
 
 .js-drawer-open-cart .drawer__overlay,
 .js-drawer-open .drawer__overlay {
-  opacity: 0.2;
+  opacity: 0.9;
   visibility: visible;
   will-change: opacity;
 }

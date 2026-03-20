@@ -193,33 +193,33 @@
   }
 
   @media only screen and (max-width: 749px) {
-    [data-section-id="{{ section.id }}"] .wrapper {
-      margin: 0 calc(var(--gutter-mobile) * -1);
+    .video-swiper-{{ section.id }}.wrapper {
+      max-width: none;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 </style>
 
-<section class="video-slider-section--{{ section.id }} {{ section.settings.bg }} {{ section_no_title_class }}"
+<section class="video-slider-section--{{ section.id }} {{ section_no_title_class }}"
   data-section-id="{{ section.id }}"
   data-section-type="video-slider"
   data-video-slider
   style="
     --PT: {{ section.settings.padding_top }};
-    --PB: {{ section.settings.padding_bottom }};">
-  <div class=" section-padding" data-wrapper>
+    --PB: {{ section.settings.padding_bottom }};
+    {% if section.settings.bg_color != blank %}background-color: {{ section.settings.bg_color }};{% endif %}">
+  <div class="section-padding" data-wrapper>
 
     {% if section.settings.title != blank %}
       <div class="video-slider__heading {{ section.settings.align_heading }}">
-        <h2 class="heading-size-{{ section.settings.heading_size }}"
-          data-aos="hero"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-order="1">
+        <h2 class="heading-size-{{ section.settings.heading_size }}">
           {{ section.settings.title | escape }}
         </h2>
       </div>
     {% endif %}
 
-    <div class="swiper video-swiper-{{ section.id }}">
+    <div class="swiper video-swiper-{{ section.id }} wrapper">
       <div class="swiper-wrapper">
         {% for block in section.blocks %}
           <div class="swiper-slide" {{ block.shopify_attributes }}>
@@ -553,18 +553,9 @@
       "content": "Color scheme"
     },
     {
-      "type": "select",
-      "id": "bg",
-      "label": "Background color",
-      "default": "palette--light bg--neutral",
-      "options": [
-        { "value": "palette--light bg--neutral", "label": "Default" },
-        { "value": "palette--light bg--accent", "label": "Light" },
-        { "value": "palette--dark bg--invert", "label": "Dark" },
-        { "value": "palette--dark bg--invert--accent", "label": "Dark accent" },
-        { "value": "palette--bright bg--bright", "label": "Bright" },
-        { "value": "palette--bright bg--bright--accent", "label": "Bright accent" }
-      ]
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
     },
     {
       "type": "header",

@@ -165,6 +165,7 @@
       {%- liquid
         assign size = block.settings.size | times: 0.01
         assign text_position = block.settings.text_position
+        assign mobile_text_position = block.settings.mobile_text_position
         capture block_style
           echo '--block-spacing-bottom: ' | append: block.settings.spacing_bottom | append: 'px;'
         endcapture
@@ -329,9 +330,9 @@
                   }
                 {%- endstyle -%}
 
-                <div class="image-with-text__subheading subheading-text main-subheading text-{{ text_position }} block-spacing"
+                <div class="image-with-text__subheading subheading-text main-subheading text-{{ text_position }} text-{{ mobile_text_position }}--mobile block-spacing"
                   id="ImageWithText--{{ block.id }}"
-                  style="{{ block_style }}"
+                  style="{{ block_style }}{% if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' %} color: {{ block.settings.text_color }};{% endif %}"
                   {% if animations_enabled %}
                     data-aos="fade-up"
                     data-aos-anchor="{{ animation_anchor }}"
@@ -354,7 +355,7 @@
               -%}
 
               {%- if title != blank -%}
-                <div class="image-with-text__header text-{{ text_position }} block-spacing" style="{{ block_style }}" {{ block.shopify_attributes }}>{% comment %}
+                <div class="image-with-text__header text-{{ text_position }} text-{{ mobile_text_position }}--mobile block-spacing" style="{{ block_style }}{% if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' %} color: {{ block.settings.text_color }};{% endif %}" {{ block.shopify_attributes }}>{% comment %}
   Enhanced text decorations options - Liquid variables
 
   Dependencies:
@@ -589,9 +590,9 @@
                 {%- endstyle -%}
 
                 <div
-                  class="image-with-text__text text-{{ text_position }} block-spacing"
+                  class="image-with-text__text text-{{ text_position }} text-{{ mobile_text_position }}--mobile block-spacing"
                   id="ImageWithText--{{ block.id }}"
-                  style="{{ block_style }}"
+                  style="{{ block_style }}{% if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' %} color: {{ block.settings.text_color }};{% endif %}"
                   {% if animations_enabled %}
                     data-aos="fade-up"
                     data-aos-anchor="{{ animation_anchor }}"
@@ -622,7 +623,7 @@
               -%}
 
               {%- if button_text != blank -%}
-                <div class="image-with-text__buttons main-buttons text-{{ text_position }} block-spacing" style="{{ block_style }}">
+                <div class="image-with-text__buttons main-buttons text-{{ text_position }} text-{{ mobile_text_position }}--mobile block-spacing" style="{{ block_style }}">
                   <div class="main-buttons__item"
                     {% if animations_enabled %}
                       data-aos="fade-up"
@@ -651,9 +652,9 @@
                 assign badge_caption = block.settings.caption
               -%}
 
-              <div class="image-with-text__rating-badge text-{{ text_position }} block-spacing"
+              <div class="image-with-text__rating-badge text-{{ text_position }} text-{{ mobile_text_position }}--mobile block-spacing"
                 id="ImageWithText--{{ block.id }}"
-                style="{{ block_style }}"
+                style="{{ block_style }}; --COLOR-BG: {{ block.settings.block_bg_color }};"
                 {% if animations_enabled %}
                   data-aos="fade-up"
                   data-aos-anchor="{{ animation_anchor }}"
@@ -670,7 +671,7 @@
                     -%}
                     {%- if badge_avatar_1 != blank or badge_avatar_2 != blank or badge_avatar_3 != blank or badge_avatar_4 != blank or badge_avatar_5 != blank -%}
                       {%- assign has_avatars = true -%}
-                      <div class="rating-badge__avatars">
+                      <div class="rating-badge__avatars"{% if block.settings.avatar_border_color != blank and block.settings.avatar_border_color != 'rgba(0,0,0,0)' %} style="--avatar-border-color: {{ block.settings.avatar_border_color }};"{% endif %}>
                         {%- if badge_avatar_1 != blank -%}
                           <div class="rating-badge__avatar">
                             <img src="{{ badge_avatar_1 | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
@@ -702,7 +703,9 @@
                     {%- if badge_stars > 0 -%}
                       <div class="rating-badge__stars">
                         {%- for i in (1..badge_stars) -%}
-                          <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="color: {{ badge_color }}; fill: currentColor; width: 18px; height: 18px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+                          <svg class="icon icon-star" style="color: {{ badge_color }}; fill: currentColor; stroke: none; width: 28px; height: 28px;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0.5L10.0784 5.63932L15.6085 6.02786L11.3629 9.59268L12.7023 14.9721L8 12.036L3.29772 14.9721L4.63706 9.59268L0.391548 6.02786L5.92159 5.63932L8 0.5Z" fill="currentColor"></path>
+                          </svg>
                         {%- endfor -%}
                       </div>
                     {%- endif -%}
@@ -758,7 +761,7 @@
   <div class="image-with-text__wrapper">
     <div class="{{ section_width }}{% if section_width != 'wrapper--full' %} wrapper--no-full{% endif %}">
       <div class="image-with-text__items {{ items_layout_class }}">
-        <div class="image-with-text__image {{ section_height}}{% if enable_mobile_height %} {{ mobile_height }}{% endif %}{{ hover_scale }}">
+        <div class="image-with-text__image {{ section_height}}{% if block_color_set %} image-with-text__content--has-color{% endif %}{% if enable_mobile_height %} {{ mobile_height }}{% endif %}{{ hover_scale }}"{% if image and section_height == 'image-adapt-height' or image and enable_mobile_height and mobile_height == 'image-adapt-height-mobile' %} style="--image-aspect-ratio: {{ image.aspect_ratio }}"{% endif %}>
           {%- if entire_image_link -%}
             <a class="image-with-text__link" href="{{ button_link }}"></a>
           {%- endif -%}
@@ -830,6 +833,7 @@
         "label": "Desktop Height",
         "default": "six-fifty-height",
         "options": [
+          { "value": "image-adapt-height", "label": "Adapt to image" },
           { "value": "full-height", "label": "Full screen" },
           { "value": "seven-fifty-height", "label": "750px" },
           { "value": "six-fifty-height", "label": "650px" },
@@ -855,6 +859,7 @@
         "label": "Mobile height",
         "default": "four-fifty-height-mobile",
         "options": [
+          { "value": "image-adapt-height-mobile", "label": "Adapt to image" },
           { "value": "full-height-mobile", "label": "Full screen" },
           { "value": "seven-fifty-height-mobile", "label": "750px" },
           { "value": "six-fifty-height-mobile", "label": "650px" },
@@ -916,7 +921,6 @@
         "type": "color",
         "id": "block_bg_color",
         "label": "Block background",
-        "alpha": true
       },
       {
         "type": "color_scheme",
@@ -978,6 +982,11 @@
             "default": "Introducing"
           },
           {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
             "type": "range",
             "id": "size",
             "label": "Size",
@@ -992,6 +1001,17 @@
             "id": "text_position",
             "label": "Text position",
             "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "center",
             "options": [
               { "value": "left", "label": "Left" },
               { "value": "center", "label": "Center" },
@@ -1026,6 +1046,11 @@
             "info": "Highlight one or two key words in your heading by italicizing them, then choose the highlight option below."
           },
           {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
             "type": "range",
             "id": "size",
             "label": "Size",
@@ -1040,6 +1065,17 @@
             "id": "text_position",
             "label": "Text position",
             "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "center",
             "options": [
               { "value": "left", "label": "Left" },
               { "value": "center", "label": "Center" },
@@ -1109,6 +1145,11 @@
             "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           },
           {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color"
+          },
+          {
             "type": "range",
             "id": "size",
             "label": "Size",
@@ -1123,6 +1164,17 @@
             "id": "text_position",
             "label": "Text position",
             "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "center",
             "options": [
               { "value": "left", "label": "Left" },
               { "value": "center", "label": "Center" },
@@ -1209,6 +1261,17 @@
             "id": "text_position",
             "label": "Text position",
             "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "center",
             "options": [
               { "value": "left", "label": "Left" },
               { "value": "center", "label": "Center" },
@@ -1347,6 +1410,12 @@
         "limit": 1,
         "settings": [
           {
+            "type": "color",
+            "id": "block_bg_color",
+            "label": "Block background",
+            "default": "#ffffff"
+          },
+          {
             "type": "header",
             "content": "Avatars"
           },
@@ -1374,6 +1443,12 @@
             "type": "image_picker",
             "id": "avatar_5",
             "label": "Avatar 5"
+          },
+          {
+            "type": "color",
+            "id": "avatar_border_color",
+            "label": "Avatar border color",
+            "default": "#ffffff"
           },
           {
             "type": "header",
@@ -1405,6 +1480,17 @@
             "id": "text_position",
             "label": "Text position",
             "default": "left",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "center",
             "options": [
               { "value": "left", "label": "Left" },
               { "value": "center", "label": "Center" },

@@ -145,7 +145,7 @@
       ],
       "settings": {
         "show_footer_wave": false,
-        "enable_footer_parallax": true,
+        "enable_footer_parallax": false,
         "increase_border_radius": true,
         "bottom_bar_alignment": "text-left",
         "show_social_links": true,

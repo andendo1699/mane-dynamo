@@ -50,7 +50,6 @@
   }
 
   .reviews-slider-section .section__heading {
-    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -71,6 +70,7 @@
   .reviews-slider__item {
     width: calc((var(--wrapper-width) - var(--grid-gutter) * (var(--reviews-columns) - 1)) / var(--reviews-columns));
     margin-right: var(--grid-gutter);
+    height: 100%;
   }
 
   .reviews-slider__item:last-child {
@@ -147,18 +147,17 @@
 
   .reviews-slider .flickity-button {
     top: auto;
-    bottom: -56px;
+    bottom: -8px;
     width: 44px;
     height: 32px;
     border-radius: 40px;
-    border: 1px solid color-mix(in srgb, var(--text) 26%, transparent);
+    border: none;
     color: var(--reviews-star-color, #4d61ff);
-    background: color-mix(in srgb, var(--bg) 88%, #ffffff 12%);
-  }
-
-  .reviews-slider .flickity-button:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--reviews-star-color, #4d61ff) 50%, white 50%);
-    outline-offset: 2px;
+    background: none;
+    visibility: visible!important;
+    opacity: 1!important;
+    transform: none!important;
+    box-shadow: none!important;
   }
 
   .reviews-slider .flickity-button .flickity-button-icon {

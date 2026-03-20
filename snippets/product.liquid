@@ -529,14 +529,14 @@
             {%- when 'title' -%}
               {%- liquid
                 assign title_size = block.settings.title_size | times: 0.01
+                assign title_size_mobile = title_size | times: 0.8
 
-                if title_size != 1
-                  capture title_style
-                    echo ' style="--adjust-heading: calc(var(--FONT-ADJUST-HEADING) * ' | append: title_size | append: ');"'
-                  endcapture
-                endif
+                capture title_style
+                  echo ' style="--adjust-heading: calc(var(--FONT-ADJUST-HEADING) * ' | append: title_size | append: ');'
+                  echo '--adjust-heading-mobile: calc(var(--FONT-ADJUST-HEADING) * ' | append: title_size_mobile | append: ');'
+                  echo '"'
+                endcapture
               -%}
-
               <div
                 class="product__block product__block--title"
                 {% if animations_enabled %}
@@ -1163,6 +1163,73 @@
                   </div>
                 {%- endif -%}
               </div>
+            {%- when 'offer_banner' -%}
+              {%- liquid
+                assign badge_text = block.settings.badge_text
+                assign heading = block.settings.heading
+                assign subtext = block.settings.subtext
+                assign benefit_1 = block.settings.benefit_1
+                assign benefit_2 = block.settings.benefit_2
+                assign benefit_3 = block.settings.benefit_3
+
+                capture offer_banner_style
+                  echo '--offer-shell-bg: ' | append: block.settings.shell_bg_color | append: ';'
+                  echo '--offer-main-bg: ' | append: block.settings.main_bg_color | append: ';'
+                  echo '--offer-main-bg-alt: ' | append: block.settings.main_bg_color_2 | append: ';'
+                  echo '--offer-bottom-bg: ' | append: block.settings.bottom_bg_color | append: ';'
+                  echo '--offer-badge-color: ' | append: block.settings.badge_text_color | append: ';'
+                  echo '--offer-badge-icon-color: ' | append: block.settings.badge_icon_color | append: ';'
+                  echo '--offer-heading-color: ' | append: block.settings.heading_color | append: ';'
+                  echo '--offer-subtext-color: ' | append: block.settings.subtext_color | append: ';'
+                  echo '--offer-benefit-color: ' | append: block.settings.benefit_text_color | append: ';'
+                  echo '--offer-check-color: ' | append: block.settings.benefit_icon_color | append: ';'
+                endcapture
+              -%}
+
+              <div
+                class="product__block product__block--offer-banner"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="{{ animation_order }}"
+                  {%- assign animation_order = animation_order | plus: 1 -%}
+                {% endif %}
+                {{ block_style }}
+                {{ block.shopify_attributes }}
+              >
+                <div class="product__offer-banner" style="{{ offer_banner_style }}">
+                  <div class="product__offer-banner__panel">
+                    {%- if badge_text != blank -%}
+                      <div class="product__offer-banner__eyebrow">
+                        {%- if badge_text != blank -%}
+                          <span>{{ badge_text }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if subtext != blank -%}
+                      <div class="product__offer-banner__subtext rte">
+                        {{ subtext }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if benefit_1 != blank or benefit_2 != blank or benefit_3 != blank -%}
+                    <div class="product__offer-banner__benefits" role="list">
+                      {%- for i in (1..3) -%}
+                        {%- assign benefit_key = 'benefit_' | append: i -%}
+                        {%- assign benefit_text = block.settings[benefit_key] -%}
+
+                        {%- if benefit_text != blank -%}
+                          <div class="product__offer-banner__benefit" role="listitem">
+                            <span>{{ benefit_text }}</span>
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
 
             {%- when 'icon' -%}
               {%- liquid
@@ -1260,8 +1327,6 @@
                 assign retina_size = icon_width | times: 2
                 assign image_widths = icon_width | append: ', ' | append: retina_size
                 assign sizes = icon_width | append: 'px'
-
-                assign custom_check_src = 'https://cdn.shopify.com/s/files/1/0655/0591/9107/files/HAIRO_NEW_SHOOT_26.png?v=1768567471'
               -%}
 
               <div
@@ -1301,14 +1366,7 @@
                             </div>
                           {%- elsif icon_name == 'check' -%}
                             <div class="product__icon__holder">
-                              <img
-                                src="{{ custom_check_src }}"
-                                alt=""
-                                loading="lazy"
-                                class="product__icon__img"
-                                width="{{ icon_width }}"
-                                height="{{ icon_width }}"
-                              >
+                              <svg xmlns="http://www.w3.org/2000/svg" id="GUIDE_TO_DELETE" style="display: block;width: {{ icon_width }}px;height: {{ icon_width }}px;" enable-background="new 0 0 128 128" height="512" viewBox="0 0 128 128" width="512"><g><path d="m124 64c0 5.12-6.29 9.34-7.55 14.06-1.3 4.88 1.99 11.68-.48 15.95-2.51 4.34-10.06 4.86-13.58 8.38s-4.04 11.07-8.38 13.58c-4.27 2.47-11.07-.82-15.95.48-4.72 1.26-8.94 7.55-14.06 7.55s-9.34-6.29-14.06-7.55c-4.88-1.3-11.68 1.99-15.95-.48-4.34-2.51-4.86-10.06-8.38-13.58s-11.07-4.04-13.58-8.38c-2.47-4.27.82-11.07-.48-15.95-1.26-4.72-7.55-8.94-7.55-14.06s6.29-9.34 7.55-14.06c1.3-4.88-1.99-11.68.48-15.95 2.51-4.34 10.06-4.86 13.58-8.38s4.04-11.07 8.38-13.58c4.27-2.47 11.07.82 15.95-.48 4.72-1.26 8.94-7.55 14.06-7.55s9.34 6.29 14.06 7.55c4.88 1.3 11.68-1.99 15.95.48 4.34 2.51 4.86 10.06 8.38 13.58s11.07 4.04 13.58 8.38c2.47 4.27-.82 11.07.48 15.95 1.26 4.72 7.55 8.94 7.55 14.06z" fill="currentColor"/><path d="m81.34 46.12-22.84 22.84-11.84-11.83c-2.57-2.57-6.74-2.57-9.31 0-2.57 2.57-2.57 6.74 0 9.31l16.61 16.61c2.5 2.5 6.56 2.5 9.06 0l27.62-27.62c2.57-2.57 2.57-6.74 0-9.31-2.57-2.57-6.73-2.57-9.3 0z" fill="#fffcee"/></g></svg>
                             </div>
                           {%- elsif icon_name != 'none' -%}
                             {%- render 'icons', icon: icon_name -%}
@@ -1324,14 +1382,14 @@
 
             {%- when 'icon_row' -%}
               {%- assign bg_color = block.settings.bg_color -%}
+              {%- assign border_color = block.settings.border_color -%}
               {%- assign alignment = block.settings.alignment -%}
 
               {%- capture background_style -%}
-                --bg: {{ bg_color }};
-
-                {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' and bg_color != section.settings.bg_color -%}
-                  padding: var(--grid-gutter);
-                {%- endif -%}
+                background: radial-gradient(circle, #ffffff, {{ bg_color }})!important;
+                border: 1px solid {{ border_color }};
+                padding-top: {{ block.settings.padding_inside }}px;
+                padding-bottom: {{ block.settings.padding_inside }}px;
               {%- endcapture -%}
 
               <link
@@ -1357,7 +1415,7 @@
                 </div>
               </div>
 
-            {% when 'siblings' %}
+            {%- when 'siblings' -%}
               {% capture animation_attributes %}
                 {% if animations_enabled %}
                   data-aos="hero"
@@ -1419,8 +1477,14 @@
                     class="product__popup__link label-typography"
                     href="{{ popup_page.url }}"
                     aria-controls="popup-text--{{ block.id }}"
+                    {% if block.settings.border_color %}
+                      style="border-color: {{ block.settings.border_color }}"
+                    {% endif %}
                   >
                     <drawer-toggle></drawer-toggle>
+                    {%- if block.settings.icon_name and block.settings.icon_name != 'none' -%}
+                      {%- render 'icons', icon: block.settings.icon_name -%}
+                    {%- endif -%}
                     <span>{{ text }}</span>
                   </button>
 
@@ -1537,7 +1601,213 @@
                   >
                 {%- endif -%}
               </div>
+            {%- when 'video-slider' -%}
+              {%- liquid
+                assign vs_card_radius = block.settings.card_border_radius | default: 16
+                assign vs_card_gap = block.settings.card_gap | default: 8
+                assign vs_overlay_bg = block.settings.overlay_bg_color | default: '#1a1a1a'
+                assign vs_overlay_text = block.settings.overlay_text_color | default: '#ffffff'
+                assign vs_play_bg = block.settings.play_btn_bg_color | default: '#1a1a1a'
+                assign vs_play_color = block.settings.play_btn_icon_color | default: '#ffffff'
+                assign vs_arrow_bg = block.settings.arrow_bg_color | default: '#333333'
+                assign vs_arrow_color = block.settings.arrow_icon_color | default: '#ffffff'
+                assign vs_arrow_size = block.settings.arrow_size | default: 44
+                assign vs_slides_per_view = block.settings.slides_per_view | default: 0
+                assign vs_swiper_id = 'vs-swiper-' | append: section.id | append: '-' | append: block.id
+                assign vs_has_slides = false
+              -%}
 
+              {%- capture vs_slides_html -%}
+                {%- for i in (1..6) -%}
+                  {%- liquid
+                    assign vid_key = 'video_' | append: i
+                    assign url_key = 'video_url_' | append: i
+                    assign poster_key = 'poster_' | append: i
+                    assign user_key = 'username_' | append: i
+                    assign comment_key = 'comment_' | append: i
+
+                    assign vs_video = block.settings[vid_key]
+                    assign vs_url = block.settings[url_key]
+                    assign vs_poster = block.settings[poster_key]
+                    assign vs_username = block.settings[user_key]
+                    assign vs_comment = block.settings[comment_key]
+                    assign enable_video_autoplay = block.settings.enable_video_autoplay
+                    assign has_file = false
+                    assign has_url = false
+                    if vs_video != blank
+                      assign has_file = true
+                    endif
+                    if vs_url != blank
+                      assign has_url = true
+                    endif
+                  -%}
+
+                  {%- if has_file or has_url or vs_poster != blank -%}
+                    {%- assign vs_has_slides = true -%}
+                    <div class="swiper-slide">
+                      <video-popup>
+                        <a href="#"
+                          class="product__vs-card"
+                          data-vs-card
+                          aria-label="{{ vs_comment | default: 'Play video' | escape }}"
+                          {%- if has_url -%}
+                            data-video-play="{%- render 'photoswipe-video-html', item_link: vs_url, unique: block.id | append: '-' | append: i, item_enable_sound: true -%}"
+                          {%- elsif has_file -%}
+                            data-video-play="{%- capture vs_native_html -%}<div class='pswp__custom-inner'><div class='pswp__custom-content'><div class='iframe-outer pswp__custom-native'><video id='item-video-{{ block.id }}-{{ i }}' class='pswp__custom-iframe' data-video-type='native' playsinline autoplay loop controls width='320' height='240'><source src='{{ vs_video.sources[1].url }}' type='video/mp4' /></video></div></div></div>{%- endcapture -%}{{ vs_native_html | strip }}"
+                          {%- endif -%}>
+
+                          {%- if has_file -%}
+                            {{ vs_video | video_tag: autoplay: enable_video_autoplay, loop: true, muted: true, controls: false, playsinline: true, image_size: '720x', data-vs-video: '' }}
+                          {%- endif -%}
+
+                          {%- if vs_poster != blank -%}
+                            <div class="product__vs-card__poster" data-vs-poster>
+                              {{ vs_poster | image_url: width: 720 | image_tag: loading: 'lazy' }}
+                            </div>
+                          {%- elsif has_file and vs_video.preview_image -%}
+                            <div class="product__vs-card__poster" data-vs-poster>
+                              {{ vs_video.preview_image | image_url: width: 720 | image_tag: loading: 'lazy' }}
+                            </div>
+                          {%- endif -%}
+
+                          {%- if vs_comment != blank -%}
+                            <div class="product__vs-card__overlay">
+                              <div class="product__vs-card__comment">
+                                <span class="product__vs-card__comment-icon">
+                                  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+                                </span>
+                                <span>
+                                  {%- if vs_username != blank -%}
+                                    <span class="product__vs-card__username">{{ vs_username | escape }}</span>
+                                  {%- endif -%}
+                                  {{ vs_comment | escape }}
+                                </span>
+                              </div>
+                            </div>
+                          {%- endif -%}
+
+                          <div class="product__vs-card__play">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                          </div>
+
+                        </a>
+                      </video-popup>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endcapture -%}
+
+              {%- if vs_has_slides -%}
+                <div
+                  class="product__block product__block--video-slider"
+                  data-video-slider-wrapper
+                  {% if animations_enabled %}
+                    data-aos="hero"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-order="{{ animation_order }}"
+                    {%- assign animation_order = animation_order | plus: 1 -%}
+                  {% endif %}
+                  {{ block_style }}
+                  {{ block.shopify_attributes }}
+                  data-vs-spv="{{ vs_slides_per_view }}"
+                >
+                  <div class="swiper {{ vs_swiper_id }}" data-vs-swiper
+                    style="
+                      --vs-card-radius: {{ vs_card_radius }}px;
+                      --vs-card-gap: {{ vs_card_gap }}px;
+                      --vs-overlay-bg: {{ vs_overlay_bg }};
+                      --vs-overlay-text: {{ vs_overlay_text }};
+                      --vs-play-bg: {{ vs_play_bg }};
+                      --vs-play-color: {{ vs_play_color }};
+                      --vs-arrow-bg: {{ vs_arrow_bg }};
+                      --vs-arrow-color: {{ vs_arrow_color }};
+                      --vs-arrow-size: {{ vs_arrow_size }}px;
+                    ">
+                    <div class="swiper-wrapper">
+                      {{ vs_slides_html }}
+                    </div>
+                    <div class="swiper-button-prev product__vs-arrow"></div>
+                    <div class="swiper-button-next product__vs-arrow"></div>
+                  </div>
+                </div>
+
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
+                <script src="{{ 'video-play.js' | asset_url }}" defer="defer"></script>
+
+                <script defer>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    var wrapper = document.querySelector('[data-video-slider-wrapper]');
+                    if (!wrapper) return;
+                    var swiperEl = wrapper.querySelector('[data-vs-swiper]');
+                    if (!swiperEl) return;
+
+                    var spv = parseInt(wrapper.getAttribute('data-vs-spv')) || 0;
+                    var vsSwiper = new Swiper(swiperEl, {
+                      slidesPerView: spv > 0 ? spv : 'auto',
+                      spaceBetween: parseInt(getComputedStyle(wrapper).getPropertyValue('--vs-card-gap')) || 8,
+                      grabCursor: true,
+                      navigation: {
+                        nextEl: wrapper.querySelector('.swiper-button-next'),
+                        prevEl: wrapper.querySelector('.swiper-button-prev')
+                      }
+                    });
+
+                    function autoplayCard(card) {
+                      var video = card.querySelector('video');
+                      if (!video) return;
+                      var poster = card.querySelector('[data-vs-poster]');
+                      video.play().then(function() {
+                        if (poster) poster.classList.add('is-hidden');
+                      }).catch(function() {});
+                    }
+
+                    function pauseCard(card) {
+                      var video = card.querySelector('video');
+                      if (!video) return;
+                      video.pause();
+                      video.currentTime = 0;
+                      var poster = card.querySelector('[data-vs-poster]');
+                      if (poster) poster.classList.remove('is-hidden');
+                    }
+
+                    function autoplayVisible() {
+                      wrapper.querySelectorAll('.swiper-slide').forEach(function(slide) {
+                        var card = slide.querySelector('[data-vs-card]');
+                        if (!card) return;
+                        if (slide.classList.contains('swiper-slide-visible')) {
+                          autoplayCard(card);
+                        } else {
+                          pauseCard(card);
+                        }
+                      });
+                    }
+
+                    vsSwiper.on('slideChangeTransitionEnd', autoplayVisible);
+                    vsSwiper.on('init', autoplayVisible);
+                    autoplayVisible();
+
+                    if ('IntersectionObserver' in window) {
+                      new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                          if (!entry.isIntersecting) {
+                            wrapper.querySelectorAll('[data-vs-card] video').forEach(function(v) { v.pause(); });
+                          } else {
+                            autoplayVisible();
+                          }
+                        });
+                      }, { threshold: 0.1 }).observe(wrapper);
+                    }
+
+                    if (window.Shopify && window.Shopify.designMode) {
+                      document.addEventListener('shopify:section:load', function() {
+                        vsSwiper.update();
+                        setTimeout(autoplayVisible, 600);
+                      });
+                    }
+                  });
+                </script>
+              {%- endif -%}
             {%- when 'feature' -%}
               {%- liquid
                 assign block_id = block.id
