@@ -12,8 +12,10 @@
   assign bg_color = section.settings.bg_color
   assign tabs_bg_color = block_settings.tabs_bg_color
   assign text = block_settings.accordion_text
-  assign page = block_settings.accordion_page
-  assign open_by_default = block_settings.open_by_default
+  assign page = block.settings.accordion_page
+  assign open_by_default = block.settings.open_by_default
+  assign heading_font_size = block.settings.heading_font_size | default: 18
+  assign heading_icon_font_size = block.settings.heading_icon_font_size | default: 18
 
   if drawer_id == blank
     assign heading_handle = heading | handle
@@ -51,6 +53,7 @@
   --border-opacity: {{ border_opacity }};
   --border-width: {{ border_width }}px;
   --accordion-heading-icon-size: {{ heading_icon_size }}px;
+  --border-color: {{ block_settings.border_color }};
 
   {% if heading_icon_color != blank and heading_icon_color != 'rgba(0,0,0,0)' -%}
     --accordion-heading-icon-color: {{ heading_icon_color }};
@@ -85,11 +88,11 @@
       >
         <span class="product__accordion__title-content">
           {%- if heading_icon != 'none' -%}
-            <span class="product__accordion__title-icon">
+            <span class="product__accordion__title-icon" style=" --accordion-icon-size: {{ block_settings.heading_icon_size }}px; color: var(--accordion-heading-icon-color)">
               {%- render 'icons', icon: heading_icon -%}
             </span>
           {%- endif -%}
-          <span class="product__accordion__title-text">{{- heading -}}</span>
+          <span class="product__accordion__title-text" style="font-size: {{ block_settings.heading_text_size }}px">{{- heading -}}</span>
         </span>
         <span class="product__accordion__toggle-icons" aria-hidden="true">
           {%- render 'icon-toggle-plus' -%}
@@ -127,11 +130,11 @@
         <drawer-toggle></drawer-toggle>
         <span class="product__accordion__title-content">
           {%- if heading_icon != 'none' -%}
-            <span class="product__accordion__title-icon">
+            <span class="product__accordion__title-icon" style=" --accordion-icon-size: {{ block_settings.heading_icon_size }}px; color: var(--accordion-heading-icon-color)">
               {%- render 'icons', icon: heading_icon -%}
             </span>
           {%- endif -%}
-          <span class="product__accordion__title-text">{{- heading -}}</span>
+          <span class="product__accordion__title-text" style="font-size: {{ block_settings.heading_text_size }}px">{{- heading -}}</span>
         </span>
         <span class="product__accordion__toggle-icons" aria-hidden="true">
           {%- render 'icon-chevron-right' -%}

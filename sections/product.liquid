@@ -565,10 +565,25 @@
           ]
         },
         {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color"
+        },
+        {
           "type": "text",
           "id": "accordion_heading",
           "label": "Heading",
           "default": "Materials and specs"
+        },
+        {
+          "type": "range",
+          "id": "heading_text_size",
+          "label": "Heading size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
         },
         {
           "type": "select",
@@ -584,7 +599,8 @@
             {"label": "Heart", "value": "heart"},
             {"label": "Bell", "value": "bell"},
             {"label": "Check", "value": "check"},
-            {"label": "Clock", "value": "clock"}
+            {"label": "Clock", "value": "clock"},
+            {"label": "Star 2", "value": "star-2"}
           ]
         },
         {
@@ -1115,7 +1131,7 @@
           "type": "color",
           "id": "border_color",
           "label": "Border color",
-          "default": "#d9d9d9",
+          "default": "#000",
           "alpha": true
         },
         {
@@ -1480,6 +1496,7 @@
             {"value": "none", "label": "None"},
             {"value": "asset-truck", "label": "Truck (asset)"},
             {"value": "asset-verified", "label": "Verified (asset)"},
+            {"value": "warning", "label": "Warning", "group": "Generic"},
             {"value": "archive", "label": "Archive", "group": "Generic"},
             {"value": "award", "label": "Award", "group": "Generic"},
             {"value": "bee", "label": "Bee", "group": "Generic"},
@@ -1592,6 +1609,22 @@
           "alpha": true
         },
         {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#000"
+        },
+        {
+          "type": "range",
+          "id": "padding_inside",
+          "min": 0,
+          "max": 50,
+          "step": 2,
+          "unit": "px",
+          "label": "Verticle padding",
+          "default": 12
+        },
+        {
           "type": "header",
           "content": "Block spacing"
         },
@@ -1602,7 +1635,7 @@
           "max": 50,
           "step": 2,
           "unit": "px",
-          "label": "Padding bottom",
+          "label": "margin bottom",
           "default": 20
         }
       ]
@@ -1677,7 +1710,7 @@
       "type": "popup_text",
       "name": "Popup text",
       "settings": [
-                {
+        {
           "type": "select",
           "id": "icon_name",
           "label": "Select an icon",
@@ -1743,6 +1776,13 @@
             {"value": "sulfate-free", "label": "Sulfate free", "group": "Health/Beauty"},
             {"value": "use-by", "label": "Use by", "group": "Health/Beauty"}
           ]
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#000",
+          "alpha": true
         },
         {
           "type": "text",
@@ -2055,6 +2095,12 @@
         {
           "type": "header",
           "content": "Slider layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_autoplay",
+          "label": "Enable video autoplay (hide thumbnail)",
+          "default": false
         },
         {
           "type": "range",

@@ -60,6 +60,10 @@
   {{ selector_id }} {
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
+    --arrow-bg: {{ section.settings.arrow_bg_color }};
+    --arrow-color: {{ section.settings.arrow_icon_color }};
+    --arrow-size: {{ section.settings.arrow_size }}px;
+    --star-color: {{ section.settings.star_color }};
   }
   {{ selector_id }} .section__heading {
     --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }});
@@ -207,7 +211,9 @@
 
                     {%- if show_verified -%}
                       <span class="image-slider__verified">
-                        {%- render 'icon-star' -%}
+                        <svg class="icon icon-star" style="fill: var(--star-color); color: var(--star-color); stroke: none; width: 14px; height: 14px;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8 0.5L10.0784 5.63932L15.6085 6.02786L11.3629 9.59268L12.7023 14.9721L8 12.036L3.29772 14.9721L4.63706 9.59268L0.391548 6.02786L5.92159 5.63932L8 0.5Z" fill="currentColor"></path>
+                        </svg>
                         <span>{{ section.settings.verified_text | default: 'Verified review' }}</span>
                       </span>
                     {%- endif -%}
@@ -379,6 +385,38 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Verified star color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Arrows"
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg_color",
+      "label": "Arrow background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "arrow_icon_color",
+      "label": "Arrow icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow size",
+      "min": 32,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 48
     },
     {
       "type": "header",

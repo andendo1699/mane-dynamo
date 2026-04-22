@@ -79,7 +79,7 @@
           "type": "icon_list",
           "settings": {
             "icon_name": "check",
-            "icon_color": "",
+            "icon_color": "#ff763d",
             "icon_width": 22,
             "text_size": 100,
             "text_1": "Fill bald & thinning spots instantly",
@@ -88,7 +88,7 @@
             "text_4": "",
             "text_5": "",
             "bg_color": "#ffffff",
-            "border_color": "#d9d9d9",
+            "border_color": "#000000",
             "border_radius": 12,
             "padding": 16,
             "padding_bottom": 10
@@ -98,6 +98,7 @@
           "type": "popup_text",
           "settings": {
             "icon_name": "warning",
+            "border_color": "#000000",
             "text": "tap to see shade guide",
             "popup_page": "shape-guide",
             "padding_bottom": 10
@@ -138,7 +139,9 @@
             "icon_text_4": "",
             "icon_subtext_4": "",
             "alignment": "left",
-            "bg_color": "#ff763d",
+            "bg_color": "#e8e8e8",
+            "border_color": "#000000",
+            "padding_inside": 0,
             "padding_bottom": 0
           }
         },
@@ -176,16 +179,18 @@
             "video_url_3": "",
             "username_3": "",
             "comment_3": "",
-            "video_4": "shopify://files/videos/Mane-UK-TVC-Q1-2020-ASW-MNHS006-030.mp4",
+            "video_4": "shopify://files/videos/6616733-uhd_2160_4096_25fps.mp4",
             "video_url_4": "",
             "username_4": "",
             "comment_4": "",
+            "video_5": "shopify://files/videos/7388177-uhd_2160_3840_24fps.mp4",
             "video_url_5": "",
             "username_5": "",
             "comment_5": "",
             "video_url_6": "",
             "username_6": "",
             "comment_6": "",
+            "enable_video_autoplay": true,
             "slides_per_view": 3,
             "card_border_radius": 16,
             "card_gap": 8,
@@ -210,10 +215,12 @@
             "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
+            "border_color": "#d3d3d3",
             "accordion_heading": "What is it?",
-            "heading_icon": "flower",
+            "heading_text_size": 17,
+            "heading_icon": "star-2",
             "heading_icon_color": "",
-            "heading_icon_size": 16,
+            "heading_icon_size": 18,
             "heading_style": "font-heading",
             "accordion_text": "<p>Use this accordion to add info such as Materials, Sizing, Features, Shipping and Returns policies</p>",
             "accordion_page": "",
@@ -231,10 +238,12 @@
             "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
+            "border_color": "#d3d3d3",
             "accordion_heading": "What if I have completely bald areas?",
-            "heading_icon": "star",
+            "heading_text_size": 16,
+            "heading_icon": "star-2",
             "heading_icon_color": "",
-            "heading_icon_size": 16,
+            "heading_icon_size": 18,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
@@ -252,10 +261,12 @@
             "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
+            "border_color": "#d3d3d3",
             "accordion_heading": "How to apply?",
-            "heading_icon": "star",
+            "heading_text_size": 16,
+            "heading_icon": "star-2",
             "heading_icon_color": "",
-            "heading_icon_size": 16,
+            "heading_icon_size": 18,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
@@ -273,14 +284,16 @@
             "tabs_bg_color": "rgba(0,0,0,0)",
             "show_accordion_divider": true,
             "line_thickness": "normal",
+            "border_color": "#d3d3d3",
             "accordion_heading": "Shipping & Returns",
-            "heading_icon": "star",
-            "heading_icon_color": "",
-            "heading_icon_size": 16,
+            "heading_text_size": 16,
+            "heading_icon": "star-2",
+            "heading_icon_color": "#0c0c0f",
+            "heading_icon_size": 18,
             "heading_style": "font-heading",
             "accordion_text": "<p>We offer free shipping on all orders over $100 and provide a full refund if returned within 30 days.</p>",
             "accordion_page": "",
-            "padding_bottom": 12
+            "padding_bottom": 16
           }
         },
         "offer_banner_VJmRmB": {
@@ -359,9 +372,9 @@
           "settings": {
             "text": "<h2><em>Undetectable</em> results guys trust</h2>",
             "size": 100,
-            "heading_highlight_type": "underline",
+            "heading_highlight_type": "highlight",
             "highlight_color": "#ff763d",
-            "highlight_text_color": ""
+            "highlight_text_color": "#ffffff"
           }
         },
         "text_yMRPy3": {
@@ -443,10 +456,12 @@
         "slide_width_mobile": 200,
         "card_border_radius": 16,
         "card_gap": 12,
-        "arrow_bg_color": "#333333",
+        "enable_slider_autoplay": true,
+        "slider_autoplay_delay": 5,
+        "arrow_bg_color": "#ff763d",
         "arrow_icon_color": "#ffffff",
         "arrow_size": 48,
-        "bg": "palette--dark bg--invert--accent",
+        "bg_color": "#f5f5f5",
         "width": "wrapper",
         "padding_top": 36,
         "padding_bottom": 20
@@ -471,9 +486,9 @@
           "settings": {
             "text": "<h2>That bald spot that haunts you <em>every morning?</em></h2>",
             "size": 100,
-            "heading_highlight_type": "underline",
+            "heading_highlight_type": "highlight",
             "highlight_color": "#ff763d",
-            "highlight_text_color": ""
+            "highlight_text_color": "#ffffff"
           }
         },
         "text_Hj6WMg": {
@@ -505,9 +520,13 @@
           "type": "text_block",
           "settings": {
             "image": "shopify://shop_images/17_e5e13115-87ea-42c9-b2a2-066c5510883d.webp",
+            "badge_text": "",
+            "badge_bg_color": "#4338f5",
+            "badge_text_color": "#ffffff",
             "image_width": 100,
             "title": "",
             "subheading": "",
+            "subheading_color": "",
             "rating_stars": 0,
             "rating_color": "#ffb800",
             "heading_size": 120,
@@ -525,9 +544,13 @@
           "type": "text_block",
           "settings": {
             "image": "shopify://shop_images/18_a17a1533-4c5a-4bbc-bbe3-6b378658ca15.webp",
+            "badge_text": "",
+            "badge_bg_color": "#4338f5",
+            "badge_text_color": "#ffffff",
             "image_width": 100,
             "title": "",
             "subheading": "",
+            "subheading_color": "",
             "rating_stars": 0,
             "rating_color": "#ffb800",
             "heading_size": 120,
@@ -550,8 +573,12 @@
       "settings": {
         "title": "",
         "heading_size": 120,
+        "heading_highlight_type": "italics",
+        "highlight_color": "#000000",
+        "highlight_text_color": "",
+        "align_heading": "text-left",
+        "scroll_reveal_text": false,
         "layout_desktop": "grid",
-        "align_text": "text-left",
         "columns": 2,
         "show_images": true,
         "show_borders": false,
@@ -562,7 +589,7 @@
         "mobile_aspect_ratio": 1,
         "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
         "color_borders": "#000000",
-        "width": "wrapper--full-padded",
+        "width": "wrapper",
         "padding_top": 0,
         "padding_bottom": 60
       }
@@ -574,11 +601,13 @@
           "type": "heading",
           "settings": {
             "title": "<h2><strong>Complete </strong><em><strong>Coverage</strong></em><strong>, Everywhere It Matters</strong></h2>",
-            "size": 120,
+            "text_color": "",
+            "size": 115,
             "text_position": "left",
-            "heading_highlight_type": "underline",
+            "mobile_text_position": "center",
+            "heading_highlight_type": "highlight",
             "highlight_color": "#ff763d",
-            "highlight_text_color": "",
+            "highlight_text_color": "#ffffff",
             "spacing_bottom": 12
           }
         },
@@ -586,8 +615,10 @@
           "type": "text",
           "settings": {
             "text": "<p>Whether it's your hairline creeping back, your crown thinning out, or those frustrating beard patches: <strong>HAIRO works everywhere hair matters.</strong></p>",
+            "text_color": "",
             "size": 100,
             "text_position": "left",
+            "mobile_text_position": "center",
             "spacing_bottom": 12
           }
         }
@@ -609,7 +640,7 @@
         "image": "shopify://shop_images/15_716257aa-85dd-4c00-96dd-00a0f150de7a.webp",
         "block_bg_color": "",
         "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
-        "section_width": "wrapper--full-padded",
+        "section_width": "wrapper",
         "add_gutter": true,
         "padding_top": 0,
         "padding_bottom": 20
@@ -787,7 +818,7 @@
       "name": "Reviews slider",
       "settings": {
         "title": "Thousands of men have reclaimed their confidence",
-        "heading_size": 100,
+        "heading_size": 120,
         "columns": 4,
         "desktop_aspect_ratio": 1.2,
         "mobile_aspect_ratio": 1.2,
@@ -820,14 +851,18 @@
           "type": "text_block",
           "settings": {
             "image": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
+            "badge_text": "",
+            "badge_bg_color": "#4338f5",
+            "badge_text_color": "#ffffff",
             "image_width": 100,
             "title": "Marco D'Angelo",
             "subheading": "Elite Cuts Barbershop, London UK",
+            "subheading_color": "",
             "rating_stars": 5,
             "rating_color": "#0c0c0f",
             "heading_size": 120,
             "text": "<p>12 years cutting hair. HAIRO looks more natural than expensive transplants. Now I recommend it over costly procedures. Game changer for my older clients.</p>",
-            "text_size": 120,
+            "text_size": 140,
             "button_text": "",
             "button_link": "",
             "button_color": "btn--black",
@@ -840,14 +875,18 @@
           "type": "text_block",
           "settings": {
             "image": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
+            "badge_text": "",
+            "badge_bg_color": "#4338f5",
+            "badge_text_color": "#ffffff",
             "image_width": 100,
             "title": "Marco D'Angelo",
             "subheading": "Prestige Barber Lounge, Austin TX",
+            "subheading_color": "",
             "rating_stars": 5,
             "rating_color": "#0c0c0f",
             "heading_size": 120,
             "text": "<p>No fallout on my tools like those messy fibers. Three regulars said their wives noticed they looked 'sharper.' Now I keep it stocked</p>",
-            "text_size": 120,
+            "text_size": 140,
             "button_text": "",
             "button_link": "",
             "button_color": "btn--black",
@@ -863,10 +902,14 @@
       ],
       "name": "Text columns with images",
       "settings": {
-        "title": "Approved by 300+ professional barbers across the US & UK",
+        "title": "<p>Approved by 300+ <em>professional barbers</em> across the US & UK</p>",
         "heading_size": 80,
+        "heading_highlight_type": "highlight",
+        "highlight_color": "#ff763d",
+        "highlight_text_color": "#ffffff",
+        "align_heading": "text-center",
+        "scroll_reveal_text": false,
         "layout_desktop": "carousel",
-        "align_text": "text-left",
         "columns": 4,
         "show_images": true,
         "show_borders": false,
@@ -877,7 +920,7 @@
         "mobile_aspect_ratio": 1,
         "color_scheme": "scheme-9a41c40c-9695-4e7c-b3a0-2b34c2ee8d0a",
         "color_borders": "#000000",
-        "width": "wrapper--full-padded",
+        "width": "wrapper",
         "padding_top": 10,
         "padding_bottom": 60
       }
@@ -889,8 +932,10 @@
           "type": "heading",
           "settings": {
             "title": "<h2><strong>32,000+</strong></h2>",
+            "text_color": "",
             "size": 190,
             "text_position": "left",
+            "mobile_text_position": "center",
             "heading_highlight_type": "underline-hand-drawn",
             "highlight_color": "#000000",
             "highlight_text_color": "",
@@ -901,23 +946,28 @@
           "type": "text",
           "settings": {
             "text": "<p>Real Results, Real Guys</p>",
+            "text_color": "#585858",
             "size": 160,
             "text_position": "left",
+            "mobile_text_position": "center",
             "spacing_bottom": 12
           }
         },
         "rating_badge_a3i7W4": {
           "type": "rating_badge",
           "settings": {
+            "block_bg_color": "#ffffff",
             "avatar_1": "shopify://shop_images/imgi_12_36.png",
             "avatar_2": "shopify://shop_images/7_5d0800cf-21c2-4cc2-91cc-091cacb8bc03.webp",
             "avatar_3": "shopify://shop_images/imgi_11_41.png",
             "avatar_4": "shopify://shop_images/6_95d2534f-1400-432a-aa93-fb5600c303c3.webp",
             "avatar_5": "shopify://shop_images/image4.png",
+            "avatar_border_color": "#ffffff",
             "rating_stars": 5,
             "rating_color": "#ff763d",
             "caption": "*Rating is verified by real users only",
             "text_position": "left",
+            "mobile_text_position": "center",
             "spacing_bottom": 12
           }
         }
@@ -953,8 +1003,10 @@
           "type": "heading",
           "settings": {
             "title": "<h2><strong>Coming Soon to Your </strong><em><strong>Local Barber</strong></em></h2>",
+            "text_color": "",
             "size": 90,
             "text_position": "center",
+            "mobile_text_position": "center",
             "heading_highlight_type": "highlight",
             "highlight_color": "#ffffff",
             "highlight_text_color": "#000000",
@@ -965,8 +1017,10 @@
           "type": "text",
           "settings": {
             "text": "<p>HAIRO is arriving at 300+ professional barbershops across the US and UK</p>",
+            "text_color": "",
             "size": 100,
             "text_position": "center",
+            "mobile_text_position": "center",
             "spacing_bottom": 12
           }
         }
@@ -988,7 +1042,7 @@
         "image": "shopify://shop_images/20_b998888c-b593-4d11-b5c4-d526c25586a9.webp",
         "block_bg_color": "#ff763d",
         "color_scheme": "scheme-615e575a-8b18-4e78-b5e4-e67709da8254",
-        "section_width": "wrapper--full-padded",
+        "section_width": "wrapper",
         "add_gutter": false,
         "padding_top": 20,
         "padding_bottom": 0
@@ -1012,49 +1066,56 @@
           "type": "text",
           "settings": {
             "title": "What is Mane?",
-            "text": "<p>Mane is a micro fine cosmetic powder for making fine or thinning hair look thicker. It instantly increases the apparent thickness and density of the hair, so creating a natural finish, dramatically adding texture and volume to any kind of hair. Mane is the original and most effective product of its kind.</p>"
+            "text": "<p>Mane is a micro fine cosmetic powder for making fine or thinning hair look thicker. It instantly increases the apparent thickness and density of the hair, so creating a natural finish, dramatically adding texture and volume to any kind of hair. Mane is the original and most effective product of its kind.</p>",
+            "open_default": true
           }
         },
         "text_FCw4c8": {
           "type": "text",
           "settings": {
             "title": "How do I use it?",
-            "text": "<p>Mane must be applied when the hair is clean and dry and should be sprayed through the hair roots. It is not necessary to over spray the hair lengths. After applying your hair will look fuller and give you that extra confidence. Your previous concerns about your thinning hair will disappear.</p>"
+            "text": "<p>Mane must be applied when the hair is clean and dry and should be sprayed through the hair roots. It is not necessary to over spray the hair lengths. After applying your hair will look fuller and give you that extra confidence. Your previous concerns about your thinning hair will disappear.</p>",
+            "open_default": false
           }
         },
         "text_iCekGA": {
           "type": "text",
           "settings": {
             "title": "How often do I wash my hair?",
-            "text": "<p>For best results you should shampoo your hair daily to increase the effectiveness of the product and maintain hygiene levels.</p>"
+            "text": "<p>For best results you should shampoo your hair daily to increase the effectiveness of the product and maintain hygiene levels.</p>",
+            "open_default": false
           }
         },
         "text_dAAaHm": {
           "type": "text",
           "settings": {
             "title": "Can Mane harm my scalp?",
-            "text": "<p>Mane is a non-allergenic product, the ingredients of which have been tested and used in all cosmetic and skin applications such as lipsticks and eye make-up. Mane has been widely used for over thirty years in the entertainment industry and by many thousands of the general public.</p>"
+            "text": "<p>Mane is a non-allergenic product, the ingredients of which have been tested and used in all cosmetic and skin applications such as lipsticks and eye make-up. Mane has been widely used for over thirty years in the entertainment industry and by many thousands of the general public.</p>",
+            "open_default": false
           }
         },
         "text_bMeDMa": {
           "type": "text",
           "settings": {
             "title": "Can I use other with Mane?",
-            "text": "<p>Yes. Mane is natural and inert and so you can use any products you like with it. It is recommended by Doctors and is compatible for use with other hair loss medications and with styling products.</p>"
+            "text": "<p>Yes. Mane is natural and inert and so you can use any products you like with it. It is recommended by Doctors and is compatible for use with other hair loss medications and with styling products.</p>",
+            "open_default": false
           }
         },
         "text_KXiBrF": {
           "type": "text",
           "settings": {
             "title": "What does Mane Seal and Control do?",
-            "text": "<p>Mane Seal and Control has been specially formulated to be used after applying the Mane Hair Thickening Spray, to hold and seal the thickener in place to give your hair that fuller, more natural look. It also protects the thickener from rubbing off or running in the wet.</p>"
+            "text": "<p>Mane Seal and Control has been specially formulated to be used after applying the Mane Hair Thickening Spray, to hold and seal the thickener in place to give your hair that fuller, more natural look. It also protects the thickener from rubbing off or running in the wet.</p>",
+            "open_default": false
           }
         },
         "text_QN6kpR": {
           "type": "text",
           "settings": {
             "title": "Will Mane run in the wet?",
-            "text": "<p>Once Mane Hair Thickener is sealed with Mane Seal and Control, it is water, rain, wind and perspiration resistant. We do recommend however that wet hair be allowed to dry naturally rather than rubbing rigorously with a dry towel.</p>"
+            "text": "<p>Once Mane Hair Thickener is sealed with Mane Seal and Control, it is water, rain, wind and perspiration resistant. We do recommend however that wet hair be allowed to dry naturally rather than rubbing rigorously with a dry towel.</p>",
+            "open_default": false
           }
         }
       },

@@ -23,7 +23,7 @@
         "template--19886097236266__402a8e34-4ba3-415b-a05f-694bbbd87fcd-168873963339fb8411-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>{{ collection.title }}</p>",
+            "text": "<p>{{ collection.title }} </p>",
             "size": 180,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747",
@@ -33,7 +33,7 @@
         "template--19886097236266__402a8e34-4ba3-415b-a05f-694bbbd87fcd-168873963339fb8411-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand, describe a product, share announcements, or welcome customers to your store.</p>",
+            "text": "<p>(Can add your own image banner here)</p>",
             "size": 100
           }
         },

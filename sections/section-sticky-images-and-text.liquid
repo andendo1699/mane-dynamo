@@ -200,6 +200,7 @@
                 data-aos-order="{{ animation_order }}"
                 {%- assign animation_order = animation_order | plus: 1 -%}
               {% endif %}
+              style="color: {{ block.settings.subheading_color }};"
             >
               {{- subheading -}}
             </div>
@@ -215,7 +216,9 @@
               {% endif %}
             >
               {%- for i in (1..rating_stars) -%}
-                <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="fill: {{ rating_color }}; color: {{ rating_color }}; width: 18px; height: 18px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
+                <svg class="icon icon-star" style="fill: {{ rating_color }}; color: {{ rating_color }}; stroke: none; width: 15px; height: 15px;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 0.5L10.0784 5.63932L15.6085 6.02786L11.3629 9.59268L12.7023 14.9721L8 12.036L3.29772 14.9721L4.63706 9.59268L0.391548 6.02786L5.92159 5.63932L8 0.5Z" fill="currentColor"></path>
+                </svg>
               {%- endfor -%}
             </div>
           {%- endif -%}
@@ -506,10 +509,15 @@
       ]
     },
     {
-      "type": "text_alignment",
+      "type": "select",
       "id": "text_alignment",
       "label": "Text alignment",
-      "default": "left"
+      "default": "left",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ]
     },
     {
       "type": "select",
@@ -656,6 +664,12 @@
           "max": 30,
           "step": 1,
           "default": 15
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading color",
+          "default": "#0F0F0F"
         },
         {
           "type": "text",

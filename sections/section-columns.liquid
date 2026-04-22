@@ -19,6 +19,7 @@
   assign animation_anchor = selector_id
   assign animations_enabled = settings.animations_enabled
   assign animation_delay = 150
+  assign scroll_reveal_text = section.settings.scroll_reveal_text
   assign is_slider = false
 
   if request.visual_preview_mode
@@ -74,6 +75,10 @@
   onload="this.onload=null;this.rel='stylesheet'"
 >
 
+{%- if scroll_reveal_text -%}
+  <script src="{{ 'scroll-reveal-text.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {%- style -%}
   {{ selector_id }} {
     --PT: {{ section.settings.padding_top }}px;
@@ -105,22 +110,200 @@
 
 <div
   id="{{ id }}"
-  class="section-padding {{ color_scheme }} section-columns {{ section.settings.align_text }}"
+  class="section-padding {{ color_scheme }} section-columns {% if scroll_reveal_text %} text-animation{% endif %}"
   data-section-id="{{ unique }}"
   data-section-type="columns-with-image"
 >
   <div class="{{ section_width }}">
-    {%- if section.settings.title != '' -%}
-      <div class="section__header">
-        <h2
-          class="section__heading h2"
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 150 -%}
-        >
-          {{ section.settings.title }}
-        </h2>
+    {%- if section.settings.title != blank -%}
+      {%- liquid
+        assign title = section.settings.title
+        assign heading_highlight_type = section.settings.heading_highlight_type
+        assign highlight_color = section.settings.highlight_color
+        assign highlight_text_color = section.settings.highlight_text_color
+      -%}{% comment %}
+  Enhanced text decorations options - Liquid variables
+
+  Dependencies:
+    - Title liquid object from settings: `assign title = section.settings.title`
+    - Highlight type from settings: `assign heading_highlight_type = section.settings.heading_highlight_type`
+    - Highlight color from settings: `assign highlight_color = section.settings.highlight_color`
+    - SVG icons:
+      - icon-squiggle.svg (assets)
+      - icon-circle.liquid (snippet)
+{% endcomment %}
+
+{%- liquid
+  comment
+   Highlighted words count
+  endcomment
+  assign title_temp = title | split: '<em>'
+  assign em_arr = ''
+  if title_temp.size > 1
+    for text_part in title_temp offset: 1
+      assign em_text = text_part | split: '</em>' | first
+      assign em_arr = em_arr | append: '#separator#' | append: em_text
+    endfor
+  endif
+  assign em_arr = em_arr | split: '#separator#'
+  assign words_count_arr = ''
+  assign letters_count_arr = ''
+  if em_arr.size > 0
+    for words in em_arr offset: 1
+      assign word = words | split: ' '
+      assign words_count_arr = words_count_arr | append: word.size | append: ', '
+      assign letters_count_arr = letters_count_arr | append: words.size | append: ', '
+    endfor
+  endif
+
+  assign words_count_arr = words_count_arr | replace_last: ', ', '' | split: ', '
+  assign letters_count_arr = letters_count_arr | replace_last: ', ', '' | split: ', '
+
+  comment
+   Main highlight types logic
+  endcomment
+  assign icon_url = ''
+  assign icon_color = 'var(--heading)'
+
+  if highlight_color != 'rgba(0,0,0,0)' and highlight_color != ''
+    assign icon_color = highlight_color
+  endif
+
+  capture text_highlight_icon
+    assign has_text_highlight = false
+
+    if title contains '<em>'
+      case heading_highlight_type
+        when 'squiggle'
+          assign icon_url = 'icon-squiggle.svg' | asset_url
+        when 'circle' or 'circle-hand-drawn' or 'underline-hand-drawn'
+          echo '<span class="text-highlight__icon" data-highlight-holder>'
+
+            when 'circle'
+              render 'icon-circle'
+            when 'circle-hand-drawn'
+              render 'icon-circle-hand-drawn'
+            when 'underline-hand-drawn'
+              render 'icon-underline-hand-drawn'
+
+          echo '</span>'
+        when 'highlight' or 'squiggle'
+          echo '<span class="text-highlight__icon text-highlight__icon--pseudo" data-highlight-holder></span>'
+        when 'stroke' or 'circle' or 'circle-hand-drawn' or 'squiggle' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn' or 'alternate-font'
+          assign has_text_highlight = true
+      endcase
+    endif
+  endcapture
+
+  capture icon_bg
+    if icon_url != ''
+      echo 'url( "' | append: icon_url | append: '" )'
+    else
+      echo 'none'
+    endif
+  endcapture
+  capture icon_styles
+    assign icon_bg = icon_bg | replace: '"', "'"
+    echo 'style="--icon-url: ' | append: icon_bg | append: ';' | append: '--icon-color: ' | append: icon_color | append: ';"'
+  endcapture
+
+  assign text_highlight_wrapper_class = 'text-highlight-wrapper' | append: ' text-highlight-wrapper--' | append: heading_highlight_type
+  capture text_highlight_start
+    echo '<text-highlight class="text-highlight" ' | append: icon_styles | append: ' data-highlight-type="' | append: heading_highlight_type | append: '">'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline' or 'alternate-font'
+        echo '<span class="text-highlight__string" data-highlight-holder>'
+    endcase
+  endcapture
+  capture text_highlight_end
+    echo text_highlight_icon
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline' or 'alternate-font'
+        echo '</span>'
+    endcase
+    echo '</text-highlight>'
+  endcapture
+
+  if title != blank and title contains '<em>'
+    case heading_highlight_type
+      when 'squiggle' or 'circle' or 'circle-hand-drawn' or 'stroke' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn' or 'alternate-font'
+        assign title = title | replace: '<em>', text_highlight_start | replace: '</em>', text_highlight_end
+
+      when 'circle' or 'circle-hand-drawn'
+        comment
+          Update icon's holder class based on the italicised words count
+        endcomment
+        assign title = title | split: 'class="text-highlight"'
+        assign title_mod = ''
+        for title_part in title offset: 1
+          assign current_part = title_part
+
+          if title_part contains 'text-highlight__icon'
+            capture highlight_icon_classes
+              echo 'text-highlight__icon'
+              assign current_count = words_count_arr[forloop.index0] | times: 1
+              assign letters_count = letters_count_arr[forloop.index0] | times: 1
+              if current_count == 1
+                echo ' text-highlight__icon--single-word'
+              endif
+              if letters_count < 6
+                echo ' text-highlight__icon--short'
+                echo ' text-highlight__icon--l' | append: letters_count
+              endif
+              if letters_count > 15
+                echo ' text-highlight__icon--long'
+              endif
+            endcapture
+
+            assign current_part = title_part | replace: 'text-highlight__icon', highlight_icon_classes
+          endif
+
+          unless forloop.last
+            assign title_mod = title_mod | append: current_part | append: 'class="text-highlight"'
+          else
+            assign title_mod = title_mod | append: current_part
+          endunless
+        endfor
+        assign title_first_part = title | first | append: 'class="text-highlight"'
+        assign title_mod = title_mod | prepend: title_first_part
+        assign title = title_mod
+    endcase
+  endif
+-%}
+
+      {%- style -%}
+        {{ selector_id }} .section__heading {
+          {%- if heading_highlight_type != 'highlight' -%}
+            --highlight-color: var(--text);
+          {%- endif -%}
+
+          {%- if highlight_color != 'rgba(0,0,0,0)' and highlight_color != '' -%}
+            --highlight-color: {{ highlight_color }};
+          {%- endif -%}
+
+          {%- if highlight_text_color != 'rgba(0,0,0,0)' and highlight_text_color != '' -%}
+            --highlight-text-color: {{ highlight_text_color }};
+          {%- endif -%}
+        }
+      {%- endstyle -%}
+
+      <div class="section__header {{ section.settings.align_heading }}">
+        {%- capture title_attributes -%}
+          class="section__heading h2{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 150 -%}
+          {% endif %}
+        {%- endcapture -%}
+
+        {% render 'title-text-reveal-and-highlights',
+          title: title,
+          title_attributes: title_attributes,
+          has_text_highlight: has_text_highlight,
+          scroll_reveal_text: scroll_reveal_text
+        %}
 
         {%- if settings.show_spacer_lines -%}
           <hr
@@ -204,6 +387,9 @@
               assign button_style = block.settings.button_style
               assign button_color = block.settings.button_color
               assign button_size = block.settings.button_size
+              assign badge_text = block.settings.badge_text
+              assign badge_bg_color = block.settings.badge_bg_color
+              assign badge_text_color = block.settings.badge_text_color
               assign title = block.settings.title
               assign block_subheading = block.settings.subheading
               assign block_rating_stars = block.settings.rating_stars
@@ -312,6 +498,10 @@
                       alt: image_alt
                     -%}
 
+                    {%- if badge_text != blank -%}
+                      <span class="column-item__badge" style="--badge-bg: {{ badge_bg_color }};--badge-color: {{ badge_text_color }};">{{ badge_text }}</span>
+                    {%- endif -%}
+
                     {%- if video_link != blank -%}
                       <script src="{{ 'video-play.js' | asset_url }}" defer="defer"></script>
 
@@ -339,32 +529,35 @@
                   {%- if title != blank -%}
                     <h3 class="column-item__heading h6">{{ title | escape }}</h3>
                   {%- endif -%}
+                  <div>
+                    {%- if block_subheading != blank -%}
+                      <p class="column-item__subheading subheading-text"{% if block.settings.subheading_color != blank and block.settings.subheading_color != 'rgba(0,0,0,0)' %} style="color: {{ block.settings.subheading_color }};"{% endif %}>{{ block_subheading }}</p>
+                    {%- endif -%}
 
-                  {%- if block_subheading != blank -%}
-                    <p class="column-item__subheading subheading-text">{{ block_subheading }}</p>
-                  {%- endif -%}
+                    {%- if block_rating_stars > 0 -%}
+                      <div class="column-item__rating">
+                        {%- for i in (1..block_rating_stars) -%}
+                          <svg class="icon icon-star" style="fill: currentColor; color: {{ block_rating_color }}; stroke: none; width: 16px; height: 16px;" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0.5L10.0784 5.63932L15.6085 6.02786L11.3629 9.59268L12.7023 14.9721L8 12.036L3.29772 14.9721L4.63706 9.59268L0.391548 6.02786L5.92159 5.63932L8 0.5Z" fill="currentColor"></path>
+                          </svg>
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
 
-                  {%- if block_rating_stars > 0 -%}
-                    <div class="column-item__rating">
-                      {%- for i in (1..block_rating_stars) -%}
-                        <svg class="icon icon-star" aria-hidden="true" focusable="false" viewBox="0 0 82 82" style="fill: currentColor; color: {{ block_rating_color }}; width: 16px; height: 16px;"><path d="M41 66.685 65.103 80 60.5 51.8 80 31.83l-26.948-4.114L41 2.06 28.948 27.716 2 31.83 21.5 51.8 16.897 80 41 66.684Z"/></svg>
-                      {%- endfor -%}
-                    </div>
-                  {%- endif -%}
+                    {%- if text != blank -%}
+                      <div class="column-item__text">{{ text }}</div>
+                    {%- endif -%}
 
-                  {%- if text != blank -%}
-                    <div class="column-item__text">{{ text }}</div>
-                  {%- endif -%}
-
-                  {%- if button_text != '' -%}
-                    <a
-                      href="{{ button_link }}"
-                      class="column-item__button btn {{ button_style }} {{ button_size }} {{ button_color }} {{ button_advanced_class }}"
-                    >
-                      <hover-button></hover-button>
-                      {{- button_text -}}
-                    </a>
-                  {%- endif -%}
+                    {%- if button_text != '' -%}
+                      <a
+                        href="{{ button_link }}"
+                        class="column-item__button btn {{ button_style }} {{ button_size }} {{ button_color }} {{ button_advanced_class }}"
+                      >
+                        <hover-button></hover-button>
+                        {{- button_text -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
                 </div>
               </div>
             </div>
@@ -385,9 +578,10 @@
   "class": "index-section",
   "settings": [
     {
-      "type": "text",
+      "type": "richtext",
       "id": "title",
-      "label": "Heading"
+      "label": "Heading",
+      "info": "Highlight one or two key words in your heading by italicizing them, then choose the highlight option below"
     },
     {
       "type": "range",
@@ -401,6 +595,58 @@
     },
     {
       "type": "header",
+      "content": "Highlight"
+    },
+    {
+      "type": "select",
+      "id": "heading_highlight_type",
+      "label": "Type",
+      "default": "italics",
+      "options": [
+        {"value": "italics", "label": "Italics (no decoration)"},
+        {"value": "highlight", "label": "Highlight"},
+        {"value": "highlight-color", "label": "Text color"},
+        {"value": "underline", "label": "Underline (digital)"},
+        {"value": "underline-hand-drawn", "label": "Underline (hand-drawn)"},
+        {"value": "squiggle", "label": "Squiggle"},
+        {"value": "circle", "label": "Circle (digital)"},
+        {"value": "circle-hand-drawn", "label": "Circle (hand-drawn)"},
+        {"value": "stroke", "label": "Stroke (outlined text)"},
+        {"value": "alternate-font", "label": "Alternate font"}
+      ]
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#000",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "Text color",
+      "alpha": true
+    },
+    {
+      "type": "select",
+      "id": "align_heading",
+      "label": "Heading alignment",
+      "default": "text-left",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "scroll_reveal_text",
+      "label": "Animate text with scroll",
+      "default": false
+    },
+    {
+      "type": "header",
       "content": "Layout"
     },
     {
@@ -411,16 +657,6 @@
       "options": [
         {"value": "grid", "label": "Grid"},
         {"value": "carousel", "label": "Carousel"}
-      ]
-    },
-    {
-      "type": "select",
-      "id": "align_text",
-      "label": "Text alignment",
-      "default": "text-left",
-      "options": [
-        {"value": "text-left", "label": "Left"},
-        {"value": "text-center", "label": "Centered"}
       ]
     },
     {
@@ -566,6 +802,27 @@
           "label": "Image"
         },
         {
+          "type": "header",
+          "content": "Badge"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text"
+        },
+        {
+          "type": "color",
+          "id": "badge_bg_color",
+          "label": "Badge background color",
+          "default": "#4338f5"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Badge text color",
+          "default": "#ffffff"
+        },
+        {
           "type": "range",
           "id": "image_width",
           "label": "Image width",
@@ -589,6 +846,11 @@
           "type": "text",
           "id": "subheading",
           "label": "Subheading"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading color"
         },
         {
           "type": "header",

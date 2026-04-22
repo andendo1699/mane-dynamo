@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "color_scheme": "scheme-1",
     "header_link": "#0c0c0f",
     "menu_transparent_color": "#ffffff",
     "type_heading_font": "sans_serif_n7",
@@ -31,7 +32,7 @@
     "type_highlight_font": "inter_n4",
     "type_button_font": "heading",
     "button_font_weight": "bold",
-    "button_style": "rounded",
+    "button_style": "pill",
     "button_letter_spacing": 50,
     "button_caps": false,
     "small_button_size": 85,
@@ -91,6 +92,9 @@
     "badge_custom_list": "HOT, SALE, BEST SELLER",
     "custom_bg_color": "#3d5afe",
     "custom_text_color": "#ffffff",
+    "custom_bg_color_best_seller": "#3d5afe",
+    "custom_bg_color_hot": "#f74747",
+    "custom_bg_color_sale": "#f74747",
     "sold_bg_color": "rgba(0,0,0,0)",
     "sold_text_color": "#000000",
     "swatch_color_list": "Black: #000000\nWhite: #fafafa\nBlank: blank.gif\nOlive: #736D59\nBlack-Orange: #EE7A40",
@@ -136,13 +140,13 @@
         "disabled": true,
         "settings": {}
       },
-      "13223602749629917723": {
-        "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
+      "11532412952436166569": {
+        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
         "disabled": false,
         "settings": {}
       },
-      "11532412952436166569": {
-        "type": "shopify://apps/loox-reviews/blocks/loox-inject/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+      "13223602749629917723": {
+        "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
         "disabled": false,
         "settings": {}
       }
@@ -158,7 +162,7 @@
           "btn_secondary_bg": "#d3d3d3",
           "accent": "#585858",
           "lines_and_border": "#d3d3d3",
-          "overlay": "#0000004d",
+          "overlay": "#000000",
           "links": "#000000",
           "quick_add_bg_color": "#ff763d",
           "quick_add_text_color": "#ffffff",

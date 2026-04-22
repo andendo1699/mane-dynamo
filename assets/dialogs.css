@@ -185,8 +185,11 @@ body:not(.no-outline) model-viewer.focus-visible {
 }
 
 .pswp__custom-native video {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+
 }
 
 .pswp--animate_opacity {
@@ -1474,8 +1477,9 @@ body:not(.no-outline) model-viewer.focus-visible {
   position: fixed;
   left: 50%;
   right: auto;
-  top: 14vh;
+  top: 50%;
   bottom: auto;
+  width: auto;
   transform: translate(-50%, -18%) scale(0.98);
   border-radius: 16px;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
@@ -1487,7 +1491,7 @@ body:not(.no-outline) model-viewer.focus-visible {
 }
 
 .product__popup.drawer.is-open {
-  transform: translate(-50%, 0) scale(1);
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   visibility: visible;
   transition: transform 0.28s ease, opacity 0.22s ease, visibility 0s linear 0s;
@@ -1850,6 +1854,7 @@ body:not(.no-outline) model-viewer.focus-visible {
 .product__popup__inner {
   position: relative;
   height: auto;
+  width: auto;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0 var(--inner);

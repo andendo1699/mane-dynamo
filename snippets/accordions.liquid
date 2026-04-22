@@ -204,11 +204,11 @@
             {% endif %}
             {{ block.shopify_attributes }}>
             <button
-              class="accordion__title{% if icon_position == 'inline-left' %} accordion__title--row{% endif %}"
+              class="accordion__title{% if icon_position == 'inline-left' %} accordion__title--row{% endif %} {% if block.settings.open_default %} is-expanded{% endif %}"
               {% if icon_image != blank %}
                 style="--icon-size: {{ icon_size }}px;"
               {% endif %}
-              aria-expanded="false"
+              aria-expanded="{% if block.settings.open_default %}true{% else %}false{% endif %}"
               aria-controls="Accordions-item--{{ forloop.index0 }}-{{ section.id }}"
               data-collapsible-trigger
             >
@@ -223,7 +223,7 @@
               {%- render 'icon-toggle-minus' -%}
             </button>
 
-            <div class="accordion__text-wrapper" id="Accordions-item--{{ forloop.index0 }}-{{ section.id }}" data-collapsible-container>
+            <div class="accordion__text-wrapper  {% if block.settings.open_default %} is-expanded{% endif %}"  {% if block.settings.open_default %} style="height: auto;"{% endif %} id="Accordions-item--{{ forloop.index0 }}-{{ section.id }}" data-collapsible-container>
               <div class="accordion__text rte" data-collapsible-content>
                 {{- block_text -}}
               </div>

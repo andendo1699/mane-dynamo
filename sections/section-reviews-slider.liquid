@@ -50,27 +50,36 @@
   }
 
   .reviews-slider-section .section__heading {
-    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .reviews-slider__wrapper,
-  .reviews-slider .flickity-viewport {
-    overflow: initial;
+  /*
+    Do not set height on .flickity-viewport — Flickity sets it from the tallest cell.
+    height: 100% + items with height: 100% caused a circular dependency (parent height undefined → 0),
+    so the viewport collapsed to height: 0.
+  */
+  .reviews-slider__wrapper {
+    overflow: visible;
   }
 
   .reviews-slider {
     position: relative;
   }
 
+  .reviews-slider.flickity-enabled .reviews-slider__item {
+    height: auto;
+    align-self: flex-start;
+  }
+
   .reviews-slider.flickity-enabled {
-    padding-bottom: 72px;
+    padding-bottom: 80px;
   }
 
   .reviews-slider__item {
     width: calc((var(--wrapper-width) - var(--grid-gutter) * (var(--reviews-columns) - 1)) / var(--reviews-columns));
     margin-right: var(--grid-gutter);
+    height: 100%;
   }
 
   .reviews-slider__item:last-child {
@@ -106,6 +115,7 @@
     flex-direction: column;
     gap: 10px;
     min-height: 0;
+    height: 100%;
     color: var(--reviews-text-color-item, var(--text));
   }
 
@@ -147,42 +157,52 @@
 
   .reviews-slider .flickity-button {
     top: auto;
-    bottom: -56px;
-    width: 44px;
-    height: 32px;
-    border-radius: 40px;
-    border: 1px solid color-mix(in srgb, var(--text) 26%, transparent);
+    bottom: -8px;
+    width: 92px;
+    height: 38px;
+    border-radius: 0;
+    border: none;
     color: var(--reviews-star-color, #4d61ff);
-    background: color-mix(in srgb, var(--bg) 88%, #ffffff 12%);
+    background: none;
+    visibility: visible!important;
+    opacity: 1!important;
+    transform: none!important;
+    box-shadow: none!important;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .reviews-slider .flickity-button:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--reviews-star-color, #4d61ff) 50%, white 50%);
-    outline-offset: 2px;
-  }
-
-  .reviews-slider .flickity-button .flickity-button-icon {
-    width: 42%;
-    left: 29%;
-    top: 24%;
+  .reviews-slider .flickity-button .reviews-slider__arrow-svg {
+    display: block;
+    width: 50px;
+    height: auto;
+    flex-shrink: 0;
   }
 
   .reviews-slider .flickity-prev-next-button.previous {
-    left: calc(50% - 54px);
+    left: calc(50% - 96px);
   }
 
   .reviews-slider .flickity-prev-next-button.next {
-    right: calc(50% - 54px);
+    right: calc(50% - 96px);
   }
+
+  .reviews-slider .flickity-prev-next-button::before {
+    content: none!important;
+    display: none;
+  }
+
 
   .reviews-slider .flickity-page-dots {
     bottom: -40px;
   }
 
   .reviews-slider .flickity-page-dots .dot {
-    width: 12px;
-    height: 12px;
-    margin: 0 4px;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
     border: 1px solid var(--reviews-star-color, #4d61ff);
     opacity: 1;
     background: transparent;
@@ -225,7 +245,6 @@
     }
 
     .reviews-slider {
-      padding-left: var(--gutter-mobile);
       padding-bottom: 56px;
     }
 
@@ -368,6 +387,28 @@
     var slider = section.querySelector('testimonials-slider');
     if (!slider) return;
 
+    var ARROW_SVG_PREV =
+      '<svg class="reviews-slider__arrow-svg" width="92" height="38" viewBox="0 0 92 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="transform: rotate(-180deg);">' +
+      '<path d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z" fill="currentColor"/>' +
+      '</svg>';
+
+    var ARROW_SVG_NEXT =
+      '<svg class="reviews-slider__arrow-svg" width="92" height="38" viewBox="0 0 92 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+      '<path d="M72.472 0L71.063 1.409L87.303 17.649H0V19.643H87.3L71.06 35.883L72.469 37.293L91.115 18.646L72.472 0Z" fill="currentColor"/>' +
+      '</svg>';
+
+    function replaceReviewArrows() {
+      if (!slider.classList.contains('flickity-enabled')) return;
+      var prevBtn = slider.querySelector('.flickity-prev-next-button.previous');
+      var nextBtn = slider.querySelector('.flickity-prev-next-button.next');
+      if (prevBtn && !prevBtn.querySelector('.reviews-slider__arrow-svg')) {
+        prevBtn.innerHTML = ARROW_SVG_PREV;
+      }
+      if (nextBtn && !nextBtn.querySelector('.reviews-slider__arrow-svg')) {
+        nextBtn.innerHTML = ARROW_SVG_NEXT;
+      }
+    }
+
     function getFlkty() {
       return window.theme && window.theme.Flickity && window.theme.Flickity.data(slider);
     }
@@ -389,14 +430,17 @@
       if (!flkty || flkty._reviewsOffsetBound) return;
       flkty._reviewsOffsetBound = true;
       flkty.on('ready', setOffset);
+      flkty.on('ready', replaceReviewArrows);
       flkty.on('change', setOffset);
       flkty.on('resize', setOffset);
       setOffset();
+      replaceReviewArrows();
     }
 
     window.addEventListener('load', function() {
       bindFlktyEvents();
       setOffset();
+      replaceReviewArrows();
     });
 
     document.addEventListener('theme:resize:width', setOffset);
@@ -404,6 +448,15 @@
     // In case Flickity initializes after a delay
     setTimeout(bindFlktyEvents, 300);
     setTimeout(setOffset, 400);
+    setTimeout(replaceReviewArrows, 350);
+
+    if (window.Shopify && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function(e) {
+        if (e.detail.sectionId === '{{ section.id }}') {
+          setTimeout(replaceReviewArrows, 50);
+        }
+      });
+    }
   })();
 </script>
 
