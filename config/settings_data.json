@@ -84,6 +84,7 @@
     "show_spacer_lines": false,
     "show_rounded_corners": true,
     "mobile_menu_behaviour": "link",
+    "animations_enabled": true,
     "product_badges_size": 100,
     "rounded_badge": 30,
     "show_sale_badge": true,
@@ -262,13 +263,13 @@
       },
       "scheme-7": {
         "settings": {
-          "section_bg": "#ffffff",
+          "section_bg": "#d0dbe6",
           "section_heading": "#000000",
           "section_text": "#0c0c0f",
           "section_bg_gradient": "",
           "btn_primary_bg": "#ff763d",
-          "btn_secondary_bg": "#f4f4f4",
-          "accent": "#ffffff",
+          "btn_secondary_bg": "{{ shop.brand.colors.primary[0].background }}",
+          "accent": "#f5f5f5",
           "lines_and_border": "#f4f4f4",
           "overlay": "#0000004d",
           "links": "#3d5afe",
@@ -346,6 +347,24 @@
           "links": "#000000",
           "quick_add_bg_color": "#ffffff",
           "quick_add_text_color": "#000000",
+          "upsells_bg_color": "#f5f5f5",
+          "upsells_text_color": "#0b0b0b"
+        }
+      },
+      "scheme-36807f29-450e-44a2-b8d3-447870b26636": {
+        "settings": {
+          "section_bg": "#5e7695",
+          "section_heading": "#ffffff",
+          "section_text": "#ffffff",
+          "section_bg_gradient": "",
+          "btn_primary_bg": "#0c0c0f",
+          "btn_secondary_bg": "#d3d3d3",
+          "accent": "#585858",
+          "lines_and_border": "#d3d3d3",
+          "overlay": "#000000",
+          "links": "#000000",
+          "quick_add_bg_color": "#0c0c0f",
+          "quick_add_text_color": "#ffffff",
           "upsells_bg_color": "#f5f5f5",
           "upsells_text_color": "#0b0b0b"
         }

@@ -87,12 +87,12 @@
           "type": "newsletter",
           "settings": {
             "alignment": "text-left",
-            "title": "Join the Hairo Journey",
+            "title": "Subscribe to the Mane Newsletter",
             "uppercase_heading": false,
             "heading_size": 140,
-            "text": "<p>Be the first to know about new products and exclusive offers.</p>",
+            "text": "<p>Be the first to know about our new products and exclusive offers.</p>",
             "button_text": "",
-            "button_color": "btn--white",
+            "button_color": "btn--primary",
             "button_style": "btn--solid",
             "column_width": "50"
           }

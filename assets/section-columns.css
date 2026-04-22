@@ -215,10 +215,6 @@
   margin-top: 8px;
 }
 
-.column-item__text {
-  margin-top: 16px;
-}
-
 .column-item__content {
   overflow-wrap: break-word;
   width: 100%;

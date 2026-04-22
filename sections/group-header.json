@@ -16,6 +16,7 @@
       "blocks": {
         "text_CfJKxB": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text_caps": false,
             "text_size": 100,
@@ -31,6 +32,7 @@
         },
         "timer_4bCzaD": {
           "type": "timer",
+          "disabled": true,
           "settings": {
             "end_date": "2026-03-31",
             "end_time": "11:59",
@@ -65,7 +67,66 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "text_7QkHkE": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>DISCREET PACKAGING</strong></p>",
+            "text_color": "#ffffff",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#ffffff",
+            "highlight_text_color": "#ffffff",
+            "icon_name": "use-by",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
         "text_HANRG6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>✦</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_J84LjY": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>New customers save 10% with code: <strong>WELCOME10</strong></p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "star",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_ULwTaJ": {
           "type": "text",
           "settings": {
             "text": "<p>✦</p>",
@@ -87,11 +148,106 @@
         "announcement-0": {
           "type": "text",
           "settings": {
-            "text": "<p>FREE SHIPPING ON ALL USA ORDERS</p>",
-            "text_color": "",
+            "text": "<p><strong>FREE SHIPPING</strong> ON ALL ORDERS</p>",
+            "text_color": "#ffffff",
             "heading_highlight_type": "circle",
             "highlight_color": "#ffffff",
             "highlight_text_color": "#ffffff",
+            "icon_name": "mail",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_gUThaN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>✦</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_UjwRme": {
+          "type": "text",
+          "settings": {
+            "text": "<p>SAFE, NON-ALLERGENIC FORMULA</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "organic",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_6YetfH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>✦</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_A4FtAw": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>NOT TESTED ON ANIMALS</strong></p>",
+            "text_color": "#ffffff",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#ffffff",
+            "highlight_text_color": "#ffffff",
+            "icon_name": "cruelty-free",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "text_qd7yVH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>✦</p>",
+            "text_color": "",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000000",
+            "highlight_text_color": "",
             "icon_name": "none",
             "icon_color": "",
             "icon_width": 20,
@@ -107,7 +263,7 @@
           "type": "message",
           "disabled": true,
           "settings": {
-            "message": "Spend ||amount|| more for FREE shipping.",
+            "message": "",
             "target_url_enabled": false,
             "target_url": "",
             "target_referrer_enabled": false,
@@ -118,15 +274,23 @@
         }
       },
       "block_order": [
+        "text_7QkHkE",
         "text_HANRG6",
+        "text_J84LjY",
+        "text_ULwTaJ",
         "announcement-0",
+        "text_gUThaN",
+        "text_UjwRme",
+        "text_6YetfH",
+        "text_A4FtAw",
+        "text_qd7yVH",
         "57c1f82d-c885-41ba-942f-93f6dd12df44"
       ],
       "settings": {
         "width": "wrapper--full",
         "layout": "marquee",
         "show_top_border": false,
-        "show_bottom_border": true,
+        "show_bottom_border": false,
         "padding": 10,
         "slider_speed": 5,
         "show_arrows": false,
@@ -289,11 +453,11 @@
         "sticky_header": true,
         "link_hover_effect": "line",
         "highlight_color": "#f4f4f4",
-        "header_border": true,
-        "header_border_color": "#0000004d",
-        "border_opacity": 25,
-        "logo_not_home": "shopify://shop_images/mane_checkout_logo.png",
-        "logo_max_width": 110,
+        "header_border": false,
+        "header_border_color": "#ffffff",
+        "border_opacity": 0,
+        "logo_not_home": "shopify://shop_images/Mane_Logo_Lion_Text_Horizontal_2026_-_White.png",
+        "logo_max_width": 200,
         "main-menu": "main-menu",
         "main_menu_secondary": "",
         "show_images": true,
